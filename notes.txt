@@ -1,0 +1,102 @@
+model User {
+  id            Int      @id @default(autoincrement())
+  email         String   @unique
+  password      String
+  name          String
+  favoriteFilms Film[]   @relation("favoriteFilms", references: [id])
+  filmOfTheWeek Film?    @relation("filmOfTheWeek", references: [id])
+  filmRankings  Ranking[]
+}
+
+model Film {
+  id             Int      @id @default(autoincrement())
+  title          String
+  director       String
+  releaseYear    Int
+  description    String?
+  imageUrl       String?
+  rating         Float?
+  upvotes        Int      @default(0)
+  neutralVotes   Int      @default(0)
+  downvotes      Int      @default(0)
+  userReviews    UserReview[]
+  usersWhoLike   User[]   @relation("favoriteFilms")
+  usersWhoHate   User[]   @relation("hatedFilms")
+  filmOfTheWeeks User[]   @relation("filmOfTheWeek")
+}
+
+model UserReview {
+  id        Int    @id @default(autoincrement())
+  title     String
+  body      String
+  rating    Float
+  filmId    Int
+  authorId  Int
+  author    User   @relation(fields: [authorId], references: [id])
+  film      Film   @relation(fields: [filmId], references: [id])
+}
+
+model Ranking {
+  id       Int    @id @default(autoincrement())
+  rank     Int
+  filmId   Int
+  authorId Int
+  film     Film   @relation(fields: [filmId], references: [id])
+  author   User   @relation(fields: [authorId], references: [id])
+}
+
+
+
+CHAT GPT GENERATED TABLE SUGGESTION
+    Users Table:
+        user_id (Primary Key)
+        username
+        password
+        email
+        ... (other user-related columns)
+
+    Films Table:
+        film_id (Primary Key)
+        title
+        description
+        ... (other film-related columns)
+
+    Favorites Table:
+        favorite_id (Primary Key)
+        user_id (Foreign Key referencing Users table)
+        film_id (Foreign Key referencing Films table)
+
+    Votes Table:
+        vote_id (Primary Key)
+        user_id (Foreign Key referencing Users table)
+        film_id (Foreign Key referencing Films table)
+        vote_type (e.g., upvote, neutral, downvote)
+
+    Rankings Table:
+        ranking_id (Primary Key)
+        user_id (Foreign Key referencing Users table)
+        film_id (Foreign Key referencing Films table)
+        ranking
+
+    Reviews Table:
+        review_id (Primary Key)
+        user_id (Foreign Key referencing Users table)
+        film_id (Foreign Key referencing Films table)
+        review_text
+
+    Ratings Table:
+        rating_id (Primary Key)
+        film_id (Foreign Key referencing Films table)
+        user_id (Foreign Key referencing Users table)
+        rating (out of 10)
+
+    FilmOfTheWeek Table:
+        week_id (Primary Key)
+        film_id (Foreign Key referencing Films table)
+        user_id (Foreign Key referencing Users table)
+        week_start_date
+        week_end_date
+
+Note: In the above tables, you can add additional columns as per your requirements, such as timestamps, genres, directors, etc. Also, make sure to define the appropriate relationships and constraints between the tables based on their associations.
+
+With these tables, you can store information about users, films, favorites, votes, rankings, reviews, ratings, and the film of the week.
