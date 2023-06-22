@@ -50,11 +50,11 @@
       <ul class="space-y-2 font-medium">
         <li v-for="name in routes" @click="hideSidebar">
           <NuxtLink :to="name.route">
-            <a
+            <div
               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <span class="ml-3">{{ name.name }}</span>
-            </a>
+            </div>
           </NuxtLink>
         </li>
       </ul>
