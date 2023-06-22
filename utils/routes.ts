@@ -2,6 +2,7 @@ export const authRoutes = {
   dashboard: "/dashboard",
   feed: "/feed",
   people: "/people",
+  anime: "/anime",
 };
 
 export const unauthRoutes = {
