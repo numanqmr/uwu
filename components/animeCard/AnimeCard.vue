@@ -1,5 +1,8 @@
 <template>
-  <div class="relative shadow-2xl w-1/4 rounded-xl overflow-hidden group">
+  <div
+    class="relative shadow-2xl w-1/4 rounded-xl overflow-hidden group cursor-pointer"
+    @click="pushToRoute"
+  >
     <div class="h-44 overflow-hidden">
       <img
         src="https://cdn.myanimelist.net/images/anime/10/18793.jpg"
@@ -63,4 +66,10 @@
 import WatchedIcon from "/assets/svg/WatchedIcon";
 import LikeIcon from "/assets/svg/LikeIcon";
 import CommentIcon from "/assets/svg/CommentIcon";
+
+const router = useRouter();
+
+const pushToRoute = () => {
+  router.push({ path: "/anime/monster" });
+};
 </script>
