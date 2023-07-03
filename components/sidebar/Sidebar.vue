@@ -50,18 +50,21 @@
       <ul class="space-y-2 font-medium">
         <li v-for="name in routes" @click="hideSidebar">
           <NuxtLink :to="name.route">
-            <a
+            <div
               class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <span class="ml-3">{{ name.name }}</span>
-            </a>
+            </div>
           </NuxtLink>
         </li>
       </ul>
-      <ul class="space-y-2 font-medium absolute bottom-0">
+
+      <ul
+        class="mb-2 font-medium absolute bottom-0 left-0 right-0 px-2 cursor-pointer"
+      >
         <li>
           <div
-            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-red-400 dark:hover:bg-red-400"
           >
             <span class="ml-3 py-2">Log out</span>
           </div>
@@ -81,6 +84,6 @@ const routes = reactive([
   { name: "Dashboard", route: authRoutes.dashboard },
   { name: "Feed", route: authRoutes.feed },
   { name: "People", route: authRoutes.people },
-  { name: "Anime", route: authRoutes.feed },
+  { name: "Anime", route: authRoutes.anime },
 ]);
 </script>

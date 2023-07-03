@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-48 rounded-lg bg-gradient-to-t from-indigo-300 flex flex-col items-center px-4 py-2 shadow-lg cursor-pointer"
+    class="w-60 rounded-lg bg-gradient-to-t from-indigo-300 flex flex-col items-center px-4 py-2 shadow-lg cursor-pointer"
   >
     <div class="w-40 h-56 rounded-lg flex flex-col items-center p-4 shadow-lg">
       <div class="w-24 h-24 rounded-full overflow-hidden">
