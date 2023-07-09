@@ -3,7 +3,7 @@
     <Teleport to="body">
       <div
         v-show="showModal"
-        class="absolute inset-0 z-40 w-full h-screen bg-black opacity-60 flex justify-center items-center"
+        class="absolute inset-0 z-40 w-full h-screen bg-black bg-opacity-60 flex justify-center items-center"
         @click.self="hideModal"
       >
         <div class="w-64 h-40 bg-white text-2xl rounded-lg">HI BUDDY</div>

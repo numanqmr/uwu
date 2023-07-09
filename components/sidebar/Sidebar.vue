@@ -44,7 +44,12 @@
           src="https://e1.pxfuel.com/desktop-wallpaper/1016/186/desktop-wallpaper-pin-on-anime-anime-profile-pic.jpg"
           alt="Rounded avatar"
         />
-        <p class="pt-2 w-100 dark:text-white">Developer Chan</p>
+        <p class="pt-2 w-100 text-lg font-bold dark:text-white">
+          {{ user.name }}
+        </p>
+        <span class='pt-2 w-100 text-gray-500 text-sm dark:text-slate-400'>
+          {{ user.email }}
+        </span>
       </div>
 
       <ul class="space-y-2 font-medium">
@@ -75,6 +80,10 @@
 </template>
 
 <script setup>
+import { userStore } from "@/store";
+
+const user = userStore();
+
 const toggle = ref(false);
 
 const toggleSidebar = () => (toggle.value = !toggle.value);

@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@nuxtjs/supabase"],
+  modules: ["@pinia/nuxt", "@nuxtjs/supabase"],
 
   css: ["~/assets/css/main.css"],
   pages: true,
