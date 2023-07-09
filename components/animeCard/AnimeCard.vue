@@ -13,12 +13,11 @@
 
     <div class="bg-gray-700 px-2 py-2 flex flex-col">
       <div class="flex justify-center space-x-2 flex-wrap w-full">
-        <span
-          key="{tag}"
-          className="bg-blue-500 rounded-full text-gray-200 bg-opacity-60 text-sm px-2 py-[2px] font-bold"
+        <div
+          class="bg-blue-500 rounded-full text-gray-200 bg-opacity-60 text-sm px-2 py-[2px] font-bold"
         >
-          business
-        </span>
+          Business
+        </div>
       </div>
 
       <div class="my-2 text-center w-full">
@@ -32,7 +31,7 @@
         </p>
       </div>
 
-      <div class="flex justify-evenly mt-2 w-full">
+      <div class="flex justify-evenly mt-2 w-full px-1">
         <div
           class="flex flex-col flex-1 items-center text-gray-200 rounded-xl py-1 px-8 cursor-pointer"
         >
