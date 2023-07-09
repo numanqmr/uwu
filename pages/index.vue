@@ -7,8 +7,13 @@
   </h1>
 
   <div class="flex flex-col text-blue-400 underline">
-    <NuxtLink :to="route.route" v-for="route in routes" :key="route.route">
-      <span class="ml-3 py-8">{{ route.name }}</span>
+    <NuxtLink
+      :to="route.route"
+      v-for="route in routes"
+      :key="route.route"
+      class="mb-4"
+    >
+      <span class="ml-3">{{ route.name }}</span>
     </NuxtLink>
   </div>
 
