@@ -11,5 +11,5 @@ export const unauthRoutes = {
 };
 
 export const publicRoutes = {
-  home: "/home",
+  home: "/",
 };
