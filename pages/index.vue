@@ -28,5 +28,6 @@ const routes = reactive([
   { name: "Anime", route: authRoutes.anime },
   { name: "Login", route: unauthRoutes.login },
   { name: "Register", route: unauthRoutes.register },
+  { name: "Test", route: "/test" },
 ]);
 </script>
