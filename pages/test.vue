@@ -57,7 +57,6 @@
             clear marks
           </button>
           <button
-            class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
             @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
             :class="[
               genericBtnClass,
@@ -71,7 +70,6 @@
             h1
           </button>
           <button
-            class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
             @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
             :class="[
               genericBtnClass,
@@ -85,7 +83,6 @@
             h2
           </button>
           <button
-            class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
             @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
             :class="[
               genericBtnClass,
@@ -99,7 +96,6 @@
             h3
           </button>
           <button
-            class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
             @click="editor.chain().focus().toggleBulletList().run()"
             :class="[
               genericBtnClass,
@@ -109,7 +105,6 @@
             ul
           </button>
           <button
-            class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
             @click="editor.chain().focus().toggleOrderedList().run()"
             :class="[
               genericBtnClass,
@@ -155,7 +150,7 @@
         <editor-content
           :editor="editor"
           :v-model="content"
-          class="min-h-[80px] [&>div]:prose [&>div]:dark:prose-invert [&_.ProseMirror-focused]:border-none [&_.ProseMirror-focused]:p-0 [&_.ProseMirror-focused]:outline-0"
+          class="[&>div]:min-h-[80px] [&>div]:min-w-full [&>div]:prose [&>div]:dark:prose-invert [&_.ProseMirror-focused]:border-none [&_.ProseMirror-focused]:p-0 [&_.ProseMirror-focused]:outline-0"
         />
       </div>
 
