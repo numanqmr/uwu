@@ -150,7 +150,7 @@
         <editor-content
           :editor="editor"
           :v-model="content"
-          class="[&>div]:min-h-[80px] [&>div]:min-w-full [&>div]:prose [&>div]:dark:prose-invert [&_.ProseMirror-focused]:border-none [&_.ProseMirror-focused]:p-0 [&_.ProseMirror-focused]:outline-0"
+          class="[&>div]:min-h-[80px] [&>div]:min-w-full [&>div]:prose [&>div]:dark:prose-invert [&_.ProseMirror-focused]:border-none [&_.ProseMirror-focused]:p-0 [&_.ProseMirror-focused]:outline-0 focus-visible:[&>div]:outline-none"
         />
       </div>
 
@@ -163,7 +163,9 @@
         Submit
       </button>
 
-      <div class="flex w-100 justify-center p-4 rounded-lg shadow-lg text-left">
+      <div
+        class="flex w-100 justify-center p-4 pt-8 rounded-lg shadow-lg text-left bg-white dark:bg-gray-800"
+      >
         <div
           v-html="content"
           class="prose dark:prose-invert prose-p:mb-0 prose-ul:[&>p]:text-3xl w-full min-h-[30px]"
