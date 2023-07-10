@@ -7,120 +7,129 @@
       class="button-box flex flex-wrap border-gray-700 rounded-sm border-[1px] !pb-0 overflow-hidden"
     >
       <button
-        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleBold().run()"
         :disabled="!editor.can().chain().focus().toggleBold().run()"
-        :class="{ 'bg-slate-300 border-gray-900': editor.isActive('bold') }"
+        :class="[
+          genericBtnClass,
+          { [`${genericBtnActive}`]: editor.isActive('bold') },
+        ]"
       >
         <p class="font-bold">B</p>
       </button>
       <button
-        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleItalic().run()"
         :disabled="!editor.can().chain().focus().toggleItalic().run()"
-        :class="{ 'bg-slate-300 border-gray-900': editor.isActive('italic') }"
+        :class="[
+          genericBtnClass,
+          { [`${genericBtnActive}`]: editor.isActive('italic') },
+        ]"
       >
         <p class="italic underline">I</p>
       </button>
       <button
-        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleStrike().run()"
         :disabled="!editor.can().chain().focus().toggleStrike().run()"
-        :class="{ 'bg-slate-300 border-gray-900': editor.isActive('strike') }"
+        :class="[
+          genericBtnClass,
+          { [`${genericBtnActive}`]: editor.isActive('strike') },
+        ]"
       >
         <p class="line-through">S</p>
       </button>
       <button
-        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleCode().run()"
         :disabled="!editor.can().chain().focus().toggleCode().run()"
-        :class="{ 'bg-slate-300 border-gray-900': editor.isActive('code') }"
+        :class="[
+          genericBtnClass,
+          { [`${genericBtnActive}`]: editor.isActive('code') },
+        ]"
       >
         {{ `<>` }}
       </button>
       <button
-        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().unsetAllMarks().run()"
+        :class="[genericBtnClass]"
       >
         clear marks
       </button>
       <button
         class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
-        :class="{
-          'bg-slate-300 border-gray-900': editor.isActive('heading', {
-            level: 1,
-          }),
-        }"
+        :class="[
+          genericBtnClass,
+          { genericBtnActive: editor.isActive('heading', { level: 1 }) },
+        ]"
       >
         h1
       </button>
       <button
         class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
-        :class="{
-          'bg-slate-300 border-gray-900': editor.isActive('heading', {
-            level: 2,
-          }),
-        }"
+        :class="[
+          genericBtnClass,
+          { genericBtnActive: editor.isActive('heading', { level: 2 }) },
+        ]"
       >
         h2
       </button>
       <button
         class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
-        :class="{
-          'bg-slate-300 border-gray-900': editor.isActive('heading', {
-            level: 3,
-          }),
-        }"
+        :class="[
+          genericBtnClass,
+          { genericBtnActive: editor.isActive('heading', { level: 3 }) },
+        ]"
       >
         h3
       </button>
       <button
         class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleBulletList().run()"
-        :class="{
-          'bg-slate-300 border-gray-900': editor.isActive('bulletList'),
-        }"
+        :class="[
+          genericBtnClass,
+          { [`${genericBtnActive}`]: editor.isActive('bulletList') },
+        ]"
       >
-        bullet list
+        ul
       </button>
       <button
         class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleOrderedList().run()"
-        :class="{
-          'bg-slate-300 border-gray-900': editor.isActive('orderedList'),
-        }"
+        :class="[
+          genericBtnClass,
+          { [`${genericBtnActive}`]: editor.isActive('orderedList') },
+        ]"
       >
-        ordered list
+        ol
       </button>
-      <button
+      <!-- Commenting this cause no use but cool -->
+      <!-- <button
         class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleCodeBlock().run()"
-        :class="{
-          'bg-slate-300 border-gray-900': editor.isActive('codeBlock'),
-        }"
+        :class="[
+          genericBtnClass,
+          { [`${genericBtnActive}`]: editor.isActive('codeBlock') },
+        ]"
       >
         code block
-      </button>
+      </button> -->
       <button
-        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleBlockquote().run()"
-        :class="{
-          'bg-slate-300 border-gray-900': editor.isActive('blockquote'),
-        }"
+        :class="[
+          genericBtnClass,
+          { [`${genericBtnActive}`]: editor.isActive('blockquote') },
+        ]"
       >
-        blockquote
+        quote
       </button>
       <button
-        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
+        :class="[genericBtnClass]"
         @click="editor.chain().focus().setHorizontalRule().run()"
       >
-        horizontal rule
+        line
       </button>
       <button
-        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
+        :class="[genericBtnClass]"
         @click="editor.chain().focus().setHardBreak().run()"
       >
         hard break
@@ -130,21 +139,28 @@
     <editor-content
       :editor="editor"
       :v-model="content"
-      class="[&_.ProseMirror-focused]:border-none [&_.ProseMirror-focused]:p-0 [&_.ProseMirror-focused]:outline-0"
+      class="[&>div]:prose [&_.ProseMirror-focused]:border-none [&_.ProseMirror-focused]:p-0 [&_.ProseMirror-focused]:outline-0"
     />
   </div>
 
   <button class="bg-black text-white" @click="handleClick">clicky</button>
 
-  <div
-    v-html="content"
-    class="[&>p]:mt-[1em] [&>h1]:text-3xl [&>h1]:font-bold [&>ul]:list-disc [&>ul]:p-4 [&>ol]:list-decimal [&>ol]:p-4 [&_code]:bg-blue-600"
-  ></div>
+  <div class="flex w-100 justify-center p-4 rounded-lg shadow-lg text-left">
+    <div
+      v-html="content"
+      class="prose prose-p:mb-0 prose-ul:[&>p]:text-3xl w-full"
+    ></div>
+  </div>
 </template>
 
 <script setup>
 import { useEditor, EditorContent } from "@tiptap/vue-3";
 import StarterKit from "@tiptap/starter-kit";
+
+const genericBtnClass =
+  "bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow hover:bg-slate-200";
+
+const genericBtnActive = "!bg-slate-300 border-gray-900";
 
 const pre = ref("");
 const content = ref("");
