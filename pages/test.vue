@@ -1,103 +1,126 @@
 <template>
   <div
-    class="w-2/3 border-2 border-blue-200 [&>div]:p-2 rounded-lg bg-slate-50"
+    class="w-2/3 border-2 border-blue-200 [&>div]:p-2 [&>div]:pt-0 [&_.button-box]:px-0 rounded-lg bg-slate-50"
   >
-    <div v-if="editor">
+    <div
+      v-if="editor"
+      class="button-box flex flex-wrap border-gray-700 rounded-sm border-[1px] !pb-0 overflow-hidden"
+    >
       <button
-        class="bg-blue-300 px-2 py-1 m-0 border-[1px] border-gray-700"
+        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleBold().run()"
         :disabled="!editor.can().chain().focus().toggleBold().run()"
-        :class="{ 'bg-gray-400': editor.isActive('bold') }"
+        :class="{ 'bg-slate-300 border-gray-900': editor.isActive('bold') }"
       >
         <p class="font-bold">B</p>
       </button>
       <button
-        class="bg-blue-300 px-2 py-1 m-0 border-[1px] border-gray-700"
+        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleItalic().run()"
         :disabled="!editor.can().chain().focus().toggleItalic().run()"
-        :class="{ 'bg-gray-400': editor.isActive('italic') }"
+        :class="{ 'bg-slate-300 border-gray-900': editor.isActive('italic') }"
       >
         <p class="italic underline">I</p>
       </button>
       <button
-        class="bg-blue-300 px-2 py-1 m-0 border-[1px] border-gray-700"
+        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleStrike().run()"
         :disabled="!editor.can().chain().focus().toggleStrike().run()"
-        :class="{ 'bg-gray-400': editor.isActive('strike') }"
+        :class="{ 'bg-slate-300 border-gray-900': editor.isActive('strike') }"
       >
         <p class="line-through">S</p>
       </button>
       <button
-        class="bg-blue-300 px-2 py-1 m-0 border-[1px] border-gray-700"
+        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleCode().run()"
         :disabled="!editor.can().chain().focus().toggleCode().run()"
-        :class="{ 'bg-gray-400': editor.isActive('code') }"
+        :class="{ 'bg-slate-300 border-gray-900': editor.isActive('code') }"
       >
         {{ `<>` }}
       </button>
       <button
-        class="bg-blue-300 px-2 py-1 m-0 border-[1px] border-gray-700"
+        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().unsetAllMarks().run()"
       >
         clear marks
       </button>
       <button
-        class="bg-blue-300 px-2 py-1 m-0 border-[1px] border-gray-700"
+        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
-        :class="{ 'bg-gray-400': editor.isActive('heading', { level: 1 }) }"
+        :class="{
+          'bg-slate-300 border-gray-900': editor.isActive('heading', {
+            level: 1,
+          }),
+        }"
       >
         h1
       </button>
       <button
-        class="bg-blue-300 px-2 py-1 m-0 border-[1px] border-gray-700"
+        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
-        :class="{ 'bg-gray-400': editor.isActive('heading', { level: 2 }) }"
+        :class="{
+          'bg-slate-300 border-gray-900': editor.isActive('heading', {
+            level: 2,
+          }),
+        }"
       >
         h2
       </button>
       <button
-        class="bg-blue-300 px-2 py-1 m-0 border-[1px] border-gray-700"
+        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
-        :class="{ 'bg-gray-400': editor.isActive('heading', { level: 3 }) }"
+        :class="{
+          'bg-slate-300 border-gray-900': editor.isActive('heading', {
+            level: 3,
+          }),
+        }"
       >
         h3
       </button>
       <button
-        class="bg-blue-300 px-2 py-1 m-0 border-[1px] border-gray-700"
+        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleBulletList().run()"
-        :class="{ 'bg-gray-400': editor.isActive('bulletList') }"
+        :class="{
+          'bg-slate-300 border-gray-900': editor.isActive('bulletList'),
+        }"
       >
         bullet list
       </button>
       <button
-        class="bg-blue-300 px-2 py-1 m-0 border-[1px] border-gray-700"
+        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleOrderedList().run()"
-        :class="{ 'bg-gray-400': editor.isActive('orderedList') }"
+        :class="{
+          'bg-slate-300 border-gray-900': editor.isActive('orderedList'),
+        }"
       >
         ordered list
       </button>
       <button
-        class="bg-blue-300 px-2 py-1 m-0 border-[1px] border-gray-700"
+        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleCodeBlock().run()"
-        :class="{ 'bg-gray-400': editor.isActive('codeBlock') }"
+        :class="{
+          'bg-slate-300 border-gray-900': editor.isActive('codeBlock'),
+        }"
       >
         code block
       </button>
       <button
-        class="bg-blue-300 px-2 py-1 m-0 border-[1px] border-gray-700"
+        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().toggleBlockquote().run()"
-        :class="{ 'bg-gray-400': editor.isActive('blockquote') }"
+        :class="{
+          'bg-slate-300 border-gray-900': editor.isActive('blockquote'),
+        }"
       >
         blockquote
       </button>
       <button
-        class="bg-blue-300 px-2 py-1 m-0 border-[1px] border-gray-700"
+        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().setHorizontalRule().run()"
       >
         horizontal rule
       </button>
       <button
-        class="bg-blue-300 px-2 py-1 m-0 border-[1px] border-gray-700"
+        class="bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow"
         @click="editor.chain().focus().setHardBreak().run()"
       >
         hard break
