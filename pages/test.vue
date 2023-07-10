@@ -1,17 +1,19 @@
 <template>
   <div>
     <NuxtLayout name="auth-layout">
+      <div class="pb-8" />
       <div
-        class="w-2/3 border-2 border-blue-200 [&>div]:p-2 [&>div]:pt-0 [&_.button-box]:px-0 rounded-lg bg-slate-50 dark:bg-gray-800"
+        class="border-2 border-blue-200 [&>div]:p-2 [&>div]:pt-0 [&_.button-box]:px-0 rounded-lg bg-slate-50 dark:bg-gray-800"
       >
         <div
           v-if="editor"
-          class="button-box flex flex-wrap border-gray-700 rounded-sm border-[1px] !pb-0 overflow-hidden"
+          class="button-box flex flex-wrap !pb-0 overflow-hidden mb-2"
         >
           <button
             @click="editor.chain().focus().toggleBold().run()"
             :disabled="!editor.can().chain().focus().toggleBold().run()"
             :class="[
+              `rounded-tl-md`,
               genericBtnClass,
               { [`${genericBtnActive}`]: editor.isActive('bold') },
             ]"
@@ -143,7 +145,7 @@
             line
           </button>
           <button
-            :class="[genericBtnClass]"
+            :class="[`rounded-tr-md`, genericBtnClass]"
             @click="editor.chain().focus().setHardBreak().run()"
           >
             hard break
@@ -153,14 +155,14 @@
         <editor-content
           :editor="editor"
           :v-model="content"
-          class="[&>div]:prose [&_.ProseMirror-focused]:border-none [&_.ProseMirror-focused]:p-0 [&_.ProseMirror-focused]:outline-0"
+          class="min-h-[80px] [&>div]:prose [&>div]:dark:prose-invert [&_.ProseMirror-focused]:border-none [&_.ProseMirror-focused]:p-0 [&_.ProseMirror-focused]:outline-0"
         />
       </div>
 
       <br />
 
       <button
-        class="bg-slate-300 px-4 py-2 rounded-full font-bold"
+        class="bg-slate-300 px-4 py-2 rounded-full font-bold mb-4"
         @click="handleClick"
       >
         Submit
@@ -169,7 +171,7 @@
       <div class="flex w-100 justify-center p-4 rounded-lg shadow-lg text-left">
         <div
           v-html="content"
-          class="prose prose-p:mb-0 prose-ul:[&>p]:text-3xl w-full"
+          class="prose dark:prose-invert prose-p:mb-0 prose-ul:[&>p]:text-3xl w-full min-h-[30px]"
         ></div>
       </div>
     </NuxtLayout>
@@ -181,9 +183,9 @@ import { useEditor, EditorContent } from "@tiptap/vue-3";
 import StarterKit from "@tiptap/starter-kit";
 
 const genericBtnClass =
-  "bg-slate-50 px-2 py-1 m-0 border-[1px] border-gray-700 min-w-[30px] flex-grow hover:bg-slate-200";
+  "bg-slate-50 px-2 py-1 m-0 border-[1px] border-r-[0.25px] text-[12px] border-l-[0.25px] border-gray-300 min-w-[30px] flex-grow hover:bg-slate-200 dark:bg-gray-600 dark:text-white dark:border-gray-400 dark:hover:bg-gray-500";
 
-const genericBtnActive = "!bg-slate-300 border-gray-900";
+const genericBtnActive = "!bg-slate-300 dark:!bg-blue-800 border-gray-900";
 
 const pre = ref("");
 const content = ref("");
@@ -193,6 +195,7 @@ const editor = useEditor({
   extensions: [StarterKit],
   onUpdate: ({ editor }) => {
     pre.value = editor.getHTML();
+    content.value = editor.getHTML();
   },
 });
 
