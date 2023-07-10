@@ -185,7 +185,7 @@ import StarterKit from "@tiptap/starter-kit";
 const genericBtnClass =
   "bg-slate-50 px-2 py-1 m-0 border-[1px] border-r-[0.25px] text-[12px] border-l-[0.25px] border-gray-300 min-w-[30px] flex-grow hover:bg-slate-200 dark:bg-gray-600 dark:text-white dark:border-gray-400 dark:hover:bg-gray-500";
 
-const genericBtnActive = "!bg-slate-300 dark:!bg-blue-800 border-gray-900";
+const genericBtnActive = "!bg-slate-300 dark:!bg-gray-900 border-gray-900";
 
 const pre = ref("");
 const content = ref("");

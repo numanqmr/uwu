@@ -1,13 +1,13 @@
 <template>
   <div
-    class="relative shadow-2xl w-1/4 rounded-xl overflow-hidden group cursor-pointer"
+    class="relative shadow-2xl w-[100%] rounded-xl overflow-hidden group cursor-pointer"
     @click="pushToRoute"
   >
     <div class="h-44 overflow-hidden">
       <img
         src="https://cdn.myanimelist.net/images/anime/10/18793.jpg"
         alt="Desert"
-        class="w-full h-full object-cover transition group-hover:duration-300 duration-700 group-hover:scale-110"
+        class="w-full max-w-[100%] h-full object-cover transition group-hover:duration-300 duration-700 group-hover:scale-110"
       />
     </div>
 
