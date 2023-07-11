@@ -28,14 +28,19 @@
             />
           </div>
         </div>
-        <button type="submit">LOL</button>
+
+        <h3 class="text-2xl pb-4 dark:text-white font-bold">Description:</h3>
+
+        <TextEditor @text-update="(text) => updateText(text)" />
+
+        <br />
+        <button
+          class="px-4 py-2 mb-4 hover:bg-gray-100 dark:hover:bg-gray-800 border-2 border-green-600 rounded-full dark:text-white"
+          type="submit"
+        >
+          Submit Anime
+        </button>
       </form>
-
-      <h3 class="text-2xl pb-4 dark:text-white font-bold">Description:</h3>
-
-      <TextEditor @text-update="(text) => updateText(text)" />
-
-      <br />
 
       <div
         class="flex w-100 justify-center p-4 pt-8 rounded-lg shadow-lg text-left bg-white dark:bg-gray-800"
