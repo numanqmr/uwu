@@ -18,7 +18,7 @@
           <div v-for="inputs in inputsList" :key="inputs.label" class="w-full">
             <label
               for="title"
-              class="block text-xl text-gray-800 pb-4 dark:text-white font-bold"
+              class="block text-md text-gray-800 pb-2 dark:text-white font-bold"
               >{{ inputs.label }} :
             </label>
             <input
@@ -51,7 +51,7 @@
 
 <script setup>
 const content = ref("");
-const inputsList = reactive([...addAnimeFormInputs]);
+const inputsList = reactive(addAnimeFormInputs);
 
 const updateText = (text) => (content.value = text);
 
@@ -61,5 +61,6 @@ const handleSubmit = () => {
   emptyObj.description = content.value;
   console.log(inputsList);
   console.log(emptyObj);
+  inputsList.forEach((item) => (item.value = ""));
 };
 </script>
