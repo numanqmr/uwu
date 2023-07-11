@@ -18,19 +18,14 @@
           <div v-for="inputs in inputsList" :key="inputs.label" class="w-full">
             <label
               for="title"
-              class="block text-2xl pb-4 dark:text-white font-bold"
+              class="block text-xl text-gray-800 pb-4 dark:text-white font-bold"
               >{{ inputs.label }} :
             </label>
             <input
               :type="inputs.inputType"
+              v-model="inputs.value"
               class="block mb-4 outline-none border-2 border-blue-200 shadow-sm text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
-            <!-- <input
-              :type="inputs.inputType"
-              :v-model="inputs.value"
-              @input="(e) => inputs.value === 'BUNDA'"
-              class="block mb-4 outline-none border-2 border-blue-200 shadow-sm text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            /> -->
           </div>
         </div>
         <button type="submit">LOL</button>
@@ -56,11 +51,15 @@
 
 <script setup>
 const content = ref("");
-const inputsList = ref(addAnimeFormInputs);
+const inputsList = reactive([...addAnimeFormInputs]);
 
 const updateText = (text) => (content.value = text);
 
 const handleSubmit = () => {
-  console.log(inputsList.value);
+  const emptyObj = {};
+  inputsList.map((item) => (emptyObj[item.schemaType] = item.value));
+  emptyObj.description = content.value;
+  console.log(inputsList);
+  console.log(emptyObj);
 };
 </script>
