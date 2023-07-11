@@ -3,6 +3,7 @@ export const authRoutes = {
   feed: "/feed",
   people: "/people",
   anime: "/anime",
+  addAnime: "/add-anime",
 };
 
 export const unauthRoutes = {

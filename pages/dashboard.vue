@@ -3,7 +3,12 @@
     <NuxtLayout :name="`auth-layout`">
       <div class="pt-8">
         <div class="flex gap-3 justify-between mb-8">
-          <div class="w-1/3 h-64 bg-orange-300 rounded-2xl cursor-pointer" />
+          <div
+            class="w-1/3 h-64 bg-orange-300 rounded-2xl cursor-pointer"
+            @click="router.push({ path: authRoutes.addAnime })"
+          >
+            ADD ANIME
+          </div>
           <div class="w-1/3 h-64 bg-red-300 rounded-2xl cursor-pointer" />
           <div class="w-1/3 h-64 bg-blue-300 rounded-2xl cursor-pointer" />
         </div>
@@ -25,4 +30,6 @@
 definePageMeta({
   layout: false,
 });
+
+const router = useRouter();
 </script>
