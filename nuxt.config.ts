@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   modules: ["@pinia/nuxt", "@nuxtjs/supabase"],
 
   css: ["~/assets/css/main.css"],
+  components: [{ path: "~/components", pathPrefix: false }],
   pages: true,
   postcss: { plugins: { tailwindcss: {}, autoprefixer: {} } },
   supabase: {
