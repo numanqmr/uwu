@@ -155,7 +155,7 @@
 import { useEditor, EditorContent } from "@tiptap/vue-3";
 import StarterKit from "@tiptap/starter-kit";
 
-const emit = defineEmits(["someEvent"]);
+const emit = defineEmits(["textUpdate"]);
 
 const genericBtnClass =
   "bg-slate-50 px-2 py-1 m-0 border-[1px] border-r-[0.25px] text-[12px] border-l-[0.25px] border-gray-300 min-w-[30px] flex-grow hover:bg-slate-200 dark:bg-gray-600 dark:text-white dark:border-gray-400 dark:hover:bg-gray-500";
@@ -170,7 +170,7 @@ const editor = useEditor({
     // const isEmpty =
     //   editor.state.doc.textContent.replace(/\s+/g, "").length === 0;
 
-    emit("someEvent", editor.getHTML());
+    emit("textUpdate", editor.getHTML());
   },
 });
 </script>

@@ -3,7 +3,7 @@
     <NuxtLayout name="auth-layout">
       <div class="pb-8" />
 
-      <TextEditor @some-event="(text) => updateText(text)" />
+      <TextEditor @text-update="(text) => updateText(text)" />
 
       <br />
 
