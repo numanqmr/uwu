@@ -41,13 +41,13 @@
       <div class="w-100 flex flex-col column items-center justify-center pb-8">
         <img
           class="w-14 h-14 rounded-full"
-          src="https://e1.pxfuel.com/desktop-wallpaper/1016/186/desktop-wallpaper-pin-on-anime-anime-profile-pic.jpg"
+          :src="user.userImg"
           alt="Rounded avatar"
         />
         <p class="pt-2 w-100 text-lg font-bold dark:text-white">
           {{ user.name }}
         </p>
-        <span class='pt-2 w-100 text-gray-500 text-sm dark:text-slate-400'>
+        <span class="pt-2 w-100 text-gray-500 text-sm dark:text-slate-400">
           {{ user.email }}
         </span>
       </div>
