@@ -9,7 +9,12 @@
           >
             ADD ANIME
           </div>
-          <div class="w-1/3 h-64 bg-red-300 rounded-2xl cursor-pointer" />
+          <div
+            class="w-1/3 h-64 bg-red-300 rounded-2xl cursor-pointer"
+            @click="router.push({ path: authRoutes.addReview })"
+          >
+            ADD REVIEW
+          </div>
           <div class="w-1/3 h-64 bg-blue-300 rounded-2xl cursor-pointer" />
         </div>
 

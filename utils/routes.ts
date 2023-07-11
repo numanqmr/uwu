@@ -4,6 +4,7 @@ export const authRoutes = {
   people: "/people",
   anime: "/anime",
   addAnime: "/add-anime",
+  addReview: "/add-review",
 };
 
 export const unauthRoutes = {

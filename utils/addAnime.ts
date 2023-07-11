@@ -1,11 +1,4 @@
-export const addAnimeFormInputs: {
-  label: string;
-  inputType: string;
-  placeholder: string;
-  required: boolean;
-  value: string;
-  schemaType: string;
-}[] = [
+export const addAnimeFormInputs = [
   {
     label: "Title",
     inputType: "text",
