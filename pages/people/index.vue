@@ -9,7 +9,7 @@
       >
         <div v-for="(item, index) in data" :key="index" class="mb-12 mx-2">
           <PersonCard
-            @click="router.push(authRoutes.peopleId(1))"
+            @click="router.push(authRoutes.peopleId(item.id))"
             :name="item.name"
             :reviews="item.reviews"
             :recommends="item.recommends"

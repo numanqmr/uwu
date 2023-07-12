@@ -18,8 +18,10 @@
                   />
                 </div>
                 <div class="p-2 ml-2">
-                  <p class="font-bold text-lg">{{ user.name }}</p>
-                  <p class="text-sm text-slate-600">{{ user.email }}</p>
+                  <p class="font-bold text-lg">{{ userData?.name }}</p>
+                  <p class="text-sm text-slate-600">
+                    {{ userData?.email || "email@email.com" }}
+                  </p>
                 </div>
               </div>
             </div>
@@ -59,6 +61,9 @@
 <script setup>
 import { userStore } from "@/store";
 
+const route = useRoute();
+const id = route.params.id;
+const { data: userData } = useFetch(`/api/people/${id}`, { key: `user-${id}` });
+
 const user = userStore();
-console.log(user);
 </script>
