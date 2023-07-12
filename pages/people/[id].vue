@@ -13,7 +13,7 @@
                 <div>
                   <img
                     class="w-24 h-24 rounded-full"
-                    :src="user.userImg"
+                    :src="getImgSrc(userData?.imgURL)"
                     alt="Rounded avatar"
                   />
                 </div>
@@ -59,11 +59,17 @@
 </template>
 
 <script setup>
-import { userStore } from "@/store";
-
 const route = useRoute();
 const id = route.params.id;
-const { data: userData } = useFetch(`/api/people/${id}`, { key: `user-${id}` });
+const { data: userData } = await useFetch(`/api/people/${id}`, {
+  key: `user-${id}`,
+});
 
-const user = userStore();
+if (!userData.value) {
+  throw createError({ statusCode: 404, message: "Page not found" });
+}
+
+const getImgSrc = (url) => {
+  if (url) return url;
+};
 </script>
