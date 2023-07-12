@@ -28,37 +28,11 @@
                   >
                     Description
                   </p>
-                  <p class="mb-6 text-neutral-500 dark:text-neutral-300">
-                    Dr. Kenzou Tenma, an elite neurosurgeon recently engaged to
-                    his hospital director's daughter, is well on his way to
-                    ascending the hospital hierarchy. That is until one night, a
-                    seemingly small event changes Dr. Tenma's life forever.
-                    While preparing to perform surgery on someone, he gets a
-                    call from the hospital director telling him to switch
-                    patients and instead perform life-saving brain surgery on a
-                    famous performer. His fellow doctors, fiancée, and the
-                    hospital director applaud his accomplishment; but because of
-                    the switch, a poor immigrant worker is dead, causing Dr.
-                    Tenma to have a crisis of conscience.
-                  </p>
-                  <p class="mb-6 text-neutral-500 dark:text-neutral-300">
-                    So when a similar situation arises, Dr. Tenma stands his
-                    ground and chooses to perform surgery on the young boy Johan
-                    Liebert instead of the town's mayor. Unfortunately, this
-                    choice leads to serious ramifications for Dr. Tenma—losing
-                    his social standing being one of them. However, with the
-                    mysterious death of the director and two other doctors, Dr.
-                    Tenma's position is restored. With no evidence to convict
-                    him, he is released and goes on to attain the position of
-                    hospital director.
-                  </p>
-                  <p class="mb-6 text-neutral-500 dark:text-neutral-300">
-                    Nine years later when Dr. Tenma saves the life of a
-                    criminal, his past comes back to haunt him—once again, he
-                    comes face to face with the monster he operated on. He must
-                    now embark on a quest of pursuit to make amends for the
-                    havoc spread by the one he saved.
-                  </p>
+
+                  <div
+                    v-html="animeData?.description"
+                    class="prose dark:prose-invert prose-p:mb-0 prose-ul:[&>p]:text-3xl w-full min-h-[30px]"
+                  ></div>
                 </div>
               </div>
             </div>
