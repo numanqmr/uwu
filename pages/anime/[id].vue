@@ -104,7 +104,12 @@
 <script setup>
 const route = useRoute();
 const id = route.params.id;
-const { data: animeData } = useFetch(`/api/anime/${id}`, {
+
+const { data: animeData } = await useFetch(`/api/anime/${id}`, {
   key: `anime-${id}`,
 });
+
+if (!animeData.value) {
+  throw createError({ statusCode: 404, message: "Page not found" });
+}
 </script>
