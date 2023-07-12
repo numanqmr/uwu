@@ -12,19 +12,19 @@
         />
       </div>
       <div>
-        <p class="text-lg font-bold">Kenzo Tenma</p>
+        <p class="text-lg font-bold">{{ name || "Kenzo Tenma" }}</p>
       </div>
 
       <div class="w-full flex gap-2">
         <div class="w-1/2">
           <p class="w-100 block text-center">
-            <span class="font-bold text-lg">420</span>
+            <span class="font-bold text-lg">{{ reviews || "123" }}</span>
             Reviews
           </p>
         </div>
         <div class="w-1/2">
           <p class="w-100 block text-center">
-            <span class="font-bold text-lg">666</span>
+            <span class="font-bold text-lg">{{ recommends || "45" }}</span>
             Recommends
           </p>
         </div>
@@ -33,4 +33,6 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const props = defineProps(["name", "reviews", "recommends"]);
+</script>
