@@ -65,24 +65,14 @@
             <div class="font-bold mb-4 text-lg">Your Settings</div>
 
             <div class="flex gap-4 align-middle">
-              <input
-                type="checkbox"
-                v-model="toggle"
-                true-value="yes"
-                false-value="no"
-              />
+              <input type="checkbox" true-value="yes" false-value="no" />
               <div class="font-bold text-gray-600 dark:text-slate-200 text-sm">
                 Email alerts
               </div>
             </div>
 
             <div class="flex gap-4 align-middle">
-              <input
-                type="checkbox"
-                v-model="toggle"
-                true-value="yes"
-                false-value="no"
-              />
+              <input type="checkbox" true-value="yes" false-value="no" />
               <div class="font-bold text-gray-600 dark:text-slate-200 text-sm">
                 2FA
               </div>
