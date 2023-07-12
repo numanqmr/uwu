@@ -36,6 +36,21 @@
           <div class="w-100 font-bold pb-2">User Stats</div>
           <div class="w-100 font-bold pb-2">User Stats</div>
         </div>
+
+        <div
+          class="bg-white rounded-lg p-8 dark:bg-gray-800 dark:text-white mt-16"
+        >
+          <div class="w-100 font-bold mb-4 text-lg text-center">
+            Watched anime and rankings
+          </div>
+        </div>
+        <div
+          class="bg-white rounded-lg p-8 dark:bg-gray-800 dark:text-white mt-16"
+        >
+          <div class="w-100 font-bold mb-4 text-lg text-center">
+            User Reviews
+          </div>
+        </div>
       </div>
     </NuxtLayout>
   </div>
