@@ -11,7 +11,6 @@ export default defineEventHandler((event) => {
   const { id } = event.context.params as any;
 
   const user = data.find((user) => user.id === parseInt(id));
-  console.log(user);
 
   return user;
 });
