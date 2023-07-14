@@ -1,13 +1,13 @@
 <template>
   <div>
     <NuxtLayout :name="`auth-layout`">
-      <div class="text-xl my-14 font-extrabold dark:text-white">
+      <div class="my-14 text-xl font-extrabold dark:text-white">
         Nerds (Am I right?)
       </div>
       <div
-        class="w-100 grid gap-4 grid-cols-2 grid-rows-2 sm:grid-cols-3 sm:grid-rows-3"
+        class="w-100 grid grid-cols-2 grid-rows-2 gap-4 sm:grid-cols-3 sm:grid-rows-3"
       >
-        <div v-for="(item, index) in data" :key="index" class="mb-12 mx-2">
+        <div v-for="(item, index) in data" :key="index" class="mx-2 mb-12">
           <PersonCard
             @click="router.push(authRoutes.peopleId(item.id))"
             :name="item.name"

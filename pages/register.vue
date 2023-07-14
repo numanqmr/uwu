@@ -1,14 +1,14 @@
 <template>
   <div
-    class="w-full min-h-screen bg-gray-200 shadow-xl flex align-middle justify-center items-center px-36 backdrop-blur-xl"
+    class="flex min-h-screen w-full items-center justify-center bg-gray-200 px-36 align-middle shadow-xl backdrop-blur-xl"
   >
-    <div class="w-[60%] min-h-[500px] bg-cyan-100 flex rounded-xl px-4 py-4">
+    <div class="flex min-h-[500px] w-[60%] rounded-xl bg-cyan-100 px-4 py-4">
       <div class="w-1/2 px-8 py-8">
-        <h1 class="font-bold text-2xl mb-8">Register</h1>
+        <h1 class="mb-8 text-2xl font-bold">Register</h1>
         <form @submit.prevent="handleSubmit">
-          <div class="flex-col mb-2">
+          <div class="mb-2 flex-col">
             <input
-              class="w-full shadow appearance-none border rounded-xl py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              class="focus:shadow-outline w-full appearance-none rounded-xl border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
               v-model="email"
               type="email"
               name="email"
@@ -16,9 +16,9 @@
             />
           </div>
 
-          <div class="flex-col mb-4">
+          <div class="mb-4 flex-col">
             <input
-              class="w-full shadow appearance-none border rounded-xl py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              class="focus:shadow-outline w-full appearance-none rounded-xl border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
               v-model="password"
               type="password"
               name="password"
@@ -28,16 +28,16 @@
 
           <button
             type="submit"
-            class="text-white bg-black py-2 px-4 rounded-xl w-full"
+            class="w-full rounded-xl bg-black px-4 py-2 text-white"
           >
             Click
           </button>
         </form>
       </div>
 
-      <div class="w-1/2 rounded-2xl overflow-hidden">
+      <div class="w-1/2 overflow-hidden rounded-2xl">
         <img
-          class="max-w-full h-full object-cover"
+          class="h-full max-w-full object-cover"
           src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
           alt=""
         />
