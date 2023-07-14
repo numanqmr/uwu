@@ -1,52 +1,52 @@
 <template>
   <div
-    class="relative shadow-2xl w-[100%] rounded-xl overflow-hidden group cursor-pointer"
+    class="group relative w-[100%] cursor-pointer overflow-hidden rounded-xl shadow-2xl"
     @click="pushToRoute"
   >
     <div class="h-44 overflow-hidden">
       <img
         :src="props?.imgURL"
         alt="Desert"
-        class="w-full max-w-[100%] h-full object-cover transition group-hover:duration-300 duration-700 group-hover:scale-110"
+        class="h-full w-full max-w-[100%] object-cover transition duration-700 group-hover:scale-110 group-hover:duration-300"
       />
     </div>
 
-    <div class="bg-gray-700 px-2 py-2 flex flex-col">
-      <div class="flex justify-center space-x-2 flex-wrap w-full">
+    <div class="flex flex-col bg-gray-700 px-2 py-2">
+      <div class="flex w-full flex-wrap justify-center space-x-2">
         <template v-for="genre in props?.genres">
           <div
-            class="bg-blue-500 rounded-full text-gray-200 bg-opacity-60 text-sm px-2 py-[2px] font-bold"
+            class="rounded-full bg-blue-500 bg-opacity-60 px-2 py-[2px] text-sm font-bold text-gray-200"
           >
             {{ genre }}
           </div>
         </template>
       </div>
 
-      <div class="my-2 text-center w-full">
-        <h2 class="text-gray-100 font-semibold text-[24px]">
+      <div class="my-2 w-full text-center">
+        <h2 class="text-[24px] font-semibold text-gray-100">
           {{ props.title }}
         </h2>
-        <p class="text-gray-400 text-sm mt-2">
+        <p class="mt-2 text-sm text-gray-400">
           lorem uwu ipsum lorem uwu ipsum lorem uwu ipsum lorem uwu ipsum
         </p>
       </div>
 
-      <div class="flex justify-evenly mt-2 w-full px-1">
+      <div class="mt-2 flex w-full justify-evenly px-1">
         <div
-          class="flex flex-col flex-1 items-center text-gray-200 rounded-xl py-1 px-8 cursor-pointer"
+          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200"
         >
           <WatchedIcon />
 
           <span>{{ props?.views }}</span>
         </div>
         <div
-          class="flex flex-col flex-1 items-center text-gray-200 rounded-xl py-1 px-8 cursor-pointer"
+          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200"
         >
           <LikeIcon />
           <span>{{ props?.likes }}</span>
         </div>
         <div
-          class="flex flex-col flex-1 items-center text-gray-200 rounded-xl py-1 px-8 cursor-pointer"
+          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200"
         >
           <CommentIcon />
           <span>{{ props?.reviews }}</span>

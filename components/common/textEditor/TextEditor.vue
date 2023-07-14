@@ -1,10 +1,10 @@
 <template>
   <div
-    class="border-2 border-blue-200 [&>div]:p-2 [&>div]:pt-0 [&_.button-box]:px-0 rounded-lg bg-slate-50 dark:bg-gray-800"
+    class="rounded-lg border-2 border-blue-200 bg-slate-50 dark:bg-gray-800 [&>div]:p-2 [&>div]:pt-0 [&_.button-box]:px-0"
   >
     <div
       v-if="editor"
-      class="button-box flex flex-wrap !pb-0 overflow-hidden mb-2"
+      class="button-box mb-2 flex flex-wrap overflow-hidden !pb-0"
     >
       <button
         @click="editor.chain().focus().toggleBold().run()"
@@ -146,7 +146,7 @@
 
     <editor-content
       :editor="editor"
-      class="[&>div]:min-h-[80px] [&>div]:min-w-full [&>div]:prose [&>div]:dark:prose-invert [&_.ProseMirror-focused]:border-none [&_.ProseMirror-focused]:p-0 [&_.ProseMirror-focused]:outline-0 focus-visible:[&>div]:outline-none"
+      class="[&>div]:prose [&>div]:dark:prose-invert [&>div]:min-h-[80px] [&>div]:min-w-full focus-visible:[&>div]:outline-none [&_.ProseMirror-focused]:border-none [&_.ProseMirror-focused]:p-0 [&_.ProseMirror-focused]:outline-0"
     />
   </div>
 </template>

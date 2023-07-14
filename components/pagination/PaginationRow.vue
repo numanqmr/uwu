@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full flex justify-center items-center">
+  <div class="flex w-full items-center justify-center">
     <div
-      class="cursor-pointer w-8 h-8 border-stone-600 bg-transparent hover:bg-stone-200 border-2 text-center dark:text-white font-semibold rounded-md align-middle"
+      class="h-8 w-8 cursor-pointer rounded-md border-2 border-stone-600 bg-transparent text-center align-middle font-semibold hover:bg-stone-200 dark:text-white"
     >
       <div class="grid items-center">
         <p>&lt;</p>
@@ -11,7 +11,7 @@
     <div
       v-for="index in 8"
       :key="index"
-      class="cursor-pointer w-8 h-8 border-stone-600 bg-transparent hover:bg-stone-200 border-2 text-center dark:text-white font-semibold rounded-md align-middle"
+      class="h-8 w-8 cursor-pointer rounded-md border-2 border-stone-600 bg-transparent text-center align-middle font-semibold hover:bg-stone-200 dark:text-white"
     >
       <div class="grid items-center">
         <p>
@@ -21,7 +21,7 @@
     </div>
 
     <div
-      class="cursor-pointer w-8 h-8 border-stone-600 bg-transparent hover:bg-stone-200 border-2 text-center dark:text-white font-semibold rounded-md align-middle"
+      class="h-8 w-8 cursor-pointer rounded-md border-2 border-stone-600 bg-transparent text-center align-middle font-semibold hover:bg-stone-200 dark:text-white"
     >
       <div class="grid items-center">
         <p>></p>
