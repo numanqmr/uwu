@@ -4,28 +4,56 @@
       <div class="pt-8">
         <div class="mb-8 flex justify-between gap-3">
           <div
-            class="grid h-64 w-1/3 cursor-pointer place-content-center rounded-2xl bg-gradient-to-r from-orange-600 to-orange-400 hover:scale-105 [&_svg]:hover:scale-105"
+            class="grid h-64 w-1/3 cursor-pointer place-content-center rounded-2xl bg-gradient-to-r from-orange-600/80 to-orange-400/80 hover:scale-105 [&_svg]:hover:scale-105"
             @click="router.push({ path: authRoutes.addAnime })"
           >
-            <FolderPlusIcon class="h-24 w-24 fill-slate-200" />
+            <FolderPlusIcon class="h-24 w-24 fill-slate-100" />
           </div>
           <div
-            class="grid h-64 w-1/3 cursor-pointer place-content-center rounded-2xl bg-gradient-to-r from-red-500 to-red-400 hover:scale-105 [&_svg]:hover:scale-105"
+            class="grid h-64 w-1/3 cursor-pointer place-content-center rounded-2xl bg-opacity-5 bg-gradient-to-r from-red-500/80 to-red-400/80 hover:scale-105 [&_svg]:hover:scale-105"
             @click="router.push({ path: authRoutes.addReview })"
           >
-            <ChatBubbleBottomCenterTextIcon class="h-24 w-24 fill-slate-200" />
+            <ChatBubbleBottomCenterTextIcon class="h-24 w-24 fill-slate-100" />
           </div>
           <div
-            class="h-64 w-1/3 cursor-pointer rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-500 hover:scale-105 [&_svg]:hover:scale-105"
-          />
+            class="relative grid h-64 w-1/3 cursor-pointer place-content-center rounded-2xl bg-gradient-to-r from-cyan-500/80 to-blue-500/80 hover:scale-105 [&_svg]:hover:scale-105"
+          >
+            <div
+              class="absolute -right-4 -top-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-500 p-4 text-sm font-bold text-slate-50"
+            >
+              20
+            </div>
+            <InboxIcon class="h-24 w-24 fill-slate-100" />
+          </div>
         </div>
 
         <div class="mb-8">
           <div class="mb-4 text-2xl font-bold dark:text-white">
             Your insights
           </div>
-          <div class="mt-8 rounded-lg bg-slate-400 p-4">
-            <div class="w-[80%] bg-white">Your insights</div>
+          <div
+            class="mt-8 rounded-lg bg-slate-50 p-4 dark:bg-slate-800 dark:text-white"
+          >
+            <div
+              class="w-100 font-md border-b-2 border-slate-400 px-4 py-2 font-medium"
+            >
+              <span class="mr-2 text-3xl"> 🖤 </span>
+              Numan likes your review on
+              <span class="cursor-pointer text-blue-500 underline"
+                >Ergo Proxy</span
+              >
+            </div>
+            <div
+              class="w-100 font-md border-b-2 border-slate-400 px-4 py-2 font-medium"
+            >
+              <span class="mr-2 text-3xl"> 📩 </span>
+
+              You recieved a new msg from Jonas
+            </div>
+            <div class="w-100 font-md px-4 py-2 font-medium">
+              <span class="mr-2 text-3xl"> 👋 </span>
+              You joined the platform on 21st January 2023
+            </div>
           </div>
         </div>
       </div>
@@ -120,6 +148,7 @@ import { userStore } from "@/store";
 import {
   FolderPlusIcon,
   ChatBubbleBottomCenterTextIcon,
+  InboxIcon,
 } from "@heroicons/vue/24/solid";
 
 console.log(FolderPlusIcon);
