@@ -4,18 +4,20 @@
       <div class="pt-8">
         <div class="mb-8 flex justify-between gap-3">
           <div
-            class="h-64 w-1/3 cursor-pointer rounded-2xl bg-orange-300"
+            class="grid h-64 w-1/3 cursor-pointer place-content-center rounded-2xl bg-gradient-to-r from-orange-600 to-orange-400 hover:scale-105 [&_svg]:hover:scale-105"
             @click="router.push({ path: authRoutes.addAnime })"
           >
-            ADD ANIME
+            <FolderPlusIcon class="h-24 w-24 fill-slate-200" />
           </div>
           <div
-            class="h-64 w-1/3 cursor-pointer rounded-2xl bg-red-300"
+            class="grid h-64 w-1/3 cursor-pointer place-content-center rounded-2xl bg-gradient-to-r from-red-500 to-red-400 hover:scale-105 [&_svg]:hover:scale-105"
             @click="router.push({ path: authRoutes.addReview })"
           >
-            ADD REVIEW
+            <ChatBubbleBottomCenterTextIcon class="h-24 w-24 fill-slate-200" />
           </div>
-          <div class="h-64 w-1/3 cursor-pointer rounded-2xl bg-blue-300" />
+          <div
+            class="h-64 w-1/3 cursor-pointer rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-500 hover:scale-105 [&_svg]:hover:scale-105"
+          />
         </div>
 
         <div class="mb-8">
@@ -115,6 +117,12 @@
 
 <script setup>
 import { userStore } from "@/store";
+import {
+  FolderPlusIcon,
+  ChatBubbleBottomCenterTextIcon,
+} from "@heroicons/vue/24/solid";
+
+console.log(FolderPlusIcon);
 
 const user = userStore();
 // definePageMeta({ layout: "auth-layout" });
