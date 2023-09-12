@@ -2,21 +2,21 @@
   <div>
     <NuxtLayout :name="`auth-layout`">
       <div class="pt-8">
-        <div class="mb-8 flex justify-between gap-3">
+        <div class="mb-8 flex flex-col justify-between gap-3 sm:flex-row">
           <div
-            class="grid h-64 w-1/3 cursor-pointer place-content-center rounded-2xl bg-gradient-to-r from-orange-600/80 to-orange-400/80 hover:scale-105 [&_svg]:hover:scale-105"
+            class="grid cursor-pointer place-content-center rounded-2xl bg-gradient-to-r from-orange-600/80 to-orange-400/80 py-4 hover:scale-105 sm:h-64 sm:w-1/3 sm:py-0 [&_svg]:hover:scale-105"
             @click="router.push({ path: authRoutes.addAnime })"
           >
             <FolderPlusIcon class="h-24 w-24 fill-slate-100" />
           </div>
           <div
-            class="grid h-64 w-1/3 cursor-pointer place-content-center rounded-2xl bg-opacity-5 bg-gradient-to-r from-red-500/80 to-red-400/80 hover:scale-105 [&_svg]:hover:scale-105"
+            class="grid cursor-pointer place-content-center rounded-2xl bg-opacity-5 bg-gradient-to-r from-red-500/80 to-red-400/80 py-4 hover:scale-105 sm:h-64 sm:w-1/3 sm:py-0 [&_svg]:hover:scale-105"
             @click="router.push({ path: authRoutes.addReview })"
           >
             <ChatBubbleBottomCenterTextIcon class="h-24 w-24 fill-slate-100" />
           </div>
           <div
-            class="relative grid h-64 w-1/3 cursor-pointer place-content-center rounded-2xl bg-gradient-to-r from-cyan-500/80 to-blue-500/80 hover:scale-105 [&_svg]:hover:scale-105"
+            class="relative grid cursor-pointer place-content-center rounded-2xl bg-gradient-to-r from-cyan-500/80 to-blue-500/80 py-4 hover:scale-105 sm:h-64 sm:w-1/3 sm:py-0 [&_svg]:hover:scale-105"
           >
             <div
               class="absolute -right-4 -top-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-500 p-4 text-sm font-bold text-slate-50"

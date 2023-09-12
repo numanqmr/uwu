@@ -1,9 +1,11 @@
 <template>
   <div
     v-if="toggle"
-    class="w-100 sm:hide absolute left-0 right-0 top-0 h-screen bg-gray-800 opacity-20 transition"
+    class="w-100 absolute left-0 right-0 top-0 z-10 bg-gray-800 opacity-20 transition sm:hidden"
+    :class="`min-h-[500vh]`"
     @click.self="hideSidebar"
   ></div>
+  <!-- THAT "min-h-[500vh]" IRRITATES ME AND I CANT FIND A FIX FOR IT RN-->
 
   <button
     data-drawer-target="sidebar-multi-level-sidebar"
