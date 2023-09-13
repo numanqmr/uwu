@@ -15,9 +15,6 @@
     class="w-full rounded-lg border border-gray-200 bg-white p-4 shadow dark:border-gray-700 dark:bg-gray-800 sm:p-8"
   >
     <div class="mb-4 flex items-center justify-between">
-      <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">
-        This week in recommendations
-      </h5>
       <div
         class="cursor-pointer text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
         @click="toggleModal"

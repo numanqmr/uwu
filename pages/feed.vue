@@ -1,9 +1,15 @@
 <template>
   <div>
     <NuxtLayout name="auth-layout">
-      <h2>This is the feed</h2>
-      <button @click="handleLogout">Click to logout</button>
+      <h5
+        class="py-4 text-lg font-bold leading-none text-gray-900 dark:text-white"
+      >
+        This week in recommendations
+      </h5>
       <Recents />
+      <div class="mt-4">
+        <p class="text-lg font-bold text-gray-900 dark:text-white">Feed</p>
+      </div>
     </NuxtLayout>
   </div>
 </template>

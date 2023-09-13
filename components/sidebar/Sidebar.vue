@@ -68,6 +68,7 @@
 
       <ul
         class="absolute bottom-0 left-0 right-0 mb-2 cursor-pointer px-2 font-medium"
+        @click="handleLogout"
       >
         <li>
           <div
@@ -85,11 +86,16 @@
 import { userStore } from "@/store";
 
 const user = userStore();
+const router = useRouter();
 
 const toggle = ref(false);
 
 const toggleSidebar = () => (toggle.value = !toggle.value);
 const hideSidebar = () => (toggle.value = false);
+
+const handleLogout = () => {
+  router.push(unauthRoutes.login);
+};
 
 const routes = reactive([
   { name: "Dashboard", route: authRoutes.dashboard },
