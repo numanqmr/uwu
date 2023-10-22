@@ -18,9 +18,10 @@
           <div v-for="inputs in inputsList" :key="inputs.label" class="w-full">
             <label
               for="title"
-              class="text-md block pb-2 font-bold text-gray-800 dark:text-white"
+              class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
               >{{ inputs.label }} :
             </label>
+
             <input
               :type="inputs.inputType"
               v-model="inputs.value"
@@ -29,6 +30,42 @@
           </div>
         </div>
 
+        <div class="flex w-1/2 gap-2 pr-4">
+          <div class="w-1/4 flex-col">
+            <label
+              for="title"
+              class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
+              >Seasons
+            </label>
+            <PrimeVueInputNumber />
+          </div>
+          <div class="w-1/4 flex-col">
+            <label
+              for="title"
+              class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
+              >Episodes
+            </label>
+            <PrimeVueInputNumber />
+          </div>
+          <div class="w-1/2 flex-col">
+            <label
+              for="title"
+              class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
+              >Year Released
+            </label>
+            <PrimeVueInputNumber />
+          </div>
+        </div>
+        <div class="w-1/2 flex-col">
+          <label
+            for="title"
+            class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
+            >Status
+          </label>
+          <div class="pr-4">
+            <PrimeVueDropdown placeholder="Select Status" />
+          </div>
+        </div>
         <h3 class="pb-4 text-2xl font-bold dark:text-white">Description:</h3>
 
         <TextEditor @text-update="(text) => updateText(text)" />
@@ -43,7 +80,7 @@
       </form>
 
       <div
-        class="w-100 flex justify-center rounded-lg bg-white p-4 pt-8 text-left shadow-lg dark:bg-gray-800"
+        class="w-100 mb-12 flex justify-center rounded-lg bg-white p-4 pt-8 text-left shadow-lg dark:bg-gray-800"
       >
         <div
           v-html="content"
