@@ -18,5 +18,5 @@ export default defineNuxtConfig({
     key: process.env.SUPABASE_KEY,
     // Options
   },
-  primevue: { options: {} },
+  primevue: { usePrimeVue: false },
 });
