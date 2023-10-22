@@ -23,12 +23,4 @@ export const addAnimeFormInputs = [
     value: "",
     schemaType: "imgURL",
   },
-  {
-    label: "Genre(s)",
-    inputType: "text",
-    placeholder: "",
-    required: false,
-    value: "",
-    schemaType: "genres",
-  },
 ];

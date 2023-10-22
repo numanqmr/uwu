@@ -66,6 +66,16 @@
             <PrimeVueDropdown placeholder="Select Status" />
           </div>
         </div>
+        <div class="w-1/2 flex-col">
+          <label
+            for="title"
+            class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
+            >Genres
+          </label>
+          <div class="pr-4">
+            <PVMultiSelect />
+          </div>
+        </div>
         <h3 class="pb-4 text-2xl font-bold dark:text-white">Description:</h3>
 
         <TextEditor @text-update="(text) => updateText(text)" />
