@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ["@pinia/nuxt", "@nuxtjs/supabase"],
+  modules: ["@pinia/nuxt", "@nuxtjs/supabase", "nuxt-primevue"],
   app: {
     head: {
       charset: "utf-8",
@@ -18,4 +18,5 @@ export default defineNuxtConfig({
     key: process.env.SUPABASE_KEY,
     // Options
   },
+  primevue: { options: {} },
 });
