@@ -33,7 +33,7 @@ const PVMultiSelectStyles = {
   root: ({ props }) => ({
     class: [
       "w-full text-sm shadow-sm inline-flex cursor-pointer select-none bg-white dark:bg-gray-700 border-2 rounded-md",
-      "active:!border-blue-500",
+      "active:!border-blue-500 mb-4",
       {
         "opacity-60 select-none pointer-events-none cursor-default":
           props?.disabled,
