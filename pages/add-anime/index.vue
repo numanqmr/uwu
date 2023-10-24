@@ -58,7 +58,7 @@
                 <PrimeVueInputNumber />
               </div>
             </div>
-            <div class="flex-col">
+            <div class="mb-4 flex-col">
               <label
                 for="title"
                 class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
