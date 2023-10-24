@@ -37,7 +37,7 @@
                 <label
                   for="title"
                   class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
-                  >Seasons
+                  >Seasons:
                 </label>
                 <PrimeVueInputNumber />
               </div>
@@ -45,7 +45,7 @@
                 <label
                   for="title"
                   class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
-                  >Episodes
+                  >Episodes:
                 </label>
                 <PrimeVueInputNumber />
               </div>
@@ -53,7 +53,7 @@
                 <label
                   for="title"
                   class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
-                  >Year
+                  >Year:
                 </label>
                 <PrimeVueInputNumber />
               </div>
@@ -62,7 +62,7 @@
               <label
                 for="title"
                 class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
-                >Status
+                >Status:
               </label>
               <PrimeVueDropdown placeholder="Select Status" />
             </div>
@@ -71,7 +71,7 @@
               <label
                 for="title"
                 class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
-                >Genres
+                >Genres:
               </label>
 
               <PVMultiSelect

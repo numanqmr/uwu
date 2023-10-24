@@ -43,7 +43,7 @@ const PVMultiSelectStyles = {
     ],
   }),
 
-  label: { class: "dark:text-white p-2" },
+  label: { class: "dark:text-white p-2.5" },
   item: ({ context }) => ({
     class: [
       "cursor-pointer font-normal overflow-hidden relative whitespace-nowrap",
