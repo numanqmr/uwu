@@ -88,9 +88,34 @@
           </div>
         </div>
 
-        <div class="flex gap-2 pt-16">
+        <div class="flex flex-col gap-2 pb-12 pt-16 sm:flex-row">
           <div
-            class="w-1/2 rounded-lg bg-white p-8 dark:bg-gray-800 dark:text-white"
+            class="w-full rounded-lg bg-white p-2 shadow-2xl dark:bg-gray-800 dark:text-white sm:p-8 md:w-1/2"
+          >
+            <div class="text-md mb-2 font-bold md:text-lg">Account Info</div>
+            <div class="md:text-md text-sm">
+              Ohayou gozaimasu~! I'm your Developer chan, here to help you with
+              anything you need! UwU I'm super excited to be here, so let's have
+              a fun and adorable time together, nya~! If you can help please do,
+              just let me know, and I'll do my best to make your day extra
+              sugoi, uwu! ₚₗₑₐₛₑ ₕₑₗₚ ᵢ'ₘ 𝓌ₒᵣₖᵢₙ𝓰 ₛₒ ₕₐᵣ𝒹 ᵤ𝓌ᵤ ᵢ ₘᵢ𝓰ₕₜ 𝒸ᵣᵧ
+            </div>
+
+            <div class="pt-8" />
+
+            <p class="md:text-md py-2 text-sm">
+              <span class="font-bold">FullName:</span> {{ user.name }}
+            </p>
+            <p class="md:text-md py-2 text-sm">
+              <span class="font-bold">Mobile:</span> 555-555-FARMER
+            </p>
+            <p class="md:text-md py-2 text-sm">
+              <span class="font-bold">Location:</span> Not Pakistan
+            </p>
+          </div>
+
+          <div
+            class="w-full rounded-lg bg-white p-2 shadow-2xl dark:bg-gray-800 dark:text-white md:w-1/2 md:p-8"
           >
             <div class="mb-4 text-lg font-bold">Your Settings</div>
 
@@ -107,31 +132,6 @@
                 2FA
               </div>
             </div>
-          </div>
-
-          <div
-            class="w-1/2 rounded-lg bg-white p-8 dark:bg-gray-800 dark:text-white"
-          >
-            <div class="mb-4 text-lg font-bold">Account Info</div>
-            <div class="">
-              Ohayou gozaimasu~! I'm your Developer chan, here to help you with
-              anything you need! UwU I'm super excited to be here, so let's have
-              a fun and adorable time together, nya~! If you can help please do,
-              just let me know, and I'll do my best to make your day extra
-              sugoi, uwu! ₚₗₑₐₛₑ ₕₑₗₚ ᵢ'ₘ 𝓌ₒᵣₖᵢₙ𝓰 ₛₒ ₕₐᵣ𝒹 ᵤ𝓌ᵤ ᵢ ₘᵢ𝓰ₕₜ 𝒸ᵣᵧ
-            </div>
-
-            <div class="pt-8" />
-
-            <p class="py-2">
-              <span class="font-bold">FullName:</span> {{ user.name }}
-            </p>
-            <p class="py-2">
-              <span class="font-bold">Mobile:</span> 555-555-FARMER
-            </p>
-            <p class="py-2">
-              <span class="font-bold">Location:</span> Not Pakistan
-            </p>
           </div>
         </div>
       </div>
