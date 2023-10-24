@@ -120,14 +120,19 @@
             <div class="mb-4 text-lg font-bold">Your Settings</div>
 
             <div class="flex gap-4 align-middle">
-              <input type="checkbox" true-value="yes" false-value="no" />
+              <div class="w-8">
+                <PVSwitch />
+              </div>
+
               <div class="text-sm font-bold text-gray-600 dark:text-slate-200">
                 Email alerts
               </div>
             </div>
 
             <div class="flex gap-4 align-middle">
-              <input type="checkbox" true-value="yes" false-value="no" />
+              <div class="w-8">
+                <PVSwitch />
+              </div>
               <div class="text-sm font-bold text-gray-600 dark:text-slate-200">
                 2FA
               </div>
@@ -155,9 +160,6 @@ console.log(FolderPlusIcon);
 
 const user = userStore();
 // definePageMeta({ layout: "auth-layout" });
-definePageMeta({
-  layout: false,
-});
 
 const router = useRouter();
 </script>
