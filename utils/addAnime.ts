@@ -24,3 +24,11 @@ export const addAnimeFormInputs = [
     schemaType: "imgURL",
   },
 ];
+
+export const listedAnimeGenres: string[] = [
+  "Horror",
+  "Action",
+  "Psychological",
+  "Slice of Life",
+  "Adventure",
+];

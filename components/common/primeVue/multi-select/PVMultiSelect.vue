@@ -1,34 +1,33 @@
 <template>
   <MultiSelect
-    v-model="selectedCities"
-    :options="cities"
-    optionLabel="name"
-    placeholder="Select Genre(s)"
+    v-model="selectedItems"
+    :options="optionList"
+    :optionLabel="optionLabel || null"
+    :placeholder="placeholder || 'Placeholder...'"
     :maxSelectedLabels="3"
-    :selectionLimit="3"
+    :selectionLimit="selectionLimit"
     :showToggleAll="false"
+    :pt="PVMultiSelectStyles"
     @show="handleShow"
     @hide="handleShow"
-    :pt="PVMultiSelectStyles"
   />
 </template>
 
 <script setup>
 import MultiSelect from "primevue/multiselect";
+
+const props = defineProps({
+  options: { required: true },
+  placeholder: {},
+  selectionLimit: {},
+  optionLabel: {},
+});
+
+const selectedItems = ref("");
+const optionList = ref(props.options);
 const isOpen = ref(false);
 
-const handleShow = () => {
-  isOpen.value = !isOpen.value;
-};
-
-const selectedCities = ref();
-const cities = ref([
-  { name: "Horror", code: "Horor" },
-  { name: "Action", code: "Action" },
-  { name: "Psychological", code: "Psychological" },
-  { name: "Slice of Life", code: "Slice of Life" },
-  { name: "Adventure", code: "Adventure" },
-]);
+const handleShow = () => (isOpen.value = !isOpen.value);
 
 const PVMultiSelectStyles = {
   root: ({ props }) => ({

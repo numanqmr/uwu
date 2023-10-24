@@ -73,7 +73,11 @@
             >Genres
           </label>
           <div class="pr-4">
-            <PVMultiSelect />
+            <PVMultiSelect
+              :options="listedAnimeGenres"
+              placeholder="Select Genre(s)"
+              :selectionLimit="3"
+            />
           </div>
         </div>
         <h3 class="pb-4 text-2xl font-bold dark:text-white">Description:</h3>
