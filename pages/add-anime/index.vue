@@ -85,7 +85,56 @@
 
         <h3 class="pb-4 text-2xl font-bold dark:text-white">Description:</h3>
 
-        <TextEditor @text-update="(text) => updateText(text)" />
+        <TabView
+          :pt="{
+            navContainer: { class: '!p-0' },
+            root: { class: ['m-0 p-0'] },
+            nav: {
+              class: [
+                'flex flex-1 list-none m-0 pb-4 bg-transparent border-0 ',
+              ],
+            },
+            tabPanel: {
+              header: ({ props }) => ({
+                class: [
+                  'mr-2',
+                  {
+                    'cursor-default pointer-events-none select-none select-none opacity-60':
+                      props?.disabled,
+                  },
+                ], // Margin and condition-based styles.
+              }),
+              headerAction: ({ parent, context }) => ({
+                class: [
+                  'items-center cursor-pointer flex overflow-hidden relative',
+                  'px-4 py-2 font-bold rounded-full',
+                  {
+                    'border-1 border-white bg-gray-300  hover:bg-gray-200 hover:border-white hover:text-black dark:bg-gray-700 dark:border-blue-900 dark:text-white dark:hover:bg-gray-400':
+                      parent.state.d_activeIndex !== context.index,
+                    'bg-black border-1 border-transparent text-white dark:bg-white dark:text-black':
+                      parent.state.d_activeIndex === context.index,
+                  },
+                ],
+              }),
+              content: { class: 'p-0' },
+            },
+          }"
+        >
+          <TabPanel header="Edit">
+            <TextEditor @text-update="(text) => updateText(text)" />
+          </TabPanel>
+
+          <TabPanel header="Preview">
+            <div
+              class="w-100 flex justify-center rounded-lg bg-white p-4 text-left shadow-lg dark:bg-gray-800"
+            >
+              <div
+                v-html="content"
+                class="prose min-h-[30px] w-full dark:prose-invert prose-p:mb-0 prose-ul:[&>p]:text-3xl"
+              ></div>
+            </div>
+          </TabPanel>
+        </TabView>
 
         <br />
         <button
@@ -95,20 +144,14 @@
           Submit Anime
         </button>
       </form>
-
-      <div
-        class="w-100 mb-12 flex justify-center rounded-lg bg-white p-4 pt-8 text-left shadow-lg dark:bg-gray-800"
-      >
-        <div
-          v-html="content"
-          class="prose min-h-[30px] w-full dark:prose-invert prose-p:mb-0 prose-ul:[&>p]:text-3xl"
-        ></div>
-      </div>
     </NuxtLayout>
   </div>
 </template>
 
 <script setup>
+import TabView from "primevue/tabview";
+import TabPanel from "primevue/tabpanel";
+
 const content = ref("");
 const inputsList = reactive(addAnimeFormInputs);
 
