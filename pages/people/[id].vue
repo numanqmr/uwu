@@ -32,11 +32,11 @@
           class="mt-16 rounded-lg bg-white p-8 dark:bg-gray-800 dark:text-white"
         >
           <div class="w-100 mb-4 text-center text-lg font-bold">User Stats</div>
-          <div class="w-100 pb-2 font-bold">User Stats</div>
-          <div class="w-100 pb-2 font-bold">User Stats</div>
-          <div class="w-100 pb-2 font-bold">User Stats</div>
-          <div class="w-100 pb-2 font-bold">User Stats</div>
-          <div class="w-100 pb-2 font-bold">User Stats</div>
+          <div class="grid grid-rows-3 md:grid-cols-3">
+            <div class="w-100 pb-2 font-bold">Watched</div>
+            <div class="w-100 pb-2 font-bold">Reviews</div>
+            <div class="w-100 pb-2 font-bold">Likes</div>
+          </div>
         </div>
 
         <div
@@ -50,7 +50,9 @@
           class="mt-16 rounded-lg bg-white p-8 dark:bg-gray-800 dark:text-white"
         >
           <div class="w-100 mb-4 text-center text-lg font-bold">
-            User Reviews
+            <h3>User Reviews</h3>
+
+            <div></div>
           </div>
         </div>
       </div>
