@@ -9,10 +9,10 @@ export interface IUser {
   type: "User" | "Admin" | "Guest";
   joined: string;
   lastLogin: string;
-  animeAdded: IAnime[];
-  reviews: IAnimeReviews[];
-  animeOfTheWeek: IAnime[];
-  animeAllTime: IAnime[];
+  animeAdded: IAnime[] | null;
+  reviews: IAnimeReviews[] | null;
+  animeOfTheWeek: IAnime[] | null;
+  animeAllTime: IAnime[] | null;
   likes: number;
   watched: number;
 }

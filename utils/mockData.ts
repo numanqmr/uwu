@@ -45,6 +45,26 @@ export const mockUsersList = [
   },
 ];
 
+export const mockUserProfile = {
+  id: 1,
+  imgURL: mockUserImgURL,
+  firstName: "Kenzo",
+  lastName: "Tenma",
+  name: "Kenzo Tenma",
+  email: "kenzo@monster.com",
+  isApproved: true,
+  type: "User",
+  joined: "12/22/2022",
+  lastLogin: "12/22/2022",
+  animeAdded: null,
+  animeOfTheWeek: null,
+  animeAllTime: null,
+  likes: 14,
+  watched: 20,
+  reviews: 666,
+  recommends: "4",
+};
+
 export const mockAnimeList = [
   {
     id: 1,
