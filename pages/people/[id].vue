@@ -104,13 +104,28 @@
           <div class="text-center text-blue-500 underline">view more</div>
         </div>
 
-        <div
-          class="mb-4 mt-8 rounded-lg bg-white p-8 dark:bg-gray-800 dark:text-white"
-        >
-          <div class="w-100 mb-4 text-center text-lg font-bold">
-            <h3>User Reviews</h3>
-
-            <div></div>
+        <div class="mb-4 mt-8 rounded-lg bg-white p-8 dark:bg-gray-800">
+          <h3 class="mb-3 text-xl font-bold dark:text-white">User Reviews</h3>
+          <div
+            v-for="index in 5"
+            :key="`review-${index}`"
+            class="w-100 mb-4 rounded-lg bg-slate-100 p-4 shadow-lg dark:bg-slate-100/80"
+          >
+            <div class="bg-green">
+              <h3 class="text-lg font-bold">Monster</h3>
+              <p class="text-sm text-black/60">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
+                rerum, qui voluptates et facere voluptatibus quibusdam adipisci
+                doloribus quia repudiandae, eos exercitationem unde ab. Delectus
+                magni molestias sapiente consectetur....
+              </p>
+              <a
+                href=""
+                class="text-sm text-blue-400 underline dark:text-blue-900"
+              >
+                read more</a
+              >
+            </div>
           </div>
         </div>
       </div>
