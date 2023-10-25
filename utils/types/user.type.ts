@@ -1,3 +1,5 @@
+import { IAnime } from "./anime.type";
+
 export interface IUser {
   id: string | number;
   firstName: string;
@@ -9,8 +11,8 @@ export interface IUser {
   lastLogin: string;
   animeAdded: string[];
   reviews: string[];
-  animeOfTheWeek: ""; // ADD ANIME TYPE
-  animeAllTime: ""; // ADD ANIME TYPE
+  animeOfTheWeek: IAnime[];
+  animeAllTime: IAnime[];
   likes: number;
   watched: number;
 }
