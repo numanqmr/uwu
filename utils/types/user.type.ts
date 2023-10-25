@@ -1,4 +1,4 @@
-import { IAnime } from "./anime.type";
+import { IAnime, IAnimeReviews } from "./anime.type";
 
 export interface IUser {
   id: string | number;
@@ -9,8 +9,8 @@ export interface IUser {
   type: "User" | "Admin" | "Guest";
   joined: string;
   lastLogin: string;
-  animeAdded: string[];
-  reviews: string[];
+  animeAdded: IAnime[];
+  reviews: IAnimeReviews[];
   animeOfTheWeek: IAnime[];
   animeAllTime: IAnime[];
   likes: number;
