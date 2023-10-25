@@ -32,25 +32,28 @@
       </div>
 
       <div class="mt-2 flex w-full justify-evenly px-1">
-        <div
-          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200"
+        <button
+          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200 hover:scale-110 hover:bg-gray-600"
+          @click.stop=""
         >
           <WatchedIcon />
 
           <span>{{ props?.views }}</span>
-        </div>
-        <div
-          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200"
+        </button>
+        <button
+          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200 hover:scale-110 hover:bg-gray-600"
+          @click.stop=""
         >
           <LikeIcon />
           <span>{{ props?.likes }}</span>
-        </div>
-        <div
-          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200"
+        </button>
+        <button
+          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200 hover:scale-110 hover:bg-gray-600"
+          @click.stop=""
         >
           <CommentIcon />
           <span>{{ props?.reviews }}</span>
-        </div>
+        </button>
       </div>
     </div>
   </div>
