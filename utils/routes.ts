@@ -9,6 +9,7 @@ export const authRoutes = {
   addReview: "/add-review",
   editReview: "/edit-review",
   editAnime: "/edit-anime",
+  notifications: "/notifications",
 };
 
 export const unauthRoutes = {

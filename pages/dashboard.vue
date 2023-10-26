@@ -17,20 +17,19 @@
           </div>
           <div
             class="relative grid cursor-pointer place-content-center rounded-2xl bg-gradient-to-r from-cyan-500/80 to-blue-500/80 py-4 hover:scale-105 sm:h-64 sm:w-1/3 sm:py-0 [&_svg]:hover:scale-105"
+            @click="router.push({ path: authRoutes.notifications })"
           >
             <div
               class="absolute -right-4 -top-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-500 p-4 text-sm font-bold text-slate-50"
             >
               20
             </div>
-            <InboxIcon class="h-24 w-24 fill-slate-100" />
+            <BellIcon class="h-24 w-24 fill-slate-100" />
           </div>
         </div>
 
         <div class="mb-8">
-          <div class="mb-4 text-2xl font-bold dark:text-white">
-            Your insights
-          </div>
+          <div class="mb-4 text-2xl font-bold dark:text-white">Add Status</div>
           <div
             class="mt-8 rounded-lg bg-slate-50 p-4 dark:bg-slate-800 dark:text-white"
           >
@@ -153,7 +152,7 @@ import { userStore } from "@/store";
 import {
   FolderPlusIcon,
   ChatBubbleBottomCenterTextIcon,
-  InboxIcon,
+  BellIcon,
 } from "@heroicons/vue/24/solid";
 
 console.log(FolderPlusIcon);
