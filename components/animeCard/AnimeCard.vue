@@ -15,7 +15,7 @@
       <div class="flex w-full flex-wrap justify-center space-x-2">
         <template v-for="genre in props?.genres">
           <div
-            class="rounded-full bg-blue-500 bg-opacity-60 px-2 py-[2px] text-sm font-bold text-gray-200"
+            class="rounded-full bg-blue-500 bg-opacity-60 px-2 py-[2px] text-sm font-bold capitalize text-gray-200"
           >
             {{ genre }}
           </div>
