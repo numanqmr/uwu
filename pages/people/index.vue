@@ -4,7 +4,7 @@
       <div class="my-14 text-xl font-extrabold dark:text-white">
         Nerds (Am I right?)
       </div>
-      <div class="w-100 grid md:grid-cols-3">
+      <div class="w-100 grid md:grid-cols-2 lg:grid-cols-3">
         <div v-for="(item, index) in data" :key="index" class="mb-12">
           <PersonCard
             @click="router.push(authRoutes.peopleId(item.id))"
