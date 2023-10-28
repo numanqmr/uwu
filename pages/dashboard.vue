@@ -30,29 +30,23 @@
 
         <div class="mb-8">
           <div class="mb-4 text-2xl font-bold dark:text-white">Add Status</div>
-          <div
-            class="mt-8 rounded-lg bg-slate-50 p-4 dark:bg-slate-800 dark:text-white"
-          >
-            <div
-              class="w-100 font-md border-b-2 border-slate-400 px-4 py-2 font-medium"
-            >
-              <span class="mr-2 text-3xl"> 🖤 </span>
-              Numan likes your review on
-              <span class="cursor-pointer text-blue-500 underline"
-                >Ergo Proxy</span
-              >
+          <div class="rounded-lg bg-white p-4 dark:bg-gray-800 dark:text-white">
+            <div class="mb-2 flex items-center gap-2">
+              <img class="h-12 w-12 rounded-full" :src="user.userImg" alt="" />
+              <strong>You</strong>
             </div>
-            <div
-              class="w-100 font-md border-b-2 border-slate-400 px-4 py-2 font-medium"
-            >
-              <span class="mr-2 text-3xl"> 📩 </span>
+            <form action="">
+              <textarea
+                class="mb-2 w-full resize-none rounded-2xl border-none bg-transparent p-2 py-2 outline-none"
+                placeholder="What do you wanna talk about?"
+              />
 
-              You recieved a new msg from Jonas
-            </div>
-            <div class="w-100 font-md px-4 py-2 font-medium">
-              <span class="mr-2 text-3xl"> 👋 </span>
-              You joined the platform on 21st January 2023
-            </div>
+              <button
+                class="rounded-full border-2 border-green-600 px-4 py-1 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
+              >
+                Post
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -154,8 +148,6 @@ import {
   ChatBubbleBottomCenterTextIcon,
   BellIcon,
 } from "@heroicons/vue/24/solid";
-
-console.log(FolderPlusIcon);
 
 const user = userStore();
 // definePageMeta({ layout: "auth-layout" });

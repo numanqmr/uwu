@@ -33,16 +33,20 @@
             </div>
           </div>
           <div
-            class="inline-flex items-center text-sm font-light text-gray-900 dark:text-white"
+            class="mb-3 inline-flex items-center text-sm font-light text-gray-900 dark:text-white"
           >
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci
             pariatur earum temporibus hic quos unde illum, tempore id harum
             saepe?
           </div>
 
-          <div class="flex text-sm">
-            <button class="rounded-md bg-gray-400 px-4 py-1">Like</button>
-            <button class="rounded-md bg-gray-400 px-4 py-1">Comment</button>
+          <div class="flex gap-2 text-sm">
+            <button class="rounded-md border-2 border-gray-400 px-4 py-1">
+              Like
+            </button>
+            <button class="rounded-md border-2 border-gray-400 px-4 py-1">
+              Comment
+            </button>
           </div>
         </div>
       </div>
