@@ -1,5 +1,23 @@
 # This project is created using NuxtJS
 
+##Overview
+
+- <a href="#english">English</a>
+- <a href="#unknown">Unknown</a>
+
+##### <div id="english">- English</div>
+
+Introducing the UWU-stack, the platform for anime enthuasists to explore and discuss. The project was made when some of my fellow coworkers who enjoyed anime overtime left for other companies or careers. We all share an interest in anime and would on a weekly basis recommend and discuss various anime with each other.
+
+Immerse yourself in the captivating world of anime with UWU-stack, the cutting edge anime app that seamlessly combines community interaction and personalized profiles.
+This is where your interests for anime meets the power of technology
+
+With UWU-stack, you have the power to create your own anime universe. Create a collection of your favorite anime, handpicked from an extensive catelogue created by the community. Discover hidden gems and S-tier masterpieces. Explore a vast list of genres and styles
+
+Engage with the community of fellow anime wathcing peeps, upvote, share your reviews and create your ranked list for others to observe
+
+##### <div id="unknown">- UWU Language</div>
+
 Intwoducing uwuswack: the uwtimate anime newds hub
 
 immewse youwsewf in the captivating wowwd of anime with uwuswack, the cutting-edge fiwm app thawt seamwesswy combines community intewaction awnd pewsonawized. Thiws iws whewe youw passion fow anime meets the powew of technowogy.
@@ -8,24 +26,21 @@ with uwuswack, uwu have the powew tuwu cuwate youw own fiwm univewse. Cweate a p
 
 engage with ouw community of enthusiasts, whewe uwu cawn upvote anime, shawing youw weviews awnd discovew the puwse of the japanese wowwd.
 
-###
-
 ### Tools
 
-- Nuxt 3 [Docs](https://nuxt.com/docs/getting-started/introduction)
-- Tailwind CSS [Docs](https://tailwindcss.com/)
-- PrimeVue [Docs](https://primevue.org/)
-- Pinia [Docs](https://pinia.vuejs.org/)
-
-### Database
-
-- SupaBase [Docs](https://supabase.com/)
+| Tool              | Tech Stack   | Docs                                           |
+| ----------------- | ------------ | ---------------------------------------------- |
+| Framework         | Nuxt3        | [Here](https://nuxt.com/docs/getting-started/) |
+| Styling           | Tailwind CSS | [Here](https://tailwindcss.com/)               |
+| Component Library | Pinia        | [Here](https://primevue.org/)                  |
+| State Management  | Pinia        | [Here](https://pinia.vuejs.org/)               |
+| Database          | Supabase     | [Here](https://supabase.com/)                  |
 
 ## Setup
 
 Make sure to install the dependencies:
 
-## ENV List
+### ENV List
 
 Ask from the existing devs when getting the project for the 1st time
 
@@ -36,7 +51,7 @@ SUPABASE_KEY
 
 ```
 
-## Install Dependencies
+### Install Dependencies
 
 ```bash
 # yarn
@@ -49,7 +64,7 @@ npm install
 pnpm install
 ```
 
-## Development Server
+### Development Server
 
 Start the development server on `http://localhost:3000`
 
@@ -63,7 +78,7 @@ yarn dev -p 3001
 
 ```
 
-## Production
+### Production
 
 Build the application for production:
 
