@@ -152,7 +152,7 @@ const inputsList = reactive(addAnimeFormInputs);
 
 const addAnimeFormData = ref({
   content: undefined,
-  yearReleased: 0,
+  yearReleased: undefined,
   episodes: undefined,
   seasons: undefined,
   ["status"]: undefined,
