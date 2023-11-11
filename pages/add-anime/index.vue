@@ -40,8 +40,10 @@
                   >Seasons:
                 </label>
                 <PrimeVueInputNumber
-                  :value="seasons"
-                  @update:modelValue="(newVal) => (seasons = newVal)"
+                  :value="addAnimeFormData.seasons"
+                  @update:modelValue="
+                    (newVal) => (addAnimeFormData.seasons = newVal)
+                  "
                 />
               </div>
               <div class="w-1/4">
@@ -51,8 +53,10 @@
                   >Episodes:
                 </label>
                 <PrimeVueInputNumber
-                  :value="episodes"
-                  @update:modelValue="(newVal) => (episodes = newVal)"
+                  :value="addAnimeFormData.episodes"
+                  @update:modelValue="
+                    (newVal) => (addAnimeFormData.episodes = newVal)
+                  "
                 />
               </div>
               <div class="w-1/2">
@@ -62,9 +66,11 @@
                   >Year:
                 </label>
                 <PrimeVueInputNumber
-                  :value="yearReleased"
+                  :value="addAnimeFormData.yearReleased"
                   :useGrouping="false"
-                  @update:modelValue="(newVal) => (yearReleased = newVal)"
+                  @update:modelValue="
+                    (newVal) => (addAnimeFormData.yearReleased = newVal)
+                  "
                 />
               </div>
             </div>
@@ -76,9 +82,12 @@
               </label>
               <PrimeVueDropdown
                 placeholder="Select Status"
-                :value="status"
+                :value="addAnimeFormData.status"
                 :options="animeStatusOptions"
-                @update:modelValue="(newVal) => (status = newVal)"
+                optionValue="code"
+                @update:modelValue="
+                  (newVal) => (addAnimeFormData.status = newVal)
+                "
               />
             </div>
 
@@ -90,11 +99,13 @@
               </label>
 
               <PVMultiSelect
-                :value="genres"
+                :value="addAnimeFormData.genres"
                 :options="listedAnimeGenres"
                 placeholder="Select Genre(s)"
                 :selectionLimit="3"
-                @update:modelValue="(newVal) => (genres = newVal)"
+                @update:modelValue="
+                  (newVal) => (addAnimeFormData.genres = newVal)
+                "
               />
             </div>
           </div>
@@ -104,7 +115,9 @@
 
         <TabView :pt="pvTabViewStyles">
           <TabPanel header="Edit">
-            <TextEditor @text-update="(text) => updateText(text)" />
+            <TextEditor
+              @text-update="(text) => (addAnimeFormData.content = text)"
+            />
           </TabPanel>
 
           <TabPanel header="Preview">
@@ -112,7 +125,7 @@
               class="w-100 flex justify-center rounded-lg bg-white p-4 text-left shadow-lg dark:bg-gray-800"
             >
               <div
-                v-html="content"
+                v-html="addAnimeFormData.content"
                 class="prose min-h-[30px] w-full dark:prose-invert prose-p:mb-0 prose-ul:[&>p]:text-3xl"
               ></div>
             </div>
@@ -135,27 +148,22 @@
 import TabView from "primevue/tabview";
 import TabPanel from "primevue/tabpanel";
 
-const content = ref("");
-const yearReleased = ref();
-const episodes = ref();
-const seasons = ref();
-const status = ref("");
-const genres = ref();
 const inputsList = reactive(addAnimeFormInputs);
 
-const updateText = (text) => (content.value = text);
+const addAnimeFormData = ref({
+  content: undefined,
+  yearReleased: 0,
+  episodes: undefined,
+  seasons: undefined,
+  ["status"]: undefined,
+  genres: undefined,
+});
 
 const handleSubmit = () => {
-  const emptyObj = {
-    yearReleased: yearReleased?.value?.toString(),
-    episodes: episodes?.value?.toString(),
-    seasons: seasons?.value?.toString(),
-    status: status?.value?.code,
-    genres: genres?.value,
-  };
+  const emptyObj = { ...addAnimeFormData.value };
 
   inputsList.map((item) => (emptyObj[item.schemaType] = item.value));
-  emptyObj.description = content.value;
+  emptyObj.description = addAnimeFormData.content;
 
   console.log(emptyObj);
   // inputsList.forEach((item) => (item.value = ""));
@@ -164,9 +172,7 @@ const handleSubmit = () => {
 const pvTabViewStyles = {
   navContainer: { class: "!p-0" },
   root: { class: ["m-0 p-0"] },
-  nav: {
-    class: ["flex flex-1 list-none m-0 pb-4 bg-transparent border-0 "],
-  },
+  nav: { class: ["flex flex-1 list-none m-0 pb-4 bg-transparent border-0 "] },
   tabPanel: {
     header: ({ props }) => ({
       class: [

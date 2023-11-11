@@ -3,6 +3,7 @@
     :modelValue="props?.value"
     :options="props?.options"
     optionLabel="name"
+    :optionValue="optionValue ?? null"
     :placeholder="placeholder"
     :pt="primeVueDropdownStyled"
   />
@@ -11,7 +12,7 @@
 <script setup>
 import Dropdown from "primevue/dropdown";
 
-const props = defineProps(["value", "options", "placeholder"]);
+const props = defineProps(["value", "options", "optionValue", "placeholder"]);
 
 const primeVueDropdownStyled = {
   root: ({ props }) => ({
