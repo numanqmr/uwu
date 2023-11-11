@@ -1,7 +1,7 @@
 <template>
   <InputNumber
-    v-model="value"
-    inputId="integeronly"
+    :modelValue="props.value"
+    :useGrouping="props?.useGrouping ?? true"
     :pt="primeVueInputNumberStyle"
   />
 </template>
@@ -9,7 +9,8 @@
 <script setup>
 import InputNumber from "primevue/inputnumber";
 
-const value = ref();
+// TODO ADD TYPES HERE GOOFY
+const props = defineProps(["useGrouping", "value"]);
 
 const primeVueInputNumberStyle = {
   root: "w-full inline-flex",

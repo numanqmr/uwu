@@ -39,7 +39,10 @@
                   class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
                   >Seasons:
                 </label>
-                <PrimeVueInputNumber />
+                <PrimeVueInputNumber
+                  :value="seasons"
+                  @update:modelValue="(newVal) => (seasons = newVal)"
+                />
               </div>
               <div class="w-1/4">
                 <label
@@ -47,7 +50,10 @@
                   class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
                   >Episodes:
                 </label>
-                <PrimeVueInputNumber />
+                <PrimeVueInputNumber
+                  :value="episodes"
+                  @update:modelValue="(newVal) => (episodes = newVal)"
+                />
               </div>
               <div class="w-1/2">
                 <label
@@ -55,7 +61,11 @@
                   class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
                   >Year:
                 </label>
-                <PrimeVueInputNumber />
+                <PrimeVueInputNumber
+                  :value="yearReleased"
+                  :useGrouping="false"
+                  @update:modelValue="(newVal) => (yearReleased = newVal)"
+                />
               </div>
             </div>
             <div class="mb-4 flex-col">
@@ -153,16 +163,27 @@ import TabView from "primevue/tabview";
 import TabPanel from "primevue/tabpanel";
 
 const content = ref("");
+const yearReleased = ref();
+const episodes = ref();
+const seasons = ref();
+const status = ref("");
+const genres = ref("");
 const inputsList = reactive(addAnimeFormInputs);
 
 const updateText = (text) => (content.value = text);
 
 const handleSubmit = () => {
-  const emptyObj = {};
+  const emptyObj = {
+    yearReleased: yearReleased?.value?.toString(),
+    episodes: episodes?.value?.toString(),
+    seasons: seasons?.value?.toString(),
+    status: status.value,
+    genres: genres.value,
+  };
   inputsList.map((item) => (emptyObj[item.schemaType] = item.value));
   emptyObj.description = content.value;
-  console.log(inputsList);
+
   console.log(emptyObj);
-  inputsList.forEach((item) => (item.value = ""));
+  // inputsList.forEach((item) => (item.value = ""));
 };
 </script>
