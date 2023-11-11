@@ -14,6 +14,8 @@ engage with ouw community of enthusiasts, whewe uwu cawn upvote anime, shawing y
 
 - Nuxt 3 [Docs](https://nuxt.com/docs/getting-started/introduction)
 - Tailwind CSS [Docs](https://tailwindcss.com/)
+- PrimeVue [Docs](https://primevue.org/)
+- Pinia [Docs](https://pinia.vuejs.org/)
 
 ### Database
 
@@ -22,6 +24,19 @@ engage with ouw community of enthusiasts, whewe uwu cawn upvote anime, shawing y
 ## Setup
 
 Make sure to install the dependencies:
+
+## ENV List
+
+Ask from the existing devs when getting the project for the 1st time
+
+```bash
+
+SUPABASE_URL
+SUPABASE_KEY
+
+```
+
+## Install Dependencies
 
 ```bash
 # yarn
@@ -38,8 +53,14 @@ pnpm install
 
 Start the development server on `http://localhost:3000`
 
+Or on any other port using the -p flag
+
 ```bash
 npm run dev
+
+# yarn with PORT number
+yarn dev -p 3001
+
 ```
 
 ## Production
