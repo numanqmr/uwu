@@ -1,6 +1,6 @@
 <template>
   <MultiSelect
-    v-model="selectedItems"
+    :modelValue="props?.value"
     :options="optionList"
     :optionLabel="optionLabel || null"
     :placeholder="placeholder || 'Placeholder...'"
@@ -17,13 +17,13 @@
 import MultiSelect from "primevue/multiselect";
 
 const props = defineProps({
+  value: undefined,
   options: { required: true },
   placeholder: {},
   selectionLimit: {},
   optionLabel: {},
 });
 
-const selectedItems = ref("");
 const optionList = ref(props.options);
 const isOpen = ref(false);
 

@@ -1,7 +1,7 @@
 <template>
   <Dropdown
-    v-model="selectedCity"
-    :options="cities"
+    :modelValue="props?.value"
+    :options="props?.options"
     optionLabel="name"
     :placeholder="placeholder"
     :pt="primeVueDropdownStyled"
@@ -10,17 +10,8 @@
 
 <script setup>
 import Dropdown from "primevue/dropdown";
-import { ref } from "vue";
 
-const props = defineProps(["placeholder"]);
-
-const selectedCity = ref();
-const cities = ref([
-  { name: "Completed", code: "Completed" },
-  { name: "Ongoing", code: "Ongoing" },
-  { name: "Hiatus", code: "Hiatus" },
-  { name: "Cancelled", code: "Cancelled" },
-]);
+const props = defineProps(["value", "options", "placeholder"]);
 
 const primeVueDropdownStyled = {
   root: ({ props }) => ({

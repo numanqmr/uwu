@@ -74,7 +74,12 @@
                 class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
                 >Status:
               </label>
-              <PrimeVueDropdown placeholder="Select Status" />
+              <PrimeVueDropdown
+                placeholder="Select Status"
+                :value="status"
+                :options="animeStatusOptions"
+                @update:modelValue="(newVal) => (status = newVal)"
+              />
             </div>
 
             <div class="flex-col">
@@ -85,9 +90,11 @@
               </label>
 
               <PVMultiSelect
+                :value="genres"
                 :options="listedAnimeGenres"
                 placeholder="Select Genre(s)"
                 :selectionLimit="3"
+                @update:modelValue="(newVal) => (genres = newVal)"
               />
             </div>
           </div>
@@ -95,41 +102,7 @@
 
         <h3 class="pb-4 text-2xl font-bold dark:text-white">Description:</h3>
 
-        <TabView
-          :pt="{
-            navContainer: { class: '!p-0' },
-            root: { class: ['m-0 p-0'] },
-            nav: {
-              class: [
-                'flex flex-1 list-none m-0 pb-4 bg-transparent border-0 ',
-              ],
-            },
-            tabPanel: {
-              header: ({ props }) => ({
-                class: [
-                  'mr-2',
-                  {
-                    'cursor-default pointer-events-none select-none select-none opacity-60':
-                      props?.disabled,
-                  },
-                ], // Margin and condition-based styles.
-              }),
-              headerAction: ({ parent, context }) => ({
-                class: [
-                  'items-center cursor-pointer flex overflow-hidden relative',
-                  'px-4 py-2 font-bold rounded-full',
-                  {
-                    'border-1 border-white bg-gray-300  hover:bg-gray-200 hover:border-white hover:text-black dark:bg-gray-700 dark:border-blue-900 dark:text-white dark:hover:bg-gray-400':
-                      parent.state.d_activeIndex !== context.index,
-                    'bg-black border-1 border-transparent text-white dark:bg-white dark:text-black':
-                      parent.state.d_activeIndex === context.index,
-                  },
-                ],
-              }),
-              content: { class: 'p-0' },
-            },
-          }"
-        >
+        <TabView :pt="pvTabViewStyles">
           <TabPanel header="Edit">
             <TextEditor @text-update="(text) => updateText(text)" />
           </TabPanel>
@@ -167,7 +140,7 @@ const yearReleased = ref();
 const episodes = ref();
 const seasons = ref();
 const status = ref("");
-const genres = ref("");
+const genres = ref();
 const inputsList = reactive(addAnimeFormInputs);
 
 const updateText = (text) => (content.value = text);
@@ -177,13 +150,46 @@ const handleSubmit = () => {
     yearReleased: yearReleased?.value?.toString(),
     episodes: episodes?.value?.toString(),
     seasons: seasons?.value?.toString(),
-    status: status.value,
-    genres: genres.value,
+    status: status?.value?.code,
+    genres: genres?.value,
   };
+
   inputsList.map((item) => (emptyObj[item.schemaType] = item.value));
   emptyObj.description = content.value;
 
   console.log(emptyObj);
   // inputsList.forEach((item) => (item.value = ""));
+};
+
+const pvTabViewStyles = {
+  navContainer: { class: "!p-0" },
+  root: { class: ["m-0 p-0"] },
+  nav: {
+    class: ["flex flex-1 list-none m-0 pb-4 bg-transparent border-0 "],
+  },
+  tabPanel: {
+    header: ({ props }) => ({
+      class: [
+        "mr-2",
+        {
+          "cursor-default pointer-events-none select-none select-none opacity-60":
+            props?.disabled,
+        },
+      ], // Margin and condition-based styles.
+    }),
+    headerAction: ({ parent, context }) => ({
+      class: [
+        "items-center cursor-pointer flex overflow-hidden relative",
+        "px-4 py-2 font-bold rounded-full",
+        {
+          "border-1 border-white bg-gray-300  hover:bg-gray-200 hover:border-white hover:text-black dark:bg-gray-700 dark:border-blue-900 dark:text-white dark:hover:bg-gray-400":
+            parent.state.d_activeIndex !== context.index,
+          "bg-black border-1 border-transparent text-white dark:bg-white dark:text-black":
+            parent.state.d_activeIndex === context.index,
+        },
+      ],
+    }),
+    content: { class: "p-0" },
+  },
 };
 </script>
