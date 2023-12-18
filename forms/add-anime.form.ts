@@ -2,6 +2,18 @@ import { z } from "zod";
 
 const requiredErr = { required_error: "Required" };
 
+export const initialAddAnimeFormData = {
+  content: undefined,
+  yearReleased: undefined,
+  episodes: undefined,
+  seasons: undefined,
+  status: undefined,
+  genres: undefined,
+  title: undefined,
+  malURL: undefined,
+  imgURL: undefined,
+};
+
 export const addAnimeFormSchema = z.object({
   content: z.string({ required_error: "Required Field" }).trim(),
 

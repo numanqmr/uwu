@@ -25,7 +25,7 @@
                 </label>
                 <span
                   class="text-xs font-semibold text-red-400"
-                  v-if="addAnimeErrors?.[inputs?.schemaType]?._errors?.length"
+                  v-if="!!addAnimeErrors?.[inputs?.schemaType]?._errors?.length"
                 >
                   * {{ addAnimeErrors?.[inputs?.schemaType]?._errors[0] }}
                 </span>
@@ -33,7 +33,7 @@
 
               <input
                 :type="inputs.inputType"
-                v-model="inputs.value"
+                v-model="addAnimeFormData[inputs?.schemaType]"
                 class="mb-4 block w-full rounded-lg border-2 border-blue-200 p-2.5 text-sm text-gray-900 shadow-sm outline-none focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               />
             </div>
@@ -50,7 +50,7 @@
                   </label>
                   <span
                     class="text-xs font-semibold text-red-400"
-                    v-if="addAnimeErrors?.seasons?._errors?.length"
+                    v-if="!!addAnimeErrors?.seasons?._errors?.length"
                   >
                     *
                   </span>
@@ -71,7 +71,7 @@
                   </label>
                   <span
                     class="text-xs font-semibold text-red-400"
-                    v-if="addAnimeErrors?.episodes?._errors?.length"
+                    v-if="!!addAnimeErrors?.episodes?._errors?.length"
                   >
                     *
                   </span>
@@ -92,7 +92,7 @@
                   </label>
                   <span
                     class="text-xs font-semibold text-red-400"
-                    v-if="addAnimeErrors?.yearReleased?._errors?.length"
+                    v-if="!!addAnimeErrors?.yearReleased?._errors?.length"
                   >
                     *
                   </span>
@@ -205,36 +205,30 @@
 <script setup>
 import TabView from "primevue/tabview";
 import TabPanel from "primevue/tabpanel";
-import { addAnimeFormSchema, addAnimeErrors } from "@/forms";
+import {
+  addAnimeFormSchema,
+  addAnimeErrors,
+  initialAddAnimeFormData,
+} from "@/forms";
 
 const inputsList = reactive(addAnimeFormInputs);
+const addAnimeFormData = ref(initialAddAnimeFormData);
+const hasSubmitted = ref(false);
 
-const addAnimeFormData = ref({
-  content: undefined,
-  yearReleased: undefined,
-  episodes: undefined,
-  seasons: undefined,
-  status: undefined,
-  genres: undefined,
+watch(addAnimeFormData.value, () => {
+  if (!hasSubmitted.value) return;
+  const validSchema = addAnimeFormSchema.safeParse(addAnimeFormData.value);
+  addAnimeErrors.value = validSchema?.error?.format();
 });
 
 const handleSubmit = () => {
-  const emptyObj = { ...addAnimeFormData.value };
-
-  inputsList.map((item) => (emptyObj[item.schemaType] = item.value));
-  emptyObj.description = addAnimeFormData.content;
-
-  const validSchema = addAnimeFormSchema.safeParse(emptyObj);
+  hasSubmitted.value = true;
+  const validSchema = addAnimeFormSchema.safeParse(addAnimeFormData.value);
 
   addAnimeErrors.value = validSchema?.error?.format();
 
-  // console.log(emptyObj);
   // console.log(validSchema.success);
-  // console.log(addAnimeErrors.value);
   // console.log(validSchema.data);
-
-  // FOR RESETTING
-  // inputsList.forEach((item) => (item.value = ""));
 };
 
 const pvTabViewStyles = {
