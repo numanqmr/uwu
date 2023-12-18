@@ -4,7 +4,7 @@ export const addAnimeFormInputs = [
     inputType: "text",
     placeholder: "",
     required: true,
-    value: "",
+    value: undefined,
     schemaType: "title",
   },
   {
@@ -12,7 +12,7 @@ export const addAnimeFormInputs = [
     inputType: "text",
     placeholder: "",
     required: false,
-    value: "",
+    value: undefined,
     schemaType: "malURL",
   },
   {
@@ -20,7 +20,7 @@ export const addAnimeFormInputs = [
     inputType: "text",
     placeholder: "",
     required: false,
-    value: "",
+    value: undefined,
     schemaType: "imgURL",
   },
 ];

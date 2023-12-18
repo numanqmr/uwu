@@ -17,11 +17,19 @@
         <div class="grid gap-4 gap-x-8 md:grid-cols-2">
           <div>
             <div v-for="inputs in inputsList" :key="inputs.label">
-              <label
-                for="title"
-                class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
-                >{{ inputs.label }} :
-              </label>
+              <div class="inline-flex items-baseline gap-2">
+                <label
+                  for="title"
+                  class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
+                  >{{ inputs.label }}
+                </label>
+                <span
+                  class="text-xs font-semibold text-red-400"
+                  v-if="addAnimeErrors?.[inputs?.schemaType]?._errors?.length"
+                >
+                  * {{ addAnimeErrors?.[inputs?.schemaType]?._errors[0] }}
+                </span>
+              </div>
 
               <input
                 :type="inputs.inputType"
@@ -34,11 +42,19 @@
           <div class="flex flex-col">
             <div class="flex gap-2">
               <div class="w-1/4">
-                <label
-                  for="title"
-                  class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
-                  >Seasons:
-                </label>
+                <div class="inline-flex items-baseline gap-1">
+                  <label
+                    for="title"
+                    class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
+                    >Seasons
+                  </label>
+                  <span
+                    class="text-xs font-semibold text-red-400"
+                    v-if="addAnimeErrors?.seasons?._errors?.length"
+                  >
+                    *
+                  </span>
+                </div>
                 <PrimeVueInputNumber
                   :value="addAnimeFormData.seasons"
                   @update:modelValue="
@@ -47,11 +63,19 @@
                 />
               </div>
               <div class="w-1/4">
-                <label
-                  for="title"
-                  class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
-                  >Episodes:
-                </label>
+                <div class="inline-flex items-baseline gap-1">
+                  <label
+                    for="title"
+                    class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
+                    >Episodes
+                  </label>
+                  <span
+                    class="text-xs font-semibold text-red-400"
+                    v-if="addAnimeErrors?.episodes?._errors?.length"
+                  >
+                    *
+                  </span>
+                </div>
                 <PrimeVueInputNumber
                   :value="addAnimeFormData.episodes"
                   @update:modelValue="
@@ -60,11 +84,19 @@
                 />
               </div>
               <div class="w-1/2">
-                <label
-                  for="title"
-                  class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
-                  >Year:
-                </label>
+                <div class="inline-flex items-baseline gap-1">
+                  <label
+                    for="title"
+                    class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
+                    >Year
+                  </label>
+                  <span
+                    class="text-xs font-semibold text-red-400"
+                    v-if="addAnimeErrors?.yearReleased?._errors?.length"
+                  >
+                    *
+                  </span>
+                </div>
                 <PrimeVueInputNumber
                   :value="addAnimeFormData.yearReleased"
                   :useGrouping="false"
@@ -75,11 +107,19 @@
               </div>
             </div>
             <div class="mb-4 flex flex-col">
-              <label
-                for="title"
-                class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
-                >Status:
-              </label>
+              <div class="inline-flex items-baseline gap-2">
+                <label
+                  for="title"
+                  class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
+                  >Status
+                </label>
+                <span
+                  class="text-xs font-semibold text-red-400"
+                  v-if="addAnimeErrors?.status?._errors?.length"
+                >
+                  * {{ addAnimeErrors?.status?._errors[0] }}
+                </span>
+              </div>
               <PrimeVueDropdown
                 placeholder="Select Status"
                 :value="addAnimeFormData.status"
@@ -92,11 +132,20 @@
             </div>
 
             <div class="flex flex-col">
-              <label
-                for="title"
-                class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
-                >Genres:
-              </label>
+              <div class="inline-flex items-baseline gap-2">
+                <label
+                  for="title"
+                  class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
+                >
+                  Genres
+                </label>
+                <span
+                  class="text-xs font-semibold text-red-400"
+                  v-if="addAnimeErrors?.genres?._errors?.length"
+                >
+                  * {{ addAnimeErrors?.genres?._errors[0] }}
+                </span>
+              </div>
 
               <PVMultiSelect
                 :value="addAnimeFormData.genres"
@@ -111,7 +160,16 @@
           </div>
         </div>
 
-        <h3 class="pb-4 text-2xl font-bold dark:text-white">Description:</h3>
+        <h3 class="pb-4 text-2xl font-bold dark:text-white">
+          Description:
+
+          <span
+            class="pl-2 text-sm font-semibold text-red-400"
+            v-if="addAnimeErrors?.content?._errors?.length"
+          >
+            * {{ addAnimeErrors?.content?._errors?.[0] }}
+          </span>
+        </h3>
 
         <TabView :pt="pvTabViewStyles">
           <TabPanel header="Edit">
@@ -147,6 +205,7 @@
 <script setup>
 import TabView from "primevue/tabview";
 import TabPanel from "primevue/tabpanel";
+import { addAnimeFormSchema, addAnimeErrors } from "@/forms";
 
 const inputsList = reactive(addAnimeFormInputs);
 
@@ -155,7 +214,7 @@ const addAnimeFormData = ref({
   yearReleased: undefined,
   episodes: undefined,
   seasons: undefined,
-  ["status"]: undefined,
+  status: undefined,
   genres: undefined,
 });
 
@@ -165,7 +224,16 @@ const handleSubmit = () => {
   inputsList.map((item) => (emptyObj[item.schemaType] = item.value));
   emptyObj.description = addAnimeFormData.content;
 
-  console.log(emptyObj);
+  const validSchema = addAnimeFormSchema.safeParse(emptyObj);
+
+  addAnimeErrors.value = validSchema?.error?.format();
+
+  // console.log(emptyObj);
+  // console.log(validSchema.success);
+  // console.log(addAnimeErrors.value);
+  // console.log(validSchema.data);
+
+  // FOR RESETTING
   // inputsList.forEach((item) => (item.value = ""));
 };
 
