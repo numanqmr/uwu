@@ -43,56 +43,58 @@ export const primeVueInputNumberStyled = {
   }),
 };
 
-export const primeVueMultiSelectStyled = (isOpen: Ref<boolean>) => ({
-  root: ({ props }: any) => {
-    return {
+export const primeVueMultiSelectStyled = (isOpen: globalThis.Ref<boolean>) => {
+  return {
+    root: ({ props }: any) => {
+      return {
+        class: [
+          "inline-flex w-full cursor-pointer select-none rounded-md border-2 bg-white text-sm shadow-sm dark:bg-gray-700",
+          "mb-4 active:!border-blue-500",
+          {
+            "pointer-events-none cursor-pointer select-none opacity-60":
+              props?.disabled,
+          },
+          { [tw("border-blue-500 dark:border-blue-500")]: isOpen?.value },
+          { [tw("border-blue-200 dark:border-gray-600")]: !isOpen?.value },
+        ],
+      };
+    },
+
+    label: { class: "p-2.5 dark:text-white" },
+    item: ({ context }: any) => ({
       class: [
-        "inline-flex w-full cursor-pointer select-none rounded-md border-2 bg-white text-sm shadow-sm dark:bg-gray-700",
-        "mb-4 active:!border-blue-500",
+        "relative cursor-pointer overflow-hidden whitespace-nowrap font-normal",
+        "m-0 rounded-none border-0  p-3 transition-shadow duration-200",
         {
-          "pointer-events-none cursor-pointer select-none opacity-60":
-            props?.disabled,
+          "text-white-700 hover:bg-gray-200 hover:text-gray-400 dark:text-white dark:hover:bg-gray-800":
+            !context.focused && !context.selected,
+
+          "bg-gray-300 text-gray-700 hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800/90 dark:text-white dark:text-white dark:hover:bg-gray-800":
+            context.focused && !context.selected,
+
+          "bg-blue-100 text-blue-700 dark:bg-gray-600 dark:text-white":
+            context.focused && context.selected,
+          "text-white-700 bg-blue-50 dark:bg-gray-600 dark:text-white":
+            !context.focused && context.selected,
         },
-        { [tw("border-blue-500 dark:border-blue-500")]: isOpen?.value },
-        { [tw("border-blue-200 dark:border-gray-600")]: !isOpen?.value },
       ],
-    };
-  },
+    }),
 
-  label: { class: "p-2.5 dark:text-white" },
-  item: ({ context }: any) => ({
-    class: [
-      "relative cursor-pointer overflow-hidden whitespace-nowrap font-normal",
-      "m-0 rounded-none border-0  p-3 transition-shadow duration-200",
-      {
-        "text-white-700 hover:bg-gray-200 hover:text-gray-400 dark:text-white dark:hover:bg-gray-800":
-          !context.focused && !context.selected,
+    checkbox: ({ context }: any) => ({
+      class: [
+        "flex items-center justify-center",
+        "h-6 w-6 rounded-lg border-2 text-gray-600 transition-colors duration-200 dark:text-white",
+        "hover:border-green-500 focus:shadow-[0_0_0_0.2rem_rgba(191,219,254,1)] focus:outline-none focus:outline-offset-0 dark:focus:shadow-[0_0_0_0.2rem_rgba(147,197,253,0.5)]",
 
-        "bg-gray-300 text-gray-700 hover:bg-gray-200 hover:text-gray-700 dark:bg-gray-800/90 dark:text-white dark:text-white dark:hover:bg-gray-800":
-          context.focused && !context.selected,
-
-        "bg-blue-100 text-blue-700 dark:bg-gray-600 dark:text-white":
-          context.focused && context.selected,
-        "text-white-700 bg-blue-50 dark:bg-gray-600 dark:text-white":
-          !context.focused && context.selected,
-      },
-    ],
-  }),
-
-  checkbox: ({ context }: any) => ({
-    class: [
-      "flex items-center justify-center",
-      "h-6 w-6 rounded-lg border-2 text-gray-600 transition-colors duration-200 dark:text-white",
-      "hover:border-green-500 focus:shadow-[0_0_0_0.2rem_rgba(191,219,254,1)] focus:outline-none focus:outline-offset-0 dark:focus:shadow-[0_0_0_0.2rem_rgba(147,197,253,0.5)]",
-
-      {
-        "border-gray-300 bg-white  dark:border-blue-900/40 dark:bg-gray-900":
-          !context?.selected,
-        "border-green-500 bg-green-500": context?.selected,
-      },
-    ],
-  }),
-});
+        {
+          "border-gray-300 bg-white  dark:border-blue-900/40 dark:bg-gray-900":
+            !context?.selected,
+          "border-green-500 bg-green-500": context?.selected,
+        },
+      ],
+    }),
+  };
+};
 
 export const primeVueSwitchStyled = {
   root: ({ props }: any) => ({
