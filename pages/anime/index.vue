@@ -24,5 +24,12 @@
 </template>
 
 <script setup>
-const { data: animeList } = useFetch("/api/anime", { key: "anime" });
+const nuxtApp = useNuxtApp();
+const { data: animeList } = useFetch("/api/anime", {
+  key: "anime",
+
+  getCachedData(key) {
+    return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+  },
+});
 </script>

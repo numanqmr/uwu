@@ -111,11 +111,15 @@
 </template>
 
 <script setup>
+const nuxtApp = useNuxtApp();
 const route = useRoute();
 const id = route.params.id;
 
 const { data: animeData } = await useFetch(`/api/anime/${id}`, {
   key: `anime-${id}`,
+  getCachedData(key) {
+    return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+  },
 });
 
 /*
