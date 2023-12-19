@@ -5,6 +5,8 @@ import {
   text,
   numeric,
   timestamp,
+  boolean,
+  unique,
 } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 
@@ -55,3 +57,32 @@ export const animeTable = pgTable("AnimeTable", {
   watches: numeric("watches").notNull(),
   genre: text("genre").default("{}").array(),
 });
+
+export const userType = pgEnum("user_type", ["admin", "user", "test"]);
+
+export const users = pgTable(
+  "users",
+  {
+    // You can use { mode: "bigint" } if numbers are exceeding js number limitations
+    id: bigint("id", { mode: "number" }).primaryKey().notNull(),
+    name: text("name"),
+    email: text("email").notNull(),
+    dateJoined: timestamp("date_joined", {
+      withTimezone: true,
+      mode: "string",
+    }).defaultNow(),
+    lastOnline: timestamp("last_online", {
+      withTimezone: true,
+      mode: "string",
+    }).defaultNow(),
+    isApproved: boolean("is_approved"),
+    userType: userType("user_type"),
+  },
+  (table) => {
+    return {
+      usersIdKey: unique("users_id_key").on(table.id),
+      usersEmailKey: unique("users_email_key").on(table.email),
+    };
+  },
+  // Need fields for animeAdded, reviews, animeOfTheWeek, likes, watches, allTimeAnimeList
+);
