@@ -29,6 +29,21 @@ export const primeVueDropdownStyled = {
       { "pr-7": props.showClear },
     ],
   }),
+  wrapper: {
+    class: [
+      "mt-2 max-h-[200px] overflow-auto bg-white text-gray-700 border-0 rounded-md shadow-lg dark:bg-gray-800 dark:text-white/80",
+    ],
+  },
+  item: ({ context }) => {
+    console.log(context);
+    return {
+      class: [
+        !context.selected
+          ? "cursor-pointer font-normal overflow-hidden relative whitespace-nowrap m-0 p-3 border-0  transition-shadow duration-200 rounded-none text-gray-700 hover:text-gray-700 hover:bg-gray-200 dark:text-white/80 dark:hover:bg-gray-200"
+          : "cursor-pointer font-normal overflow-hidden relative whitespace-nowrap m-0 p-3 border-0  transition-shadow duration-200 rounded-none bg-blue-50 text-blue-700 dark:bg-blue-300 dark:text-white/80",
+      ],
+    };
+  },
 };
 
 export const primeVueInputNumberStyled = {
