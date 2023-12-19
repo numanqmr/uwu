@@ -11,7 +11,7 @@
                 class="hidden shrink-0 grow-0 basis-auto lg:flex lg:w-6/12 xl:w-4/12"
               >
                 <img
-                  :src="animeData?.imgURL"
+                  :src="animeData?.imageLink"
                   alt="Cover for the GOAT of all anime"
                   class="w-full rounded-t-lg lg:rounded-bl-lg lg:rounded-tr-none"
                 />
@@ -30,7 +30,7 @@
                   </p>
 
                   <div
-                    v-html="animeData?.description"
+                    v-html="animeData?.desc"
                     class="prose min-h-[30px] w-full dark:prose-invert prose-p:mb-0 prose-ul:[&>p]:text-3xl"
                   ></div>
                 </div>
@@ -60,9 +60,18 @@
             <div class="p-8">
               <h1 class="pb-2 text-xl font-bold uppercase">Details</h1>
               <ul>
-                <li><span class="font-bold">Recommends:</span> 15</li>
-                <li><span class="font-bold">Total Reviews:</span> 1</li>
-                <li><span class="font-bold">Dislikes:</span> 1</li>
+                <li>
+                  <span class="font-bold">Watches:</span>
+                  {{ animeData?.watches }}
+                </li>
+                <li>
+                  <span class="font-bold">Recommends:</span>
+                  {{ animeData?.likes }}
+                </li>
+                <li>
+                  <span class="font-bold">Reviews:</span>
+                  {{ animeData?.reviews }}
+                </li>
               </ul>
             </div>
           </div>
@@ -72,7 +81,7 @@
           class="mb-8 rounded-md bg-white p-8 dark:bg-gray-800 dark:text-slate-50"
         >
           <h5 class="mb-10 text-center text-xl font-semibold md:mb-6">
-            Reviews: 1
+            {{ animeData?.reviews }} Review(s):
           </h5>
 
           <!-- Comment -->
@@ -108,6 +117,20 @@ const id = route.params.id;
 const { data: animeData } = await useFetch(`/api/anime/${id}`, {
   key: `anime-${id}`,
 });
+
+/*
+id
+title
+imageLink
+desc
+malLink
+reviews
+createdAt
+editedAt
+likes
+watches
+genre
+*/
 
 if (!animeData.value) {
   throw createError({ statusCode: 404, message: "Page not found" });
