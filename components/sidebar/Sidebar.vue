@@ -93,8 +93,11 @@ const toggle = ref(false);
 const toggleSidebar = () => (toggle.value = !toggle.value);
 const hideSidebar = () => (toggle.value = false);
 
-const handleLogout = () => {
-  router.push(unauthRoutes.login);
+const client = useSupabaseClient();
+
+const handleLogout = async () => {
+  const { error } = await client.auth.signOut();
+  if (!error) return router.push(unauthRoutes.login);
 };
 
 const routes = reactive([

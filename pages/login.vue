@@ -58,16 +58,14 @@ definePageMeta({
 
 const email = ref("");
 const password = ref("");
-const client = useSupabaseClient();
+const { loginUser, user } = useAppAuth();
 
-const handleSubmit = () => {
-  const { user, error } = client.auth.signInWithPassword({
+const handleSubmit = async () => {
+  const { error } = await loginUser({
     email: email.value,
     password: password.value,
   });
 };
-
-const user = useSupabaseUser();
 
 onMounted(() => {
   watchEffect(() => {
