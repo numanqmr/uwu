@@ -28,7 +28,7 @@
     "@tiptap/starter-kit": "^2.0.3",
     "@tiptap/vue-3": "^2.0.3",
     "pinia": "^2.1.4",
-    "primevue": "^3.37.0",
+    "primevue": "^3.44.0",
     "zod": "^3.22.4"
   }
 }
