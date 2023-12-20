@@ -5,7 +5,7 @@
     optionLabel="name"
     :optionValue="optionValue ?? null"
     :placeholder="placeholder"
-    :pt="primeVueDropdownStyled"
+    :pt="primeVueDropdownStyled()"
   />
 </template>
 
