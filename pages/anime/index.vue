@@ -2,7 +2,11 @@
   <div>
     <NuxtLayout name="auth-layout">
       <div class="my-14 text-xl font-extrabold dark:text-white">Anime List</div>
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div v-if="pending">
+        <AnimeListLoader />
+      </div>
+
+      <div v-else class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         <div v-for="(anime, index) in animeList" :key="`anime-${index}`">
           <AnimeCard
             :id="anime.id"
@@ -25,7 +29,7 @@
 
 <script setup>
 const nuxtApp = useNuxtApp();
-const { data: animeList } = useFetch("/api/anime", {
+const { data: animeList, pending } = useFetch("/api/anime", {
   key: "anime",
 
   getCachedData(key) {
