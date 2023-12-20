@@ -1,5 +1,5 @@
 import { db } from "@/drizzle.config";
-import { users } from "@/drizzle/schema";
+import { profile } from "@/drizzle/schema";
 import { eq } from "drizzle-orm";
 
 export default defineEventHandler(async (event) => {
@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 
   const [user] = await db
     .select()
-    .from(users)
-    .where(eq(users?.email, body?.email));
+    .from(profile)
+    .where(eq(profile?.email, body?.email));
   return user;
 });

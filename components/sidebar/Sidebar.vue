@@ -86,18 +86,15 @@
 import { userStore } from "@/store";
 
 const user = userStore();
-const router = useRouter();
+const { logOutUser } = useAppAuth();
 
 const toggle = ref(false);
 
 const toggleSidebar = () => (toggle.value = !toggle.value);
 const hideSidebar = () => (toggle.value = false);
 
-const client = useSupabaseClient();
-
 const handleLogout = async () => {
-  const { error } = await client.auth.signOut();
-  if (!error) return router.push(unauthRoutes.login);
+  await logOutUser();
 };
 
 const routes = reactive([

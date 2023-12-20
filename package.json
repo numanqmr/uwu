@@ -30,6 +30,7 @@
     "@tiptap/pm": "^2.0.3",
     "@tiptap/starter-kit": "^2.0.3",
     "@tiptap/vue-3": "^2.0.3",
+    "@vueuse/core": "^10.7.0",
     "drizzle-orm": "^0.29.1",
     "pg": "^8.11.3",
     "pinia": "^2.1.4",
