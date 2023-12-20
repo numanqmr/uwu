@@ -7,6 +7,7 @@ import {
   timestamp,
   boolean,
   unique,
+  uuid,
 } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 
@@ -36,6 +37,7 @@ export const codeChallengeMethod = pgEnum("code_challenge_method", [
 ]);
 export const factorStatus = pgEnum("factor_status", ["unverified", "verified"]);
 export const factorType = pgEnum("factor_type", ["totp", "webauthn"]);
+export const userType = pgEnum("user_type", ["admin", "user", "test"]);
 
 export const animeTable = pgTable("AnimeTable", {
   // You can use { mode: "bigint" } if numbers are exceeding js number limitations
@@ -58,13 +60,9 @@ export const animeTable = pgTable("AnimeTable", {
   genre: text("genre").default("{}").array(),
 });
 
-export const userType = pgEnum("user_type", ["admin", "user", "test"]);
-
 export const users = pgTable(
-  "users",
+  "profile",
   {
-    // You can use { mode: "bigint" } if numbers are exceeding js number limitations
-    id: bigint("id", { mode: "number" }).primaryKey().notNull(),
     name: text("name"),
     email: text("email").notNull(),
     dateJoined: timestamp("date_joined", {
@@ -77,12 +75,13 @@ export const users = pgTable(
     }).defaultNow(),
     isApproved: boolean("is_approved"),
     userType: userType("user_type"),
+    id: uuid("id").primaryKey().notNull(),
   },
   (table) => {
     return {
-      usersIdKey: unique("users_id_key").on(table.id),
       usersEmailKey: unique("users_email_key").on(table.email),
+      usersIdKey: unique("users_id_key").on(table.id),
     };
   },
-  // Need fields for animeAdded, reviews, animeOfTheWeek, likes, watches, allTimeAnimeList
+  //   // Need fields for animeAdded, reviews, animeOfTheWeek, likes, watches, allTimeAnimeList
 );
