@@ -2,7 +2,7 @@
   <InputNumber
     :modelValue="props.value"
     :useGrouping="props?.useGrouping ?? true"
-    :pt="primeVueInputNumberStyled"
+    :pt="primeVueInputNumberStyled()"
   />
 </template>
 

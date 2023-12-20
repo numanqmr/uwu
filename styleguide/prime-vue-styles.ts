@@ -48,18 +48,22 @@ export const primeVueDropdownStyled = () => {
   };
 };
 
-export const primeVueInputNumberStyled = {
-  root: "w-full inline-flex",
-  input: {
-    root: {
-      class: [
-        "mb-4 block !w-full rounded-lg border-2 !border-blue-200 p-[10px] text-sm text-gray-900 shadow-sm",
-        "focus:!border-blue-500 focus:shadow-none focus:outline-none focus:outline-0",
-        "dark:!border-gray-600 dark:!bg-gray-700",
-        "dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:shadow-none",
-      ],
+export const primeVueInputNumberStyled = () => {
+  return {
+    root: ({ props, context }: any) => ({
+      class: ["w-full inline-flex mb-4"],
+    }),
+
+    input: {
+      root: ({ parent }: any) => ({
+        class: [
+          "p-2.5 w-full  rounded-lg border-2 border-blue-200 text-sm text-gray-900 shadow-sm",
+          "focus:border-blue-500 focus:shadow-none focus:outline-none focus:outline-0",
+          "dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400",
+        ],
+      }),
     },
-  },
+  };
 };
 
 export const primeVueMultiSelectStyled = (isOpen: globalThis.Ref<boolean>) => {
