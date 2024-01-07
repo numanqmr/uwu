@@ -1,12 +1,16 @@
+import { defineStore } from "pinia";
+
 type LoginPayload = {
   email: string;
   password: string;
 };
 
-export const useAppAuth = () => {
+export const useAuthStore = defineStore("auth-store", () => {
   const client = useSupabaseClient();
   const user = useSupabaseUser();
   const router = useRouter();
+
+  const userProfile = ref(null);
 
   const loginUser = async ({ email, password }: LoginPayload) => {
     const { data, error } = await client.auth.signInWithPassword({
@@ -36,11 +40,5 @@ export const useAppAuth = () => {
     return userData;
   };
 
-  return {
-    client,
-    user,
-    loginUser,
-    getUserData,
-    logOutUser,
-  };
-};
+  return { userProfile, loginUser, logOutUser, getUserData };
+});

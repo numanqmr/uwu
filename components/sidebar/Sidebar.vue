@@ -83,10 +83,10 @@
 </template>
 
 <script setup>
-import { userStore } from "@/store";
+import { userStore, useAuthStore } from "@/store";
 
 const user = userStore();
-const { logOutUser } = useAppAuth();
+const authStore = useAuthStore();
 
 const toggle = ref(false);
 
@@ -94,7 +94,7 @@ const toggleSidebar = () => (toggle.value = !toggle.value);
 const hideSidebar = () => (toggle.value = false);
 
 const handleLogout = async () => {
-  await logOutUser();
+  await authStore.logOutUser();
 };
 
 const routes = reactive([

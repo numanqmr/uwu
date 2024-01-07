@@ -52,24 +52,23 @@
 </template>
 
 <script setup>
+import { useAuthStore } from "@/store";
+
 definePageMeta({
   // middleware: ["auth"],
 });
 
 const email = ref("");
 const password = ref("");
-const { loginUser, user } = useAppAuth();
+const authStore = useAuthStore();
 
 const handleSubmit = async () => {
-  const { error } = await loginUser({
-    email: email.value,
-    password: password.value,
-  });
+  await authStore.loginUser({ email: email.value, password: password.value });
 };
 
 onMounted(() => {
   watchEffect(() => {
-    if (user.value) return navigateTo("/feed");
+    if (authStore.userProfile) return navigateTo("/feed");
   });
 });
 </script>
