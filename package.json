@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.0.2",
-    "@nuxtjs/supabase": "^0.3.6",
+    "@nuxtjs/supabase": "^1.0.2",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^18",
     "autoprefixer": "^10.4.14",
