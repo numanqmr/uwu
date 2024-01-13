@@ -32,7 +32,11 @@
           <div class="mb-4 text-2xl font-bold dark:text-white">Add Status</div>
           <div class="rounded-lg bg-white p-4 dark:bg-gray-800 dark:text-white">
             <div class="mb-2 flex items-center gap-2">
-              <img class="h-12 w-12 rounded-full" :src="user.userImg" alt="" />
+              <img
+                class="h-12 w-12 rounded-full"
+                :src="user.data.userImg"
+                alt=""
+              />
               <strong>You</strong>
             </div>
             <form action="">

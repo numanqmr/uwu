@@ -17,6 +17,7 @@ export const useAuthStore = defineStore("auth-store", () => {
       email,
       password,
     });
+    user.value = data.user;
 
     return { data, error };
   };
@@ -30,14 +31,18 @@ export const useAuthStore = defineStore("auth-store", () => {
   };
 
   const getUserData = async () => {
-    const userData = await useAsyncData("mountains", () =>
-      $fetch("/api/user", {
-        method: "post",
-        body: { email: user.value?.email },
-      }),
-    );
-
-    return userData;
+    try {
+      const userData = await useAsyncData("userProfile", () =>
+        $fetch("/api/user", {
+          method: "post",
+          body: { email: user.value?.email },
+        }),
+      );
+      console.log(userData);
+      return userData;
+    } catch (err) {
+      return err;
+    }
   };
 
   return { userProfile, loginUser, logOutUser, getUserData };
