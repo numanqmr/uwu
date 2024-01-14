@@ -1,15 +1,16 @@
 import {
   pgTable,
+  foreignKey,
   pgEnum,
+  uuid,
   bigint,
   text,
-  numeric,
+  unique,
   timestamp,
   boolean,
-  unique,
-  uuid,
+  numeric,
 } from "drizzle-orm/pg-core";
-import { sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 
 export const keyStatus = pgEnum("key_status", [
   "default",
@@ -39,28 +40,19 @@ export const factorStatus = pgEnum("factor_status", ["unverified", "verified"]);
 export const factorType = pgEnum("factor_type", ["totp", "webauthn"]);
 export const userType = pgEnum("user_type", ["admin", "user", "test"]);
 
-export const animeTable = pgTable("AnimeTable", {
+export const animeReviews = pgTable("anime_reviews", {
+  id: uuid("id").defaultRandom().primaryKey().notNull(),
+  userId: uuid("user_id")
+    .notNull()
+    .references(() => profile.id, { onUpdate: "cascade" }),
   // You can use { mode: "bigint" } if numbers are exceeding js number limitations
-  id: bigint("id", { mode: "number" }).primaryKey().notNull(),
-  title: text("title"),
-  imageLink: text("image_link"),
-  desc: text("desc"),
-  malLink: text("mal_link"),
-  reviews: numeric("reviews").default("0").notNull(),
-  createdAt: timestamp("created_at", {
-    withTimezone: true,
-    mode: "string",
-  }).defaultNow(),
-  editedAt: timestamp("edited_at", {
-    withTimezone: true,
-    mode: "string",
-  }).defaultNow(),
-  likes: numeric("likes").default("0").notNull(),
-  watches: numeric("watches").notNull(),
-  genre: text("genre").default("{}").array(),
+  animeId: bigint("anime_id", { mode: "number" })
+    .notNull()
+    .references(() => animeTable.id, { onUpdate: "cascade" }),
+  review: text("review"),
 });
 
-export const users = pgTable(
+export const profile = pgTable(
   "profile",
   {
     name: text("name"),
@@ -83,5 +75,37 @@ export const users = pgTable(
       usersIdKey: unique("users_id_key").on(table.id),
     };
   },
-  //   // Need fields for animeAdded, reviews, animeOfTheWeek, likes, watches, allTimeAnimeList
 );
+
+export const animeTable = pgTable("AnimeTable", {
+  // You can use { mode: "bigint" } if numbers are exceeding js number limitations
+  id: bigint("id", { mode: "number" }).primaryKey().notNull(),
+  title: text("title"),
+  imageLink: text("image_link"),
+  desc: text("desc"),
+  malLink: text("mal_link"),
+  reviews: numeric("reviews").default("0").notNull(),
+  createdAt: timestamp("created_at", {
+    withTimezone: true,
+    mode: "string",
+  }).defaultNow(),
+  editedAt: timestamp("edited_at", {
+    withTimezone: true,
+    mode: "string",
+  }).defaultNow(),
+  likes: numeric("likes").default("0").notNull(),
+  watches: numeric("watches").notNull(),
+  genre: text("genre").array(),
+});
+
+export const profileRelations = relations(profile, ({ many }) => ({
+  reviewer: many(animeReviews, { relationName: "reviewer" }),
+}));
+
+export const animeReviewRelations = relations(animeReviews, ({ one }) => ({
+  reviewer: one(profile, {
+    fields: [animeReviews.userId],
+    references: [profile.id],
+    relationName: "reviewer",
+  }),
+}));

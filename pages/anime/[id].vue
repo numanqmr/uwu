@@ -122,6 +122,17 @@ const { data: animeData } = await useFetch(`/api/anime/${id}`, {
   },
 });
 
+const { data: dataaaa } = await useFetch(`/api/anime/${id}/reviews`, {
+  key: `anime-${id}-reviews`,
+  // getCachedData(key) {
+  //   return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+  // },
+});
+
+watchEffect(() => {
+  // console.log({ ...dataaaa.value });
+});
+
 /*
 id
 title

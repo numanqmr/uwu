@@ -72,13 +72,13 @@
                 <div>
                   <img
                     class="h-24 w-24 rounded-full"
-                    :src="user.userImg"
+                    :src="user.data.userImg"
                     alt="Rounded avatar"
                   />
                 </div>
-                <div class="ml-2 p-2">
-                  <p class="text-lg font-bold">{{ user.name }}</p>
-                  <p class="text-sm text-slate-600">{{ user.email }}</p>
+                <div class="ml-2 p-2 text-center">
+                  <p class="text-lg font-bold">{{ user.data.name }}</p>
+                  <p class="text-sm text-slate-600">{{ user.data.email }}</p>
                 </div>
               </div>
             </div>
