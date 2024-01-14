@@ -80,7 +80,10 @@
         <section
           class="mb-8 rounded-md bg-white p-8 dark:bg-gray-800 dark:text-slate-50"
         >
-          <h5 class="mb-10 text-center text-xl font-semibold md:mb-6">
+          <h5
+            class="mb-10 text-center text-xl font-semibold md:mb-6"
+            ref="loadReviewsTarget"
+          >
             {{ animeData?.reviews }} Review(s):
           </h5>
 
@@ -111,9 +114,42 @@
 </template>
 
 <script setup>
+import { useIntersectionObserver } from "@vueuse/core";
+
 const nuxtApp = useNuxtApp();
 const route = useRoute();
 const id = route.params.id;
+
+const loadReviewsTarget = ref(null);
+const shouldLoadReviews = ref(false);
+
+const { data, error, execute, pending, status } = await useFetch(
+  `/api/anime/${id}/reviews`,
+  {
+    key: `anime-${id}-reviews-overview`,
+    getCachedData(key) {
+      nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+    },
+    immediate: false,
+  },
+);
+
+const { stop } = useIntersectionObserver(
+  loadReviewsTarget,
+  async ([{ isIntersecting }], observerElement) => {
+    shouldLoadReviews.value = isIntersecting;
+    if (isIntersecting) {
+      try {
+        const key = `anime-${id}-reviews-overview`;
+        if (nuxtApp.payload.data[key] || nuxtApp.static.data[key]) return;
+        await execute();
+        stop();
+      } catch (error) {
+        console.error("Failed fetching reviews");
+      }
+    }
+  },
+);
 
 const { data: animeData } = await useFetch(`/api/anime/${id}`, {
   key: `anime-${id}`,
@@ -121,31 +157,6 @@ const { data: animeData } = await useFetch(`/api/anime/${id}`, {
     return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
   },
 });
-
-const { data: dataaaa } = await useFetch(`/api/anime/${id}/reviews`, {
-  key: `anime-${id}-reviews`,
-  // getCachedData(key) {
-  //   return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
-  // },
-});
-
-watchEffect(() => {
-  // console.log({ ...dataaaa.value });
-});
-
-/*
-id
-title
-imageLink
-desc
-malLink
-reviews
-createdAt
-editedAt
-likes
-watches
-genre
-*/
 
 if (!animeData.value) {
   throw createError({ statusCode: 404, message: "Page not found" });
