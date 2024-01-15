@@ -22,6 +22,8 @@
 </template>
 
 <script setup>
+import { apiUrls } from "@/api";
+
 const router = useRouter();
-const { data } = useFetch("/api/people", { key: "users" });
+const { data } = useFetch(apiUrls.allProfiles, { key: "users" });
 </script>

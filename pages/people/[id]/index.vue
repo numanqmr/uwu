@@ -114,12 +114,13 @@
 </template>
 
 <script setup>
-const router = useRouter();
+import { apiUrls } from "@/api";
+
 const route = useRoute();
 const id = route.params.id;
-const { data: userData } = await useFetch(`/api/people/${id}`, {
-  key: `user-${id}`,
-});
+const key = `user-${id}`;
+
+const { data: userData } = await useFetch(apiUrls.userProfile(id), { key });
 
 if (!userData.value) {
   throw createError({ statusCode: 404, message: "Page not found" });

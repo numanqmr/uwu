@@ -115,6 +115,7 @@
 
 <script setup>
 import { useIntersectionObserver } from "@vueuse/core";
+import { apiUrls } from "@/api";
 
 const { isDataInCache } = useCheckInCache();
 const route = useRoute();
@@ -123,10 +124,11 @@ const id = route.params.id;
 const loadReviewsTarget = ref(null);
 const shouldLoadReviews = ref(false);
 
+const reviewsOverviewKey = `anime-${id}-reviews-overview`;
 const { data, error, execute, pending, status } = await useFetch(
-  `/api/anime/${id}/reviews`,
+  apiUrls.animePageReviews(id),
   {
-    key: `anime-${id}-reviews-overview`,
+    key: reviewsOverviewKey,
     getCachedData(key) {
       isDataInCache(key);
     },
@@ -151,8 +153,9 @@ const { stop } = useIntersectionObserver(
   },
 );
 
-const { data: animeData } = await useFetch(`/api/anime/${id}`, {
-  key: `anime-${id}`,
+const animeKey = `anime-${id}`;
+const { data: animeData } = await useFetch(apiUrls.animePage(id), {
+  key: animeKey,
   getCachedData(key) {
     return isDataInCache(key);
   },

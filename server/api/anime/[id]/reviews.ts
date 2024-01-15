@@ -1,5 +1,5 @@
 import { db } from "@/drizzle.config";
-import { animeTable, animeReviews } from "@/drizzle/schema";
+import { animeReviews } from "@/drizzle/schema";
 import { eq } from "drizzle-orm";
 // import { mockAnimeList } from "@/utils/mockData";
 // const anime = mockAnimeList.find((anime) => anime.id === parseInt(id));
@@ -7,18 +7,10 @@ import { eq } from "drizzle-orm";
 export default defineEventHandler(async (event) => {
   const { id } = event.context.params as any;
 
-  const result = await db
-    .select()
-    .from(animeReviews)
-    .where(eq(animeReviews.animeId, +id));
-
-  const walahh = await db.query.animeReviews.findMany({
+  const result = await db.query.animeReviews.findMany({
     where: eq(animeReviews.animeId, +id),
-    with: { reviewer: { columns: { name: true } } },
+    with: { reviewer: { columns: { name: true, id: true } } },
   });
-
-  console.log("walahh");
-  console.log(walahh);
 
   return result;
 });

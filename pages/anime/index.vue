@@ -28,9 +28,11 @@
 </template>
 
 <script setup>
+import { apiUrls } from "@/api";
+
 const { isDataInCache } = useCheckInCache();
 
-const { data: animeList, pending } = useFetch("/api/anime", {
+const { data: animeList, pending } = useFetch(apiUrls.allAnime, {
   key: "anime",
   getCachedData(key) {
     return isDataInCache(key);
