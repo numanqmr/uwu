@@ -28,12 +28,12 @@
 </template>
 
 <script setup>
-const nuxtApp = useNuxtApp();
+const { isDataInCache } = useCheckInCache();
+
 const { data: animeList, pending } = useFetch("/api/anime", {
   key: "anime",
-
   getCachedData(key) {
-    return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+    return isDataInCache(key);
   },
 });
 </script>

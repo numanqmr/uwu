@@ -116,7 +116,7 @@
 <script setup>
 import { useIntersectionObserver } from "@vueuse/core";
 
-const nuxtApp = useNuxtApp();
+const { isDataInCache } = useCheckInCache();
 const route = useRoute();
 const id = route.params.id;
 
@@ -128,7 +128,7 @@ const { data, error, execute, pending, status } = await useFetch(
   {
     key: `anime-${id}-reviews-overview`,
     getCachedData(key) {
-      nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+      isDataInCache(key);
     },
     immediate: false,
   },
@@ -141,7 +141,7 @@ const { stop } = useIntersectionObserver(
     if (isIntersecting) {
       try {
         const key = `anime-${id}-reviews-overview`;
-        if (nuxtApp.payload.data[key] || nuxtApp.static.data[key]) return;
+        if (isDataInCache(key)) return;
         await execute();
         stop();
       } catch (error) {
@@ -154,7 +154,7 @@ const { stop } = useIntersectionObserver(
 const { data: animeData } = await useFetch(`/api/anime/${id}`, {
   key: `anime-${id}`,
   getCachedData(key) {
-    return nuxtApp.payload.data[key] || nuxtApp.static.data[key];
+    return isDataInCache(key);
   },
 });
 
