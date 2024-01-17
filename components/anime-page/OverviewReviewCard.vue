@@ -32,10 +32,7 @@
 import { useIntersectionObserver } from "@vueuse/core";
 import { apiUrls } from "~/api";
 
-interface Props {
-  animeData: any;
-  id: string | number;
-}
+type Props = { animeData: any; id: string | number };
 
 const props = defineProps<Props>();
 const { id } = props;
