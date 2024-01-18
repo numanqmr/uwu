@@ -18,6 +18,11 @@ export default defineNuxtConfig({
     url: process.env.SUPABASE_URL,
     key: process.env.SUPABASE_KEY,
     // Options
+    redirect: false,
+    cookieOptions: {},
+    clientOptions: {
+      auth: { flowType: "implicit", autoRefreshToken: false },
+    },
   },
   primevue: { usePrimeVue: false },
 });

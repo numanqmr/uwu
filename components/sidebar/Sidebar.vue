@@ -43,24 +43,25 @@
       <div class="w-100 column flex flex-col items-center justify-center pb-8">
         <img
           class="h-14 w-14 rounded-full"
-          :src="user.userImg"
+          :src="user.data.userImg"
           alt="Rounded avatar"
         />
         <p class="w-100 pt-2 text-lg font-bold dark:text-white">
-          {{ user.name }}
+          {{ user.data.name }}
         </p>
+        <div @click="authStore.getUserData()">GetUserProfile</div>
         <span class="w-100 pt-2 text-sm text-gray-500 dark:text-slate-400">
-          {{ user.email }}
+          {{ user.data.email }}
         </span>
       </div>
 
       <ul class="space-y-2 font-medium">
-        <li v-for="name in routes" @click="hideSidebar">
-          <NuxtLink :to="name.route">
+        <li v-for="link in routes" @click="hideSidebar">
+          <NuxtLink :to="link.route">
             <div
               class="flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
             >
-              <span class="ml-3">{{ name.name }}</span>
+              <span class="ml-3">{{ link.name }}</span>
             </div>
           </NuxtLink>
         </li>
@@ -83,18 +84,18 @@
 </template>
 
 <script setup>
-import { userStore } from "@/store";
+import { userStore, useAuthStore } from "@/store";
 
 const user = userStore();
-const router = useRouter();
+const authStore = useAuthStore();
 
 const toggle = ref(false);
 
 const toggleSidebar = () => (toggle.value = !toggle.value);
 const hideSidebar = () => (toggle.value = false);
 
-const handleLogout = () => {
-  router.push(unauthRoutes.login);
+const handleLogout = async () => {
+  await authStore.logOutUser();
 };
 
 const routes = reactive([

@@ -2,61 +2,68 @@
 const tw = (strings: string, ...values: any) =>
   String.raw({ raw: strings }, ...values);
 
-export const primeVueDropdownStyled = {
-  root: ({ props }: any) => ({
-    class: [
-      "w-full",
-      tw("relative inline-flex cursor-pointer select-none"),
-      tw("rounded-md border-2 border-blue-200 bg-white"),
-      tw("dark:border-gray-600 dark:bg-gray-700"),
-      {
-        [tw("pointer-events-none cursor-default select-none opacity-60")]:
-          props.disabled,
-      },
-    ],
-  }),
-  input: ({ props }: any) => ({
-    class: [
-      tw(
-        "relative block flex flex-auto cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap",
-      ),
-      tw("border-0 bg-transparent text-gray-800"),
-      tw("text-sm dark:text-white"),
-      tw(
-        "appearance-none rounded bg-transparent p-[10px] font-sans text-base transition duration-200",
-      ),
-      tw("focus:border-blue-500"),
-      { "pr-7": props.showClear },
-    ],
-  }),
-  wrapper: {
-    class: [
-      "mt-2 max-h-[200px] overflow-auto bg-white text-gray-700 border-0 rounded-md shadow-lg dark:bg-gray-800 dark:text-white/80",
-    ],
-  },
-  item: ({ context }: any) => {
-    return {
+export const primeVueDropdownStyled = () => {
+  return {
+    root: ({ props }: any) => ({
       class: [
-        !context.selected
-          ? "cursor-pointer font-normal overflow-hidden relative whitespace-nowrap m-0 p-3 border-0  transition-shadow duration-200 rounded-none text-gray-700 hover:text-gray-700 hover:bg-gray-200 dark:text-white/80 dark:hover:bg-gray-200"
-          : "cursor-pointer font-normal overflow-hidden relative whitespace-nowrap m-0 p-3 border-0  transition-shadow duration-200 rounded-none bg-blue-50 text-blue-700 dark:bg-blue-300 dark:text-white/80",
+        tw("w-full"),
+        tw("relative inline-flex cursor-pointer select-none"),
+        tw("rounded-md border-2 border-blue-200 bg-white"),
+        tw("dark:border-gray-600 dark:bg-gray-700"),
+        {
+          ["pointer-events-none cursor-default select-none opacity-60"]:
+            props.disabled,
+        },
       ],
-    };
-  },
-};
-
-export const primeVueInputNumberStyled = {
-  root: "w-full inline-flex",
-  input: {
-    root: {
+    }),
+    input: ({ props }: any) => ({
       class: [
-        "mb-4 block !w-full rounded-lg border-2 !border-blue-200 p-[10px] text-sm text-gray-900 shadow-sm",
-        "focus:!border-blue-500 focus:shadow-none focus:outline-none focus:outline-0",
-        "dark:!border-gray-600 dark:!bg-gray-700",
-        "dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:shadow-none",
+        "relative block flex flex-auto cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap p-2.5",
+        "border-0 bg-transparent text-gray-800",
+        "text-sm dark:text-white",
+        "appearance-none rounded bg-transparent p-[10px] font-sans text-base transition duration-200",
+        "focus:border-blue-500",
+        { "pr-7": props.showClear },
+      ],
+    }),
+    wrapper: {
+      class: [
+        "mt-2 max-h-[200px] overflow-auto bg-white text-gray-700 border-0 rounded-md shadow-lg dark:bg-gray-800 dark:text-white/80",
       ],
     },
-  },
+    trigger: {
+      class: [
+        "flex items-center justify-center pr-2.5 shrink-0 bg-transparent text-gray-500 w-12 rounded-tr-lg rounded-br-lg",
+      ],
+    },
+    item: ({ context }: any) => {
+      return {
+        class: [
+          !context.selected
+            ? "cursor-pointer font-normal overflow-hidden relative whitespace-nowrap m-0 p-3 border-0  transition-shadow duration-200 rounded-none text-gray-700 hover:text-gray-700 hover:bg-gray-200 dark:text-white/80 dark:hover:bg-gray-200"
+            : "cursor-pointer font-normal overflow-hidden relative whitespace-nowrap m-0 p-3 border-0  transition-shadow duration-200 rounded-none bg-blue-50 text-blue-700 dark:bg-blue-300 dark:text-white/80",
+        ],
+      };
+    },
+  };
+};
+
+export const primeVueInputNumberStyled = () => {
+  return {
+    root: ({ props, context }: any) => ({
+      class: ["w-full inline-flex mb-4"],
+    }),
+
+    input: {
+      root: ({ parent }: any) => ({
+        class: [
+          "p-2.5 w-full  rounded-lg border-2 border-blue-200 text-sm text-gray-900 shadow-sm",
+          "focus:border-blue-500 focus:shadow-none focus:outline-none focus:outline-0",
+          "dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:placeholder-gray-400",
+        ],
+      }),
+    },
+  };
 };
 
 export const primeVueMultiSelectStyled = (isOpen: globalThis.Ref<boolean>) => {

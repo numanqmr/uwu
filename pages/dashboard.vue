@@ -32,7 +32,11 @@
           <div class="mb-4 text-2xl font-bold dark:text-white">Add Status</div>
           <div class="rounded-lg bg-white p-4 dark:bg-gray-800 dark:text-white">
             <div class="mb-2 flex items-center gap-2">
-              <img class="h-12 w-12 rounded-full" :src="user.userImg" alt="" />
+              <img
+                class="h-12 w-12 rounded-full"
+                :src="user.data.userImg"
+                alt=""
+              />
               <strong>You</strong>
             </div>
             <form action="">
@@ -68,13 +72,13 @@
                 <div>
                   <img
                     class="h-24 w-24 rounded-full"
-                    :src="user.userImg"
+                    :src="user.data.userImg"
                     alt="Rounded avatar"
                   />
                 </div>
-                <div class="ml-2 p-2">
-                  <p class="text-lg font-bold">{{ user.name }}</p>
-                  <p class="text-sm text-slate-600">{{ user.email }}</p>
+                <div class="ml-2 p-2 text-center">
+                  <p class="text-lg font-bold">{{ user.data.name }}</p>
+                  <p class="text-sm text-slate-600">{{ user.data.email }}</p>
                 </div>
               </div>
             </div>

@@ -6,15 +6,18 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "generate-schema": "drizzle-kit generate:pg",
+    "introspect": "drizzle-kit introspect:pg"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.0.2",
-    "@nuxtjs/supabase": "^0.3.6",
+    "@nuxtjs/supabase": "^1.0.2",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^18",
     "autoprefixer": "^10.4.14",
-    "nuxt": "^3.6.2",
+    "drizzle-kit": "^0.20.7",
+    "nuxt": "^3.8.2",
     "nuxt-primevue": "^0.0.3",
     "postcss": "^8.4.24",
     "prettier": "^3.0.0",
@@ -27,7 +30,11 @@
     "@tiptap/pm": "^2.0.3",
     "@tiptap/starter-kit": "^2.0.3",
     "@tiptap/vue-3": "^2.0.3",
+    "@vueuse/core": "^10.7.2",
+    "drizzle-orm": "^0.29.1",
+    "pg": "^8.11.3",
     "pinia": "^2.1.4",
+    "postgres": "^3.4.3",
     "primevue": "^3.44.0",
     "zod": "^3.22.4"
   }

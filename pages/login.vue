@@ -52,26 +52,23 @@
 </template>
 
 <script setup>
+import { useAuthStore } from "@/store";
+
 definePageMeta({
   // middleware: ["auth"],
 });
 
 const email = ref("");
 const password = ref("");
-const client = useSupabaseClient();
+const authStore = useAuthStore();
 
-const handleSubmit = () => {
-  const { user, error } = client.auth.signInWithPassword({
-    email: email.value,
-    password: password.value,
-  });
+const handleSubmit = async () => {
+  await authStore.loginUser({ email: email.value, password: password.value });
 };
-
-const user = useSupabaseUser();
 
 onMounted(() => {
   watchEffect(() => {
-    if (user.value) return navigateTo("/feed");
+    if (authStore.userProfile) return navigateTo("/feed");
   });
 });
 </script>

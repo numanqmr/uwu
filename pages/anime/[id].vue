@@ -11,7 +11,7 @@
                 class="hidden shrink-0 grow-0 basis-auto lg:flex lg:w-6/12 xl:w-4/12"
               >
                 <img
-                  :src="animeData?.imgURL"
+                  :src="animeData?.imageLink"
                   alt="Cover for the GOAT of all anime"
                   class="w-full rounded-t-lg lg:rounded-bl-lg lg:rounded-tr-none"
                 />
@@ -30,7 +30,7 @@
                   </p>
 
                   <div
-                    v-html="animeData?.description"
+                    v-html="animeData?.desc"
                     class="prose min-h-[30px] w-full dark:prose-invert prose-p:mb-0 prose-ul:[&>p]:text-3xl"
                   ></div>
                 </div>
@@ -60,53 +60,40 @@
             <div class="p-8">
               <h1 class="pb-2 text-xl font-bold uppercase">Details</h1>
               <ul>
-                <li><span class="font-bold">Recommends:</span> 15</li>
-                <li><span class="font-bold">Total Reviews:</span> 1</li>
-                <li><span class="font-bold">Dislikes:</span> 1</li>
+                <li>
+                  <span class="font-bold">Watches:</span>
+                  {{ animeData?.watches }}
+                </li>
+                <li>
+                  <span class="font-bold">Recommends:</span>
+                  {{ animeData?.likes }}
+                </li>
+                <li>
+                  <span class="font-bold">Reviews:</span>
+                  {{ animeData?.reviews }}
+                </li>
               </ul>
             </div>
           </div>
         </section>
 
-        <section
-          class="mb-8 rounded-md bg-white p-8 dark:bg-gray-800 dark:text-slate-50"
-        >
-          <h5 class="mb-10 text-center text-xl font-semibold md:mb-6">
-            Reviews: 1
-          </h5>
-
-          <!-- Comment -->
-          <div class="flex flex-wrap p-1 shadow-lg">
-            <div class="w-full shrink-0 grow-0 basis-auto md:w-2/12">
-              <img
-                src="https://cdn.myanimelist.net/images/characters/9/326322.jpg"
-                class="mb-6 w-full rounded-lg shadow-lg dark:shadow-black/20"
-                alt="Avatar"
-              />
-            </div>
-
-            <div class="w-full shrink-0 grow-0 basis-auto md:w-10/12 md:pl-6">
-              <p class="mb-3 font-semibold">Griffith (Definitely not Femto)</p>
-              <p>
-                Pathetic Anime. It's thanks to this stupid anime people have a
-                hard time deciding if Johan Liebert is the greatest anime
-                villian. NO, NEWS FLASH BUCKOS! It's ME.... ME ME ME ME ME!!!
-                Don't make me do to you what I did to Guts
-              </p>
-            </div>
-          </div>
-        </section>
+        <OverviewReviewCard :id="id" :animeData="animeData" />
       </div>
     </NuxtLayout>
   </div>
 </template>
 
 <script setup>
+import { apiUrls } from "@/api";
+
+const { isDataInCache } = useCheckInCache();
 const route = useRoute();
 const id = route.params.id;
 
-const { data: animeData } = await useFetch(`/api/anime/${id}`, {
-  key: `anime-${id}`,
+const animeKey = `anime-${id}`;
+const { data: animeData } = await useFetch(apiUrls.animePage(id), {
+  key: animeKey,
+  getCachedData: (key) => isDataInCache(key),
 });
 
 if (!animeData.value) {
