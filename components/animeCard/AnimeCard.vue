@@ -15,7 +15,7 @@
       <div class="flex w-full flex-wrap justify-center space-x-2">
         <template v-for="genre in props?.genres">
           <div
-            class="rounded-full bg-blue-500 bg-opacity-60 px-2 py-[2px] text-sm font-bold text-gray-200"
+            class="rounded-full bg-blue-500 bg-opacity-60 px-2 py-[2px] text-sm font-bold capitalize text-gray-200"
           >
             {{ genre }}
           </div>
@@ -32,25 +32,28 @@
       </div>
 
       <div class="mt-2 flex w-full justify-evenly px-1">
-        <div
-          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200"
+        <button
+          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200 hover:scale-110 hover:bg-gray-600"
+          @click.stop=""
         >
           <WatchedIcon />
 
           <span>{{ props?.views }}</span>
-        </div>
-        <div
-          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200"
+        </button>
+        <button
+          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200 hover:scale-110 hover:bg-gray-600"
+          @click.stop=""
         >
           <LikeIcon />
           <span>{{ props?.likes }}</span>
-        </div>
-        <div
-          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200"
+        </button>
+        <button
+          class="flex flex-1 cursor-pointer flex-col items-center rounded-xl px-8 py-1 text-gray-200 hover:scale-110 hover:bg-gray-600"
+          @click.stop=""
         >
           <CommentIcon />
           <span>{{ props?.reviews }}</span>
-        </div>
+        </button>
       </div>
     </div>
   </div>

@@ -17,43 +17,36 @@
           </div>
           <div
             class="relative grid cursor-pointer place-content-center rounded-2xl bg-gradient-to-r from-cyan-500/80 to-blue-500/80 py-4 hover:scale-105 sm:h-64 sm:w-1/3 sm:py-0 [&_svg]:hover:scale-105"
+            @click="router.push({ path: authRoutes.notifications })"
           >
             <div
               class="absolute -right-4 -top-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-500 p-4 text-sm font-bold text-slate-50"
             >
               20
             </div>
-            <InboxIcon class="h-24 w-24 fill-slate-100" />
+            <BellIcon class="h-24 w-24 fill-slate-100" />
           </div>
         </div>
 
         <div class="mb-8">
-          <div class="mb-4 text-2xl font-bold dark:text-white">
-            Your insights
-          </div>
-          <div
-            class="mt-8 rounded-lg bg-slate-50 p-4 dark:bg-slate-800 dark:text-white"
-          >
-            <div
-              class="w-100 font-md border-b-2 border-slate-400 px-4 py-2 font-medium"
-            >
-              <span class="mr-2 text-3xl"> 🖤 </span>
-              Numan likes your review on
-              <span class="cursor-pointer text-blue-500 underline"
-                >Ergo Proxy</span
-              >
+          <div class="mb-4 text-2xl font-bold dark:text-white">Add Status</div>
+          <div class="rounded-lg bg-white p-4 dark:bg-gray-800 dark:text-white">
+            <div class="mb-2 flex items-center gap-2">
+              <img class="h-12 w-12 rounded-full" :src="user.userImg" alt="" />
+              <strong>You</strong>
             </div>
-            <div
-              class="w-100 font-md border-b-2 border-slate-400 px-4 py-2 font-medium"
-            >
-              <span class="mr-2 text-3xl"> 📩 </span>
+            <form action="">
+              <textarea
+                class="mb-2 w-full resize-none rounded-2xl border-none bg-transparent p-2 py-2 outline-none"
+                placeholder="What do you wanna talk about?"
+              />
 
-              You recieved a new msg from Jonas
-            </div>
-            <div class="w-100 font-md px-4 py-2 font-medium">
-              <span class="mr-2 text-3xl"> 👋 </span>
-              You joined the platform on 21st January 2023
-            </div>
+              <button
+                class="rounded-full border-2 border-green-600 px-4 py-1 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-800"
+              >
+                Post
+              </button>
+            </form>
           </div>
         </div>
       </div>
@@ -88,32 +81,12 @@
           </div>
         </div>
 
-        <div class="flex gap-2 pt-16">
+        <div class="flex flex-col gap-2 pb-12 pt-16 sm:flex-row">
           <div
-            class="w-1/2 rounded-lg bg-white p-8 dark:bg-gray-800 dark:text-white"
+            class="w-full rounded-lg bg-white p-2 shadow-2xl dark:bg-gray-800 dark:text-white sm:p-8 md:w-1/2"
           >
-            <div class="mb-4 text-lg font-bold">Your Settings</div>
-
-            <div class="flex gap-4 align-middle">
-              <input type="checkbox" true-value="yes" false-value="no" />
-              <div class="text-sm font-bold text-gray-600 dark:text-slate-200">
-                Email alerts
-              </div>
-            </div>
-
-            <div class="flex gap-4 align-middle">
-              <input type="checkbox" true-value="yes" false-value="no" />
-              <div class="text-sm font-bold text-gray-600 dark:text-slate-200">
-                2FA
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="w-1/2 rounded-lg bg-white p-8 dark:bg-gray-800 dark:text-white"
-          >
-            <div class="mb-4 text-lg font-bold">Account Info</div>
-            <div class="">
+            <div class="text-md mb-2 font-bold md:text-lg">Account Info</div>
+            <div class="md:text-md text-sm">
               Ohayou gozaimasu~! I'm your Developer chan, here to help you with
               anything you need! UwU I'm super excited to be here, so let's have
               a fun and adorable time together, nya~! If you can help please do,
@@ -123,15 +96,40 @@
 
             <div class="pt-8" />
 
-            <p class="py-2">
+            <p class="md:text-md py-2 text-sm">
               <span class="font-bold">FullName:</span> {{ user.name }}
             </p>
-            <p class="py-2">
+            <p class="md:text-md py-2 text-sm">
               <span class="font-bold">Mobile:</span> 555-555-FARMER
             </p>
-            <p class="py-2">
+            <p class="md:text-md py-2 text-sm">
               <span class="font-bold">Location:</span> Not Pakistan
             </p>
+          </div>
+
+          <div
+            class="w-full rounded-lg bg-white p-2 shadow-2xl dark:bg-gray-800 dark:text-white md:w-1/2 md:p-8"
+          >
+            <div class="mb-4 text-lg font-bold">Your Settings</div>
+
+            <div class="flex gap-4 align-middle">
+              <div class="w-8">
+                <PVSwitch />
+              </div>
+
+              <div class="text-sm font-bold text-gray-600 dark:text-slate-200">
+                Email alerts
+              </div>
+            </div>
+
+            <div class="flex gap-4 align-middle">
+              <div class="w-8">
+                <PVSwitch />
+              </div>
+              <div class="text-sm font-bold text-gray-600 dark:text-slate-200">
+                2FA
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -148,16 +146,11 @@ import { userStore } from "@/store";
 import {
   FolderPlusIcon,
   ChatBubbleBottomCenterTextIcon,
-  InboxIcon,
+  BellIcon,
 } from "@heroicons/vue/24/solid";
-
-console.log(FolderPlusIcon);
 
 const user = userStore();
 // definePageMeta({ layout: "auth-layout" });
-definePageMeta({
-  layout: false,
-});
 
 const router = useRouter();
 </script>

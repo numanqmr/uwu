@@ -7,7 +7,7 @@
       class="button-box mb-2 flex flex-wrap overflow-hidden !pb-0"
     >
       <button
-        @click="editor.chain().focus().toggleBold().run()"
+        @click.prevent="editor.chain().focus().toggleBold().run()"
         :disabled="!editor.can().chain().focus().toggleBold().run()"
         :class="[
           `rounded-tl-md`,
@@ -18,7 +18,7 @@
         <p class="font-bold">B</p>
       </button>
       <button
-        @click="editor.chain().focus().toggleItalic().run()"
+        @click.prevent="editor.chain().focus().toggleItalic().run()"
         :disabled="!editor.can().chain().focus().toggleItalic().run()"
         :class="[
           genericBtnClass,
@@ -28,7 +28,7 @@
         <p class="italic underline">I</p>
       </button>
       <button
-        @click="editor.chain().focus().toggleStrike().run()"
+        @click.prevent="editor.chain().focus().toggleStrike().run()"
         :disabled="!editor.can().chain().focus().toggleStrike().run()"
         :class="[
           genericBtnClass,
@@ -38,7 +38,7 @@
         <p class="line-through">S</p>
       </button>
       <button
-        @click="editor.chain().focus().toggleCode().run()"
+        @click.prevent="editor.chain().focus().toggleCode().run()"
         :disabled="!editor.can().chain().focus().toggleCode().run()"
         :class="[
           genericBtnClass,
@@ -48,13 +48,15 @@
         {{ `<>` }}
       </button>
       <button
-        @click="editor.chain().focus().unsetAllMarks().run()"
+        @click.prevent="editor.chain().focus().unsetAllMarks().run()"
         :class="[genericBtnClass]"
       >
         clear marks
       </button>
       <button
-        @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
+        @click.prevent="
+          editor.chain().focus().toggleHeading({ level: 1 }).run()
+        "
         :class="[
           genericBtnClass,
           {
@@ -67,7 +69,9 @@
         h1
       </button>
       <button
-        @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
+        @click.prevent="
+          editor.chain().focus().toggleHeading({ level: 2 }).run()
+        "
         :class="[
           genericBtnClass,
           {
@@ -80,7 +84,9 @@
         h2
       </button>
       <button
-        @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
+        @click.prevent="
+          editor.chain().focus().toggleHeading({ level: 3 }).run()
+        "
         :class="[
           genericBtnClass,
           {
@@ -93,7 +99,7 @@
         h3
       </button>
       <button
-        @click="editor.chain().focus().toggleBulletList().run()"
+        @click.prevent="editor.chain().focus().toggleBulletList().run()"
         :class="[
           genericBtnClass,
           { [`${genericBtnActive}`]: editor.isActive('bulletList') },
@@ -102,7 +108,7 @@
         ul
       </button>
       <button
-        @click="editor.chain().focus().toggleOrderedList().run()"
+        @click.prevent="editor.chain().focus().toggleOrderedList().run()"
         :class="[
           genericBtnClass,
           { [`${genericBtnActive}`]: editor.isActive('orderedList') },
@@ -122,7 +128,7 @@
         code block
       </button> -->
       <button
-        @click="editor.chain().focus().toggleBlockquote().run()"
+        @click.prevent="editor.chain().focus().toggleBlockquote().run()"
         :class="[
           genericBtnClass,
           { [`${genericBtnActive}`]: editor.isActive('blockquote') },
@@ -132,13 +138,13 @@
       </button>
       <button
         :class="[genericBtnClass]"
-        @click="editor.chain().focus().setHorizontalRule().run()"
+        @click.prevent="editor.chain().focus().setHorizontalRule().run()"
       >
         line
       </button>
       <button
         :class="[`rounded-tr-md`, genericBtnClass]"
-        @click="editor.chain().focus().setHardBreak().run()"
+        @click.prevent="editor.chain().focus().setHardBreak().run()"
       >
         hard break
       </button>

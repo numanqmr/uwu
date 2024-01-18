@@ -1,11 +1,69 @@
+const mockUserImgURL =
+  "https://i.pinimg.com/236x/85/33/cc/8533ccaccde85267fb4dd61f621b5068--kenzo-anime-characters.jpg";
 export const mockUsersList = [
-  { name: "Kenzo Tenma", reviews: "666", recommends: "4", id: 1 },
-  { name: "UWU Tenma", reviews: "67", recommends: "32", id: 2 },
-  { name: "Cool Tenma", reviews: "1000", recommends: "992", id: 3 },
-  { name: "Angry Tenma", reviews: "99", recommends: "1000", id: 4 },
-  { name: "Dr. Tenma", reviews: "2", recommends: "0", id: 5 },
-  { name: "Depressed Tenma", reviews: "5", recommends: "3", id: 6 },
+  {
+    name: "Kenzo Tenma",
+    reviews: "666",
+    recommends: "4",
+    id: 1,
+    imgURL: mockUserImgURL,
+  },
+  {
+    name: "UWU Tenma",
+    reviews: "67",
+    recommends: "32",
+    id: 2,
+    imgURL: mockUserImgURL,
+  },
+  {
+    name: "Cool Tenma",
+    reviews: "1000",
+    recommends: "992",
+    id: 3,
+    imgURL: mockUserImgURL,
+  },
+  {
+    name: "Angry Tenma",
+    reviews: "99",
+    recommends: "1000",
+    id: 4,
+    imgURL: mockUserImgURL,
+  },
+  {
+    name: "Dr. Tenma",
+    reviews: "2",
+    recommends: "0",
+    id: 5,
+    imgURL: mockUserImgURL,
+  },
+  {
+    name: "Depressed Tenma",
+    reviews: "5",
+    recommends: "3",
+    id: 6,
+    imgURL: mockUserImgURL,
+  },
 ];
+
+export const mockUserProfile = {
+  id: 1,
+  imgURL: mockUserImgURL,
+  firstName: "Kenzo",
+  lastName: "Tenma",
+  name: "Kenzo Tenma",
+  email: "kenzo@monster.com",
+  isApproved: true,
+  type: "User",
+  joined: "12/22/2022",
+  lastLogin: "12/22/2022",
+  animeAdded: null,
+  animeOfTheWeek: null,
+  animeAllTime: null,
+  likes: 14,
+  watched: 20,
+  reviews: 666,
+  recommends: "4",
+};
 
 export const mockAnimeList = [
   {
