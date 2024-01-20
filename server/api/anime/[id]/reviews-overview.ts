@@ -10,6 +10,8 @@ export default defineEventHandler(async (event) => {
   const result = await db.query.animeReviews.findMany({
     where: eq(animeReviews.animeId, +id),
     with: { reviewer: { columns: { name: true, id: true } } },
+    limit: 3,
+    // NOTE ADD SORT HERE PERHAPS?
   });
 
   return result;

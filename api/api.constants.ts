@@ -4,5 +4,7 @@ export const apiUrls = {
 
   allAnime: "/api/anime",
   animePage: (id: string | number) => `/api/anime/${id}`,
-  animePageReviews: (id: string | number) => `/api/anime/${id}/reviews`,
+  animePageReviewsOverview: (id: string | number) =>
+    `/api/anime/${id}/reviews-overview`,
+  animePageReviewsAll: (id: string | number) => `/api/anime/${id}/reviews`,
 };

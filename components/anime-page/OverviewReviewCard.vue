@@ -3,26 +3,42 @@
     class="mb-8 rounded-md bg-white p-8 dark:bg-gray-800 dark:text-slate-50"
     ref="loadReviewsTarget"
   >
-    <h5 class="mb-10 text-center text-xl font-semibold md:mb-6">
-      {{ animeData?.reviews }} Review(s):
-    </h5>
+    <h5 class="mb-10 text-center text-xl font-semibold md:mb-6">Reviews:</h5>
 
-    <!-- Comment -->
-    <div class="flex flex-wrap p-1 shadow-lg">
-      <div class="w-full shrink-0 grow-0 basis-auto md:w-2/12">
-        <img
-          src="https://cdn.myanimelist.net/images/characters/9/326322.jpg"
-          class="mb-6 w-full rounded-lg shadow-lg dark:shadow-black/20"
-          alt="Avatar"
-        />
-      </div>
+    <!-- LOADER -->
+    <div v-if="!data && pending">
+      <LoaderOverviewReviewCard />
+    </div>
+    <!-- LOADER -->
 
-      <div class="w-full shrink-0 grow-0 basis-auto md:w-10/12 md:pl-6">
-        <p class="mb-3 font-semibold">{{ data?.[0]?.reviewer.name }}</p>
+    <div v-if="data" v-for="(reviewOverview, index) in data" :key="index">
+      <div
+        class="mb-4 flex min-h-[200px] flex-col flex-wrap items-start rounded-lg p-4 shadow-lg dark:bg-gray-700"
+      >
         <div
-          v-html="data?.[0]?.review"
-          class="prose min-h-[30px] w-full dark:prose-invert prose-p:mb-0 prose-ul:[&>p]:text-3xl"
-        ></div>
+          class="mb-2 flex w-full flex-col items-center justify-center gap-6 sm:flex-row sm:justify-start"
+        >
+          <img
+            src="https://cdn.myanimelist.net/images/characters/9/326322.jpg"
+            class="mb-1 aspect-square w-24 rounded-full object-cover shadow-lg dark:shadow-black/20"
+            alt="Avatar"
+          />
+          <div class="flex flex-col items-center sm:items-start">
+            <p class="text-lg font-bold">{{ reviewOverview.reviewer.name }}</p>
+            <p class="mb-1">rating</p>
+          </div>
+        </div>
+
+        <div class="h-full w-full max-w-[60ch] basis-auto">
+          <div
+            v-html="reviewOverview?.review"
+            class="prose min-h-[30px] w-full dark:prose-invert prose-p:mb-0 prose-p:text-xs sm:prose-p:text-base prose-ul:[&>p]:text-2xl"
+          ></div>
+        </div>
+
+        <div class="flex w-full flex-grow items-end justify-center">
+          <p class="cursor-pointer text-blue-400 underline">Read More...</p>
+        </div>
       </div>
     </div>
   </section>
@@ -36,6 +52,7 @@ type Props = { animeData: any; id: string | number };
 
 const props = defineProps<Props>();
 const { id } = props;
+
 const loadReviewsTarget = ref(null);
 const shouldLoadReviews = ref(false);
 
@@ -43,7 +60,7 @@ const { isDataInCache } = useCheckInCache();
 
 const reviewsOverviewKey = `anime-${id}-reviews-overview`;
 const { data, error, execute, pending, status } = await useFetch<any>(
-  apiUrls.animePageReviews(id),
+  apiUrls.animePageReviewsOverview(id),
   {
     key: reviewsOverviewKey,
     getCachedData: (key) => isDataInCache(key),
@@ -62,6 +79,7 @@ const { stop } = useIntersectionObserver(
         stop();
       } catch (error) {
         console.error("Failed fetching reviews");
+        console.error(error);
       }
     }
   },
