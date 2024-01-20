@@ -176,7 +176,7 @@ const editor = useEditor({
     // const isEmpty =
     //   editor.state.doc.textContent.replace(/\s+/g, "").length === 0;
 
-    emit("textUpdate", editor.getHTML());
+    emit("textUpdate", editor);
   },
 });
 </script>

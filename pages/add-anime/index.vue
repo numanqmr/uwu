@@ -19,7 +19,6 @@
             <div v-for="inputs in inputsList" :key="inputs.label">
               <div class="inline-flex items-baseline gap-2">
                 <label
-                  for="title"
                   class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
                   >{{ inputs.label }}
                 </label>
@@ -44,7 +43,6 @@
               <div class="w-1/4">
                 <div class="inline-flex items-baseline gap-1">
                   <label
-                    for="title"
                     class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
                     >Seasons
                   </label>
@@ -65,7 +63,6 @@
               <div class="w-1/4">
                 <div class="inline-flex items-baseline gap-1">
                   <label
-                    for="title"
                     class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
                     >Episodes
                   </label>
@@ -86,7 +83,6 @@
               <div class="w-1/2">
                 <div class="inline-flex items-baseline gap-1">
                   <label
-                    for="title"
                     class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
                     >Year
                   </label>
@@ -109,7 +105,6 @@
             <div class="mb-4 flex flex-col">
               <div class="inline-flex items-baseline gap-2">
                 <label
-                  for="title"
                   class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
                   >Status
                 </label>
@@ -134,7 +129,6 @@
             <div class="flex flex-col">
               <div class="inline-flex items-baseline gap-2">
                 <label
-                  for="title"
                   class="block pb-2 text-sm font-bold text-gray-800 dark:text-white"
                 >
                   Genres
@@ -174,7 +168,9 @@
         <TabView :pt="pvTabViewStyles">
           <TabPanel header="Edit">
             <TextEditor
-              @text-update="(text) => (addAnimeFormData.content = text)"
+              @text-update="
+                (text) => (addAnimeFormData.content = text.getHTML())
+              "
             />
           </TabPanel>
 
@@ -218,6 +214,7 @@ const hasSubmitted = ref(false);
 watch(addAnimeFormData.value, () => {
   if (!hasSubmitted.value) return;
   const validSchema = addAnimeFormSchema.safeParse(addAnimeFormData.value);
+  // @ts-ignore
   addAnimeErrors.value = validSchema?.error?.format();
 });
 
@@ -225,7 +222,10 @@ const handleSubmit = () => {
   hasSubmitted.value = true;
   const validSchema = addAnimeFormSchema.safeParse(addAnimeFormData.value);
 
+  // @ts-ignore
   addAnimeErrors.value = validSchema?.error?.format();
+
+  console.log(addAnimeFormData);
 
   // console.log(validSchema.success);
   // console.log(validSchema.data);

@@ -37,12 +37,19 @@
   </div>
 </template>
 
-<script setup>
-const content = ref("");
+<script setup lang="ts">
+import type { Editor } from "@tiptap/vue-3";
 
-const updateText = (text) => (content.value = text);
+const content = ref("");
+const contentTextOnly = ref("");
+
+const updateText = (text: Editor) => {
+  content.value = text.getHTML();
+  contentTextOnly.value = text.getText();
+};
 
 const submitReview = () => {
   console.log(content.value);
+  console.log(contentTextOnly.value);
 };
 </script>
