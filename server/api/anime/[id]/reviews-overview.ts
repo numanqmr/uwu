@@ -1,6 +1,6 @@
 import { db } from "@/drizzle.config";
 import { animeReviews } from "@/drizzle/schema";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 // import { mockAnimeList } from "@/utils/mockData";
 // const anime = mockAnimeList.find((anime) => anime.id === parseInt(id));
 
@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     where: eq(animeReviews.animeId, +id),
     with: { reviewer: { columns: { name: true, id: true } } },
     limit: 3,
-    // NOTE ADD SORT HERE PERHAPS?
+    orderBy: desc(animeReviews.dateAdded),
   });
 
   return result;
