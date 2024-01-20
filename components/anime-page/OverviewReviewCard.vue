@@ -5,11 +5,26 @@
   >
     <h5 class="mb-10 text-center text-xl font-semibold md:mb-6">Reviews:</h5>
 
-    <!-- LOADER -->
+    <!-- LOADER =========================================== -->
     <div v-if="!data && pending">
       <LoaderOverviewReviewCard />
     </div>
-    <!-- LOADER -->
+    <!-- ================================================== -->
+
+    <div v-if="error">
+      <p class="w-full text-center text-red-400">
+        Error:
+        <span class="font-bold">
+          {{ error.statusCode }}
+        </span>
+      </p>
+      <p
+        class="w-full cursor-pointer text-center text-lg text-blue-400"
+        @click="() => execute()"
+      >
+        Retry?
+      </p>
+    </div>
 
     <div v-if="data" v-for="(reviewOverview, index) in data" :key="index">
       <div
@@ -59,7 +74,7 @@ const shouldLoadReviews = ref(false);
 const { isDataInCache } = useCheckInCache();
 
 const reviewsOverviewKey = `anime-${id}-reviews-overview`;
-const { data, error, execute, pending, status } = await useFetch<any>(
+const { data, error, execute, pending } = await useFetch<any>(
   apiUrls.animePageReviewsOverview(id),
   {
     key: reviewsOverviewKey,
