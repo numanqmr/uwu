@@ -1,16 +1,14 @@
 import {
-  pgTable,
-  foreignKey,
-  pgEnum,
-  uuid,
   bigint,
-  text,
-  unique,
-  timestamp,
   boolean,
   numeric,
+  pgEnum,
+  pgTable,
+  text,
+  timestamp,
+  unique,
+  uuid,
 } from "drizzle-orm/pg-core";
-import { relations, sql } from "drizzle-orm";
 
 export const keyStatus = pgEnum("key_status", [
   "default",
@@ -50,6 +48,12 @@ export const animeReviews = pgTable("anime_reviews", {
     .notNull()
     .references(() => animeTable.id, { onUpdate: "cascade" }),
   review: text("review"),
+  reviewText: text("review_text"),
+  rating: numeric("rating"),
+  dateAdded: timestamp("date_added", {
+    withTimezone: true,
+    mode: "string",
+  }).defaultNow(),
 });
 
 export const profile = pgTable(
@@ -97,15 +101,3 @@ export const animeTable = pgTable("AnimeTable", {
   watches: numeric("watches").notNull(),
   genre: text("genre").array(),
 });
-
-export const profileRelations = relations(profile, ({ many }) => ({
-  reviewer: many(animeReviews, { relationName: "reviewer" }),
-}));
-
-export const animeReviewRelations = relations(animeReviews, ({ one }) => ({
-  reviewer: one(profile, {
-    fields: [animeReviews.userId],
-    references: [profile.id],
-    relationName: "reviewer",
-  }),
-}));

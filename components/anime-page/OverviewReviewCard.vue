@@ -26,6 +26,11 @@
       </p>
     </div>
 
+    <div v-if="data?.length === 0">
+      <p class="w-full text-center text-2xl">😔</p>
+      <p class="w-full text-center opacity-50">No reviews yet</p>
+    </div>
+
     <div v-if="data" v-for="(reviewOverview, index) in data" :key="index">
       <div
         class="mb-4 flex min-h-[200px] flex-col flex-wrap items-start rounded-lg p-4 shadow-lg dark:bg-gray-700"
@@ -45,13 +50,18 @@
         </div>
 
         <div class="h-full w-full max-w-[60ch] basis-auto">
-          <div
+          <p
+            class="prose min-h-[30px] w-full dark:prose-invert prose-p:mb-0 prose-p:text-xs sm:prose-p:text-base prose-ul:[&>p]:text-2xl"
+          >
+            {{ reviewOverview?.reviewText?.slice(0, 200) }}...
+          </p>
+          <!-- <div
             v-html="reviewOverview?.review"
             class="prose min-h-[30px] w-full dark:prose-invert prose-p:mb-0 prose-p:text-xs sm:prose-p:text-base prose-ul:[&>p]:text-2xl"
-          ></div>
+          ></div> -->
         </div>
 
-        <div class="flex w-full flex-grow items-end justify-center">
+        <div class="mt-2 flex w-full flex-grow items-end justify-center">
           <p class="cursor-pointer text-blue-400 underline">Read More...</p>
         </div>
       </div>
