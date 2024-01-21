@@ -7,20 +7,12 @@
 </template>
 
 <script setup lang="ts">
-import { apiUrls } from "~/api";
+import { useGetReviewById } from "~/composables";
 
 const route = useRoute();
-const reviewId = route.params.reviewId;
-const id = route.params.id;
+const reviewId = route.params.reviewId as string;
+const id = route.params.id as string;
 
-const { isDataInCache } = useCheckInCache();
-
-const animeKey = `anime-${id}`;
-const { data } = await useFetch(
-  apiUrls.animePageReviewSingle(id as string, reviewId as string),
-  {
-    key: animeKey,
-    getCachedData: (key) => isDataInCache(key),
-  },
-);
+const { res } = await useGetReviewById(id, reviewId);
+const { data } = res;
 </script>

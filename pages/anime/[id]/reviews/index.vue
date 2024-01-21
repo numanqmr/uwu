@@ -11,18 +11,14 @@
 </template>
 
 <script setup lang="ts">
-import { apiUrls } from "~/api";
+import { useGetAnimeReviews } from "~/composables";
 
 const route = useRoute();
 const id = route.params.id as string;
-const { isDataInCache } = useCheckInCache();
 
 const { res } = await useGetAnimeById(id);
 const { data: animeData } = res;
 
-const key = `/api/anime/${id}/reviews`;
-const { data } = await useFetch(apiUrls.animePageReviewsAll(id), {
-  key: key,
-  getCachedData: (key) => isDataInCache(key),
-});
+const { res: animeReviewsRes } = await useGetAnimeReviews(id);
+const { data } = animeReviewsRes;
 </script>
