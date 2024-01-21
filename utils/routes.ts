@@ -10,6 +10,11 @@ export const authRoutes = {
   editReview: "/edit-review",
   editAnime: "/edit-anime",
   notifications: "/notifications",
+
+  // Reviews
+  allReviews: (id: string) => `/anime/${id}/reviews`,
+  viewReview: (animeId: string | number, reviewId: string) =>
+    `/anime/${animeId}/reviews/${reviewId}`,
 };
 
 export const unauthRoutes = {
