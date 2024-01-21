@@ -24,15 +24,26 @@
                 </label>
                 <span
                   class="text-xs font-semibold text-red-400"
-                  v-if="!!addAnimeErrors?.[inputs?.schemaType]?._errors?.length"
+                  v-if="
+                    !!addAnimeErrors?.[inputs?.schemaType as FormErrorKeyType]
+                      ?._errors?.length
+                  "
                 >
-                  * {{ addAnimeErrors?.[inputs?.schemaType]?._errors[0] }}
+                  *
+                  {{
+                    addAnimeErrors?.[inputs?.schemaType as FormErrorKeyType]
+                      ?._errors[0]
+                  }}
                 </span>
               </div>
 
               <input
                 :type="inputs.inputType"
-                v-model="addAnimeFormData[inputs?.schemaType]"
+                v-model="
+                  addAnimeFormData[
+                    inputs?.schemaType as keyof typeof addAnimeErrors
+                  ]
+                "
                 class="mb-4 block w-full rounded-lg border-2 border-blue-200 p-2.5 text-sm text-gray-900 shadow-sm outline-none focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
               />
             </div>
@@ -198,14 +209,19 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import TabView from "primevue/tabview";
-import TabPanel from "primevue/tabpanel";
+import TabPanel, {
+  type TabPanelPassThroughMethodOptions,
+} from "primevue/tabpanel";
 import {
   addAnimeFormSchema,
   addAnimeErrors,
   initialAddAnimeFormData,
+  type AddAnimeFormSchemaType,
 } from "@/forms";
+
+type FormErrorKeyType = keyof AddAnimeFormSchemaType;
 
 const inputsList = reactive(addAnimeFormInputs);
 const addAnimeFormData = ref(initialAddAnimeFormData);
@@ -214,16 +230,16 @@ const hasSubmitted = ref(false);
 watch(addAnimeFormData.value, () => {
   if (!hasSubmitted.value) return;
   const validSchema = addAnimeFormSchema.safeParse(addAnimeFormData.value);
-  // @ts-ignore
-  addAnimeErrors.value = validSchema?.error?.format();
+
+  // Conditional is required as SafeParsereturnType is a discriminated union
+  if (!validSchema.success) addAnimeErrors.value = validSchema?.error?.format();
 });
 
 const handleSubmit = () => {
   hasSubmitted.value = true;
   const validSchema = addAnimeFormSchema.safeParse(addAnimeFormData.value);
 
-  // @ts-ignore
-  addAnimeErrors.value = validSchema?.error?.format();
+  if (!validSchema.success) addAnimeErrors.value = validSchema?.error?.format();
 
   console.log(addAnimeFormData);
 
@@ -236,7 +252,7 @@ const pvTabViewStyles = {
   root: { class: ["m-0 p-0"] },
   nav: { class: ["flex flex-1 list-none m-0 pb-4 bg-transparent border-0 "] },
   tabPanel: {
-    header: ({ props }) => ({
+    header: ({ props }: TabPanelPassThroughMethodOptions) => ({
       class: [
         "mr-2",
         {
@@ -245,7 +261,7 @@ const pvTabViewStyles = {
         },
       ], // Margin and condition-based styles.
     }),
-    headerAction: ({ parent, context }) => ({
+    headerAction: ({ parent, context }: TabPanelPassThroughMethodOptions) => ({
       class: [
         "items-center cursor-pointer flex overflow-hidden relative",
         "px-4 py-2 font-bold rounded-full",
