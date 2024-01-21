@@ -59,24 +59,26 @@
   </div>
 </template>
 
-<script setup>
-import WatchedIcon from "/assets/svg/WatchedIcon";
-import LikeIcon from "/assets/svg/LikeIcon";
-import CommentIcon from "/assets/svg/CommentIcon";
+<script setup lang="ts">
+import WatchedIcon from "@/assets/svg/WatchedIcon.vue";
+import LikeIcon from "@/assets/svg/LikeIcon.vue";
+import CommentIcon from "@/assets/svg/CommentIcon.vue";
 
-const props = defineProps([
-  "id",
-  "title",
-  "description",
-  "imgURL",
-  "views",
-  "likes",
-  "reviews",
-  "genres",
-]);
+type Props = {
+  id?: string | number;
+  title?: string;
+  description?: string;
+  imgURL?: string;
+  views?: string;
+  likes?: string;
+  reviews?: string;
+  genres?: string;
+};
+
+const props = defineProps<Props>();
 const router = useRouter();
 
 const pushToRoute = () => {
-  router.push({ path: authRoutes.animeId(props.id) });
+  router.push({ path: authRoutes.animeId(props?.id as string) });
 };
 </script>
