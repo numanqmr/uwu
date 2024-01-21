@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import { useAuthStore } from "./auth.store";
 
 const mockUserData = {
   name: "Developer Chanlalala",
@@ -9,15 +8,16 @@ const mockUserData = {
 };
 
 export const useUserStore = defineStore("userStore", () => {
-  const mockUserProfile = ref(mockUserData);
+  const mockUserProfile = ref({ ...mockUserData });
   const isLoggedIn = ref<boolean>(false);
+  const isLoadingProfile = ref<boolean>(false);
   const userProfile = ref<any>(null);
-
-  const auth = useAuthStore();
   const user = useSupabaseUser();
 
   const getUserData = async () => {
     try {
+      isLoadingProfile.value = true;
+
       const userData = await $fetch("/api/user", {
         method: "post",
         body: { id: user.value?.id },
@@ -25,6 +25,7 @@ export const useUserStore = defineStore("userStore", () => {
 
       isLoggedIn.value = true;
       userProfile.value = userData;
+      isLoadingProfile.value = false;
 
       const { name, email } = userProfile.value;
       if (name && email) {
@@ -32,19 +33,16 @@ export const useUserStore = defineStore("userStore", () => {
         mockUserProfile.value.name = name;
       }
     } catch (err) {
+      isLoadingProfile.value = false;
       return err;
     }
   };
 
-  function $reset() {
+  const $reset = () => {
     isLoggedIn.value = false;
     userProfile.value = null;
-    mockUserProfile.value = mockUserData;
-  }
-
-  // if (!user.value) {
-  //   router.push("/login");
-  // }
+    mockUserProfile.value = { ...mockUserData };
+  };
 
   return {
     data: mockUserProfile,
@@ -53,5 +51,6 @@ export const useUserStore = defineStore("userStore", () => {
     getUserData,
     isLoggedIn,
     $reset,
+    isLoadingProfile,
   };
 });

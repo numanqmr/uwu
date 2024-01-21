@@ -29,7 +29,7 @@ export const useAuthStore = defineStore("auth-store", () => {
   };
 
   client.auth.onAuthStateChange(async (event, session) => {
-    await user.getUserData();
+    if (!user.userProfile) await user.getUserData();
   });
 
   return { loginUser, logOutUser, client };
