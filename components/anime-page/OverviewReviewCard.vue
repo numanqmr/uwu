@@ -62,7 +62,9 @@
         </div>
 
         <div class="mt-2 flex w-full flex-grow items-end justify-center">
-          <p class="cursor-pointer text-blue-400 underline">Read More...</p>
+          <NuxtLink :to="authRoutes.viewReview(id, reviewOverview?.id)">
+            <p class="cursor-pointer text-blue-400 underline">Read More...</p>
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -92,6 +94,8 @@ const { data, error, execute, pending } = await useFetch<any>(
     immediate: false,
   },
 );
+
+console.log(data.value);
 
 const { stop } = useIntersectionObserver(
   loadReviewsTarget,
