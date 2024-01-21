@@ -83,18 +83,14 @@
   </div>
 </template>
 
-<script setup>
-import { apiUrls } from "@/api";
+<script setup lang="ts">
+import { useGetAnimeById } from "~/composables";
 
-const { isDataInCache } = useCheckInCache();
 const route = useRoute();
-const id = route.params.id;
+const id = route.params.id as string;
 
-const animeKey = `anime-${id}`;
-const { data: animeData } = await useFetch(apiUrls.animePage(id), {
-  key: animeKey,
-  getCachedData: (key) => isDataInCache(key),
-});
+const { res } = await useGetAnimeById(id);
+const { data: animeData } = res;
 
 if (!animeData.value) {
   throw createError({ statusCode: 404, message: "Page not found" });

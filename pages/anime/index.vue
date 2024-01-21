@@ -27,15 +27,9 @@
   </div>
 </template>
 
-<script setup>
-import { apiUrls } from "@/api";
+<script setup lang="ts">
+import { useGetAnimeList } from "~/composables";
 
-const { isDataInCache } = useCheckInCache();
-
-const { data: animeList, pending } = useFetch(apiUrls.allAnime, {
-  key: "anime",
-  getCachedData(key) {
-    return isDataInCache(key);
-  },
-});
+const { res } = await useGetAnimeList();
+const { data: animeList, pending } = res;
 </script>
