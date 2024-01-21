@@ -49,7 +49,6 @@
         <p class="w-100 pt-2 text-lg font-bold dark:text-white">
           {{ user.data.name }}
         </p>
-        <div @click="authStore.getUserData()">GetUserProfile</div>
         <span class="w-100 pt-2 text-sm text-gray-500 dark:text-slate-400">
           {{ user.data.email }}
         </span>
@@ -84,9 +83,9 @@
 </template>
 
 <script setup>
-import { userStore, useAuthStore } from "@/store";
+import { useUserStore, useAuthStore } from "@/store";
 
-const user = userStore();
+const user = useUserStore();
 const authStore = useAuthStore();
 
 const toggle = ref(false);

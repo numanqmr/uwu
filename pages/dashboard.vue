@@ -101,7 +101,8 @@
             <div class="pt-8" />
 
             <p class="md:text-md py-2 text-sm">
-              <span class="font-bold">FullName:</span> {{ user.name }}
+              <span class="font-bold">FullName:</span>
+              {{ user.data.name }}
             </p>
             <p class="md:text-md py-2 text-sm">
               <span class="font-bold">Mobile:</span> 555-555-FARMER
@@ -145,15 +146,16 @@
   </div>
 </template>
 
-<script setup>
-import { userStore } from "@/store";
+<script setup lang="ts">
+import { useUserStore } from "@/store";
 import {
   FolderPlusIcon,
   ChatBubbleBottomCenterTextIcon,
   BellIcon,
 } from "@heroicons/vue/24/solid";
 
-const user = userStore();
+const user = useUserStore();
+
 // definePageMeta({ layout: "auth-layout" });
 
 const router = useRouter();

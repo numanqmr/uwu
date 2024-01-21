@@ -58,16 +58,4 @@
 // definePageMeta({
 //   // middleware: ["auth"],
 // });
-// const client = useSupabaseClient();
-// const user = useSupabaseUser();
-
-// const handleLogout = () => {
-//   client.auth.signOut();
-// };
-
-// onMounted(() => {
-//   watchEffect(() => {
-//     if (!user.value) return navigateTo(unauthRoutes.login);
-//   });
-// });
 </script>

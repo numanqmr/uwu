@@ -1,4 +1,5 @@
-import { defineStore } from "pinia";
+import { defineStore, storeToRefs } from "pinia";
+import { useUserStore } from "./userStore";
 
 type LoginPayload = {
   email: string;
@@ -7,17 +8,14 @@ type LoginPayload = {
 
 export const useAuthStore = defineStore("auth-store", () => {
   const client = useSupabaseClient();
-  const user = useSupabaseUser();
   const router = useRouter();
-
-  const userProfile = ref(null);
+  const user = useUserStore();
 
   const loginUser = async ({ email, password }: LoginPayload) => {
     const { data, error } = await client.auth.signInWithPassword({
       email,
       password,
     });
-    user.value = data.user;
 
     return { data, error };
   };
@@ -25,25 +23,14 @@ export const useAuthStore = defineStore("auth-store", () => {
   const logOutUser = async () => {
     const { error } = await client.auth.signOut();
     if (!error) {
-      user.value = null;
+      user.$reset();
       return router.push(unauthRoutes.login);
     }
   };
 
-  const getUserData = async () => {
-    try {
-      const userData = await useAsyncData("userProfile", () =>
-        $fetch("/api/user", {
-          method: "post",
-          body: { email: user.value?.email },
-        }),
-      );
-      console.log(userData);
-      return userData;
-    } catch (err) {
-      return err;
-    }
-  };
+  client.auth.onAuthStateChange(async (event, session) => {
+    await user.getUserData();
+  });
 
-  return { userProfile, loginUser, logOutUser, getUserData };
+  return { loginUser, logOutUser, client };
 });

@@ -51,24 +51,31 @@
   </div>
 </template>
 
-<script setup>
-import { useAuthStore } from "@/store";
+<script setup lang="ts">
+import { useAuthStore, useUserStore } from "@/store";
 
-definePageMeta({
-  // middleware: ["auth"],
-});
+// definePageMeta({
+// middleware: ["auth"],
+// });
 
+const router = useRouter();
 const email = ref("");
 const password = ref("");
 const authStore = useAuthStore();
+const userStore = useUserStore();
 
 const handleSubmit = async () => {
-  await authStore.loginUser({ email: email.value, password: password.value });
+  try {
+    await authStore.loginUser({ email: email.value, password: password.value });
+    router.push({ path: authRoutes.dashboard });
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 onMounted(() => {
   watchEffect(() => {
-    if (authStore.userProfile) return navigateTo("/feed");
+    if (userStore.supabaseUser) return navigateTo("/dashboard");
   });
 });
 </script>
