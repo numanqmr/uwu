@@ -6,7 +6,6 @@ import { desc, eq } from "drizzle-orm";
 
 export default defineEventHandler(async (event) => {
   const { id } = event.context.params as any;
-  console.log(event.context.params);
 
   const result = await db.query.animeReviews.findMany({
     where: eq(animeReviews.animeId, +id),

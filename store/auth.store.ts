@@ -23,13 +23,14 @@ export const useAuthStore = defineStore("auth-store", () => {
   const logOutUser = async () => {
     const { error } = await client.auth.signOut();
     if (!error) {
+      router.push(unauthRoutes.login);
       user.$reset();
-      return router.push(unauthRoutes.login);
     }
   };
 
   client.auth.onAuthStateChange(async (event, session) => {
     if (!user.userProfile) await user.getUserData();
+    // if (user.userProfile) isLoadingProfile.value = false;
   });
 
   return { loginUser, logOutUser, client };
