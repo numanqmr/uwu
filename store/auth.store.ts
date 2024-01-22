@@ -1,4 +1,4 @@
-import { defineStore, storeToRefs } from "pinia";
+import { defineStore } from "pinia";
 import { useUserStore } from "./userStore";
 
 type LoginPayload = {
@@ -20,6 +20,16 @@ export const useAuthStore = defineStore("auth-store", () => {
     return { data, error };
   };
 
+  const createUser = async ({ email, password }: LoginPayload) => {
+    const { data, error } = await client.auth.signUp({
+      email,
+      password,
+      options: { data: { role: "" } },
+    });
+
+    return { data, error };
+  };
+
   const logOutUser = async () => {
     const { error } = await client.auth.signOut();
     if (!error) {
@@ -33,5 +43,5 @@ export const useAuthStore = defineStore("auth-store", () => {
     // if (user.userProfile) isLoadingProfile.value = false;
   });
 
-  return { loginUser, logOutUser, client };
+  return { loginUser, logOutUser, client, createUser };
 });
