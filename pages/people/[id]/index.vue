@@ -13,7 +13,7 @@
 
         <div class="mt-20 flex flex-col gap-4 md:flex-row">
           <div
-            class="w-full rounded-2xl bg-white px-4 py-6 shadow-2xl dark:bg-gray-800 dark:text-white md:w-1/4"
+            class="w-full rounded-2xl bg-white px-4 py-6 shadow-2xl md:w-1/4 dark:bg-gray-800 dark:text-white"
           >
             <h3 class="w-100 mb-4 text-lg font-bold">Stats</h3>
             <div class="grid grid-rows-3 gap-1">
@@ -36,7 +36,7 @@
           </div>
 
           <div
-            class="w-full rounded-2xl bg-white px-4 py-6 shadow-2xl dark:bg-gray-800 dark:text-white md:w-3/4"
+            class="w-full rounded-2xl bg-white px-4 py-6 shadow-2xl md:w-3/4 dark:bg-gray-800 dark:text-white"
           >
             <h3 class="w-100 mb-4 text-lg font-bold">About</h3>
             <p class="text-sm">
@@ -78,7 +78,9 @@
                 />
               </div>
 
-              <div class="col-span-2 flex items-center justify-start">
+              <div
+                class="col-span-2 flex items-center justify-start dark:text-white"
+              >
                 <p class="text-xl font-bold md:pl-4 md:text-2xl">Monster</p>
               </div>
             </div>
@@ -92,10 +94,10 @@
           <div
             v-for="(reviewItem, index) in userReviews"
             :key="`review-${index}`"
-            class="w-100 mb-4 rounded-lg bg-slate-100 p-4 text-white shadow-lg dark:bg-slate-700/80"
+            class="w-100 mb-4 rounded-lg bg-slate-100 p-4 shadow-lg dark:bg-slate-700/80"
           >
             <div class="">
-              <div class="mb-2 flex w-full justify-between">
+              <div class="mb-2 flex w-full justify-between dark:text-white">
                 <h3 class="text-lg font-bold">
                   {{ reviewItem.animeInfo.title }}
                 </h3>

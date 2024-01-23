@@ -87,7 +87,7 @@
 
         <div class="flex flex-col gap-2 pb-12 pt-16 sm:flex-row">
           <div
-            class="w-full rounded-lg bg-white p-2 shadow-2xl dark:bg-gray-800 dark:text-white sm:p-8 md:w-1/2"
+            class="w-full rounded-lg bg-white p-2 shadow-2xl sm:p-8 md:w-1/2 dark:bg-gray-800 dark:text-white"
           >
             <div class="text-md mb-2 font-bold md:text-lg">Account Info</div>
             <div class="md:text-md text-sm">
@@ -113,7 +113,7 @@
           </div>
 
           <div
-            class="w-full rounded-lg bg-white p-2 shadow-2xl dark:bg-gray-800 dark:text-white md:w-1/2 md:p-8"
+            class="w-full rounded-lg bg-white p-2 shadow-2xl md:w-1/2 md:p-8 dark:bg-gray-800 dark:text-white"
           >
             <div class="mb-4 text-lg font-bold">Your Settings</div>
 
@@ -153,10 +153,8 @@ import {
   ChatBubbleBottomCenterTextIcon,
   BellIcon,
 } from "@heroicons/vue/24/solid";
-
-const user = useUserStore();
-
 // definePageMeta({ layout: "auth-layout" });
 
+const user = useUserStore();
 const router = useRouter();
 </script>
