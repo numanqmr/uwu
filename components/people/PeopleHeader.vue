@@ -7,14 +7,14 @@
     >
       <div class="flex justify-center p-8">
         <div class="flex flex-col items-center">
-          <div>
+          <div class="h-24 w-24 overflow-hidden rounded-full">
             <img
-              class="h-24 w-24 rounded-full"
+              class="aspect-auto h-full bg-cover"
               :src="getImgSrc(profilePic)"
               alt="Rounded avatar"
             />
           </div>
-          <div class="ml-2 p-2">
+          <div class="ml-2 p-2 text-center">
             <p class="text-lg font-bold">{{ name }}</p>
             <p class="text-sm text-slate-600">
               {{ email || "email@email.com" }}
