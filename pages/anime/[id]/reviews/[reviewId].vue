@@ -2,10 +2,10 @@
   <div>
     <NuxtLayout name="auth-layout">
       <div class="pt-8" />
-      <h1 class="text-2xl font-bold">
+      <h1 class="text-2xl font-bold dark:text-white/90">
         {{ data.animeInfo.title }}
       </h1>
-      <p class="mt-1 text-xl">
+      <p class="mt-1 text-xl dark:text-white/90">
         Reviewed by
 
         <span
@@ -16,14 +16,16 @@
         </span>
       </p>
 
-      <div class="mt-4 w-full rounded-lg bg-slate-50 p-8 shadow-2xl">
+      <div
+        class="mt-4 w-full rounded-lg bg-slate-50 p-8 shadow-2xl dark:bg-slate-700"
+      >
         <div
           v-html="data.review"
           class="prose min-h-[30px] w-full dark:prose-invert prose-p:mb-0 prose-ul:[&>p]:text-3xl"
         ></div>
       </div>
 
-      <div class="mt-8 flex w-full flex-col items-center">
+      <div class="mt-8 flex w-full flex-col items-center dark:text-white/80">
         <p>Final rating</p>
         <div>{{ data.rating }}</div>
       </div>
