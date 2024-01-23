@@ -26,14 +26,14 @@
   },
   "dependencies": {
     "@heroicons/vue": "^2.0.18",
-    "@pinia/nuxt": "^0.4.11",
+    "@pinia/nuxt": "^0.5.1",
     "@tiptap/pm": "^2.0.3",
     "@tiptap/starter-kit": "^2.0.3",
     "@tiptap/vue-3": "^2.0.3",
     "@vueuse/core": "^10.7.2",
     "drizzle-orm": "^0.29.1",
     "pg": "^8.11.3",
-    "pinia": "^2.1.4",
+    "pinia": "^2.1.7",
     "postgres": "^3.4.3",
     "primevue": "^3.44.0",
     "zod": "^3.22.4"

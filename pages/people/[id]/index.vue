@@ -87,26 +87,28 @@
           <div class="text-center text-blue-500 underline">view more</div>
         </div>
 
-        <div class="mb-4 mt-8 rounded-lg bg-white p-8 dark:bg-gray-800">
+        <div class="mb-4 mt-8 rounded-lg bg-white p-4 py-8 dark:bg-gray-800">
           <h3 class="mb-3 text-xl font-bold dark:text-white">User Reviews</h3>
           <div
-            v-for="index in 5"
+            v-for="(reviewItem, index) in userReviews"
             :key="`review-${index}`"
-            class="w-100 mb-4 rounded-lg bg-slate-100 p-4 shadow-lg dark:bg-slate-100/80"
+            class="w-100 mb-4 rounded-lg bg-slate-100 p-4 text-white shadow-lg dark:bg-slate-700/80"
           >
-            <div class="bg-green">
-              <h3 class="text-lg font-bold">Monster</h3>
-              <p class="text-sm text-black/60">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
-                rerum, qui voluptates et facere voluptatibus quibusdam adipisci
-                doloribus quia repudiandae, eos exercitationem unde ab. Delectus
-                magni molestias sapiente consectetur....
+            <div class="">
+              <div class="mb-2 flex w-full justify-between">
+                <h3 class="text-lg font-bold">
+                  {{ reviewItem.animeInfo.title }}
+                </h3>
+                <span>{{ reviewItem.rating }}</span>
+              </div>
+              <p class="text-sm text-black/60 dark:text-white/80">
+                {{ reviewItem.reviewText.slice(0, 220) }}...
               </p>
-              <a
-                href=""
-                class="text-sm text-blue-400 underline dark:text-blue-900"
+              <NuxtLink
+                :href="authRoutes.viewReview(reviewItem.animeId, reviewItem.id)"
+                class="text-sm text-blue-400 underline dark:text-blue-400"
               >
-                read more</a
+                Read more</NuxtLink
               >
             </div>
           </div>
@@ -117,7 +119,7 @@
 </template>
 
 <script setup lang="ts">
-import { useUserById } from "~/composables";
+import { useGetUserReviews, useUserById } from "~/composables";
 
 const route = useRoute();
 const id = route.params.id as string;
@@ -128,6 +130,12 @@ const userData = res.data;
 if (!userData.value) {
   throw createError({ statusCode: 404, message: "Page not found" });
 }
+
+// For User reviews
+const { res: reviewsRes } = await useGetUserReviews(id);
+const userReviews = reviewsRes.data;
+
+console.log(userReviews.value);
 
 const getImgSrc = (url: string) => {
   if (url) return url;
