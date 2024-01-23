@@ -21,9 +21,8 @@
   </div>
 </template>
 
-<script setup>
-import { apiUrls } from "@/api";
-
+<script setup lang="ts">
 const router = useRouter();
-const { data } = useFetch(apiUrls.allProfiles, { key: "users" });
+const { res } = await useGetUsersList();
+const data = res.data;
 </script>
