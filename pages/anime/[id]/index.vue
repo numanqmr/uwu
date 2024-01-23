@@ -41,7 +41,7 @@
 
         <section class="mb-8 flex w-full flex-col gap-5 sm:flex-row">
           <div
-            class="w-1/2 rounded-md bg-white shadow-lg dark:bg-gray-800 dark:text-slate-50"
+            class="w-full rounded-md bg-white shadow-lg sm:w-1/2 dark:bg-gray-800 dark:text-slate-50"
           >
             <div class="p-8">
               <h1 class="pb-2 text-xl font-bold uppercase">Stats</h1>
@@ -55,7 +55,7 @@
             </div>
           </div>
           <div
-            class="w-1/2 rounded-md bg-white shadow-lg dark:bg-gray-800 dark:text-slate-50"
+            class="w-full rounded-md bg-white shadow-lg sm:w-1/2 dark:bg-gray-800 dark:text-slate-50"
           >
             <div class="p-8">
               <h1 class="pb-2 text-xl font-bold uppercase">Details</h1>
