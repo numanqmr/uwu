@@ -8,7 +8,10 @@
       <p class="mt-1 text-xl">
         Reviewed by
 
-        <span class="cursor-pointer text-blue-400 hover:underline">
+        <span
+          class="cursor-pointer text-blue-400 hover:underline"
+          @click="router.push(authRoutes.peopleId(data.reviewer.id))"
+        >
           {{ data.reviewer.name }}
         </span>
       </p>
@@ -31,6 +34,7 @@
 <script setup lang="ts">
 import { useGetReviewById } from "~/composables";
 
+const router = useRouter();
 const route = useRoute();
 const reviewId = route.params.reviewId as string;
 const id = route.params.id as string;
