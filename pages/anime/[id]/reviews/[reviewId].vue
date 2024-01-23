@@ -1,7 +1,29 @@
 <template>
   <div>
     <NuxtLayout name="auth-layout">
-      <h1>Show one users review here</h1>
+      <div class="pt-8" />
+      <h1 class="text-2xl font-bold">
+        {{ data.animeInfo.title }}
+      </h1>
+      <p class="mt-1 text-xl">
+        Reviewed by
+
+        <span class="cursor-pointer text-blue-400 hover:underline">
+          {{ data.reviewer.name }}
+        </span>
+      </p>
+
+      <div class="mt-4 w-full rounded-lg bg-slate-50 p-8 shadow-2xl">
+        <div
+          v-html="data.review"
+          class="prose min-h-[30px] w-full dark:prose-invert prose-p:mb-0 prose-ul:[&>p]:text-3xl"
+        ></div>
+      </div>
+
+      <div class="mt-8 flex w-full flex-col items-center">
+        <p>Final rating</p>
+        <div>{{ data.rating }}</div>
+      </div>
     </NuxtLayout>
   </div>
 </template>
@@ -15,4 +37,6 @@ const id = route.params.id as string;
 
 const { res } = await useGetReviewById(id, reviewId);
 const { data } = res;
+
+console.log(data.value);
 </script>
