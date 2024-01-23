@@ -4,7 +4,7 @@ export const useGetAnimeReviews = async (id: string) => {
   const { isDataInCache } = useCheckInCache();
 
   const key = `/api/anime/${id}/reviews`;
-  const res = await useFetch(apiUrls.animePageReviewsAll(id), {
+  const res = await useFetch<any>(apiUrls.animePageReviewsAll(id), {
     key: key,
     getCachedData: (key) => isDataInCache(key),
   });

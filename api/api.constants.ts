@@ -8,5 +8,5 @@ export const apiUrls = {
     `/api/anime/${id}/reviews-overview`,
   animePageReviewsAll: (id: string | number) => `/api/anime/${id}/reviews`,
   animePageReviewSingle: (animeId: string | number, reviewId: string) =>
-    `/anime/${animeId}/reviews/${reviewId}`,
+    `/api/anime/${animeId}/reviews/${reviewId}`,
 };
