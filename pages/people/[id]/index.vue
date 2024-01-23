@@ -3,9 +3,12 @@
     <NuxtLayout :name="`auth-layout`">
       <div class="px-4 pt-8">
         <PeopleHeader
-          :name="userData.name"
-          :email="userData.email"
-          :profilePic="userData.imgURL"
+          :name="userData.name || 'Kenzo Tenma'"
+          :email="userData.email || 'kenzo@monster.com'"
+          :profilePic="
+            userData.imgURL ||
+            'https://i.pinimg.com/236x/85/33/cc/8533ccaccde85267fb4dd61f621b5068--kenzo-anime-characters.jpg'
+          "
         />
 
         <div class="mt-20 flex flex-col gap-4 md:flex-row">
@@ -113,20 +116,20 @@
   </div>
 </template>
 
-<script setup>
-import { apiUrls } from "@/api";
+<script setup lang="ts">
+import { useUserById } from "~/composables";
 
 const route = useRoute();
-const id = route.params.id;
-const key = `user-${id}`;
+const id = route.params.id as string;
 
-const { data: userData } = await useFetch(apiUrls.userProfile(id), { key });
+const { res } = await useUserById(id);
+const userData = res.data;
 
 if (!userData.value) {
   throw createError({ statusCode: 404, message: "Page not found" });
 }
 
-const getImgSrc = (url) => {
+const getImgSrc = (url: string) => {
   if (url) return url;
 };
 </script>
