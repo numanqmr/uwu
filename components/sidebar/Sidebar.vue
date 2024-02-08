@@ -12,7 +12,7 @@
     data-drawer-toggle="sidebar-multi-level-sidebar"
     aria-controls="sidebar-multi-level-sidebar"
     type="button"
-    class="ml-3 mt-2 inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 sm:hidden"
+    class="ml-3 mt-2 inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 sm:hidden dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
     @click="toggleSidebar"
   >
     <span class="sr-only">Open sidebar</span>
@@ -47,10 +47,13 @@
           alt="Rounded avatar"
         />
         <p class="w-100 pt-2 text-lg font-bold dark:text-white">
-          {{ user.data.name }}
+          {{ user?.userProfile?.name }}
         </p>
-        <span class="w-100 pt-2 text-sm text-gray-500 dark:text-slate-400">
-          {{ user.data.email }}
+        <span
+          :title="user?.userProfile?.email"
+          class="w-100 max-w-[180px] truncate text-ellipsis pt-2 text-sm text-gray-500 dark:text-slate-400"
+        >
+          {{ user?.userProfile?.email }}
         </span>
       </div>
 

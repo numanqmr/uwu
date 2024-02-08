@@ -95,8 +95,6 @@ const { data, error, execute, pending } = await useFetch<any>(
   },
 );
 
-console.log(data.value);
-
 const { stop } = useIntersectionObserver(
   loadReviewsTarget,
   async ([{ isIntersecting }], observerElement) => {

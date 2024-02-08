@@ -67,7 +67,7 @@ const userStore = useUserStore();
 const handleSubmit = async () => {
   try {
     await authStore.loginUser({ email: email.value, password: password.value });
-    router.push({ path: authRoutes.dashboard });
+    // router.push({ path: authRoutes.dashboard });
   } catch (err) {
     console.error(err);
   }

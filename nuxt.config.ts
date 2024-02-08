@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: false },
-  modules: ["@pinia/nuxt", "@nuxtjs/supabase", "nuxt-primevue"],
+  modules: ["@nuxtjs/supabase", "nuxt-primevue", "@pinia/nuxt"],
   app: {
     head: {
       charset: "utf-8",

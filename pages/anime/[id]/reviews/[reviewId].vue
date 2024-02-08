@@ -43,6 +43,4 @@ const id = route.params.id as string;
 
 const { res } = await useGetReviewById(id, reviewId);
 const { data } = res;
-
-console.log(data.value);
 </script>

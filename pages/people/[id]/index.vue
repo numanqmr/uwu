@@ -137,8 +137,6 @@ if (!userData.value) {
 const { res: reviewsRes } = await useGetUserReviews(id);
 const userReviews = reviewsRes.data;
 
-console.log(userReviews.value);
-
 const getImgSrc = (url: string) => {
   if (url) return url;
 };
