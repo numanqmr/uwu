@@ -15,6 +15,8 @@ export const authRoutes = {
   allReviews: (id: string) => `/anime/${id}/reviews`,
   viewReview: (animeId: string | number, reviewId: string) =>
     `/anime/${animeId}/reviews/${reviewId}`,
+
+  profileReviews: (id: string | number) => `/people/${id}/reviews`,
 };
 
 export const unauthRoutes = {

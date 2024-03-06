@@ -20,17 +20,17 @@
               <div
                 class="w-100 rounded-lg bg-blue-100 px-4 py-2 font-bold dark:bg-blue-300 dark:text-gray-900"
               >
-                Watched
+                Watched: <span>22</span>
               </div>
               <div
                 class="w-100 rounded-lg bg-blue-100 px-4 py-2 font-bold dark:bg-blue-300 dark:text-gray-900"
               >
-                Reviewed
+                Reviewed: <span>22</span>
               </div>
               <div
                 class="w-100 rounded-lg bg-blue-100 px-4 py-2 font-bold dark:bg-blue-300 dark:text-gray-900"
               >
-                Likes
+                Likes: <span>22</span>
               </div>
             </div>
           </div>
@@ -108,11 +108,20 @@
               </p>
               <NuxtLink
                 :href="authRoutes.viewReview(reviewItem.animeId, reviewItem.id)"
-                class="text-sm text-blue-400 underline dark:text-blue-400"
+                class="cursor-pointer text-sm text-blue-400 underline dark:text-blue-400"
               >
                 Read more</NuxtLink
               >
             </div>
+          </div>
+
+          <div class="grid w-full place-content-center">
+            <NuxtLink
+              :href="authRoutes.profileReviews(id)"
+              class="cursor-pointer text-sm text-blue-400 underline dark:text-blue-400"
+            >
+              View All
+            </NuxtLink>
           </div>
         </div>
       </div>
