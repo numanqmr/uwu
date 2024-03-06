@@ -145,3 +145,51 @@ export const primeVueSwitchStyled = {
     ],
   }),
 };
+
+export const primeVueRatingStyled = () => {
+  return {
+    root: ({ props }: any) => ({
+      class: [
+        "relative",
+
+        // Flex & Alignment
+        "flex items-center",
+        "gap-1",
+
+        // Misc
+        {
+          "select-none pointer-events-none cursor-default": props.disabled,
+        },
+      ],
+    }),
+    officon: ({ props }: any) => ({
+      class: [
+        // Size
+        "w-5 h-5",
+
+        // Color
+        "text-surface-700 dark:text-surface-0/70",
+
+        // State
+        {
+          "hover:text-primary-500 dark:hover:text-primary-400": !props.readonly,
+        },
+
+        // Transition
+        "transition duration-200 ease-in",
+      ],
+    }),
+    onicon: ({ props }: any) => ({
+      class: [
+        // Size
+        "w-5 h-5",
+
+        // Color
+        "text-amber-400/80 dark:text-yellow-400",
+
+        // Transition
+        "transition duration-200 ease-in",
+      ],
+    }),
+  };
+};

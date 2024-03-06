@@ -101,7 +101,11 @@
                 <h3 class="text-lg font-bold">
                   {{ reviewItem.animeInfo.title }}
                 </h3>
-                <span>{{ reviewItem.rating }}</span>
+
+                <PVStarRating
+                  :rating="+reviewItem.rating ?? 0"
+                  :disabled="true"
+                />
               </div>
               <p class="text-sm text-black/60 dark:text-white/80">
                 {{ reviewItem.reviewText.slice(0, 220) }}...
