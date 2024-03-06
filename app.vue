@@ -4,7 +4,11 @@
       v-if="!!loader.isLoading.value"
       class="fixed bottom-0 right-0 z-50 mb-2 mr-2 grid h-16 w-16 place-content-center rounded-lg bg-blue-500"
     >
-      <p class="font-bolder animate-spin uppercase text-white">I</p>
+      <img
+        class="aspect-auto w-full"
+        src="/public/chika-dance-test.gif"
+        alt="loading"
+      />
     </div>
 
     <NuxtPage> </NuxtPage>

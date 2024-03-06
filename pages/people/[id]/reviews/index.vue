@@ -19,25 +19,28 @@
           >
             <div class="flex h-full flex-col justify-between">
               <div>
-                <div>
-                  <h3 class="text-lg font-bold">
+                <div class="mb-4 flex flex-col items-center gap-2">
+                  <h3 class="w-full text-center text-lg font-bold">
                     {{ reviewItem.animeInfo.title }}
                   </h3>
-                  <span>{{ reviewItem.rating }}</span>
+                  <PVStarRating
+                    :disabled="true"
+                    :rating="+reviewItem.rating ?? 0"
+                  />
                 </div>
                 <p class="text-sm text-black/60 dark:text-white/80">
                   {{ reviewItem.reviewText.slice(0, 220) }}...
                 </p>
               </div>
 
-              <div class="w-full text-center">
+              <div class="mt-4 w-full text-center">
                 <NuxtLink
                   :href="
                     authRoutes.viewReview(reviewItem.animeId, reviewItem.id)
                   "
                   class="cursor-pointer text-sm text-blue-400 underline"
                 >
-                  More
+                  Read More
                 </NuxtLink>
               </div>
             </div>

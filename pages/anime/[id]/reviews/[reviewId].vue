@@ -25,9 +25,11 @@
         ></div>
       </div>
 
-      <div class="mt-8 flex w-full flex-col items-center dark:text-white/80">
-        <p>Final rating</p>
-        <div>{{ data.rating }}</div>
+      <div
+        class="mt-8 flex w-full flex-col items-center gap-[4px] dark:text-white/80"
+      >
+        <p class="font-bold">FINAL RATING</p>
+        <PVStarRating :rating="+data.rating ?? 0" :disabled="true" />
       </div>
     </NuxtLayout>
   </div>
