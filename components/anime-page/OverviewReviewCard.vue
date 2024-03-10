@@ -45,7 +45,7 @@
           />
           <div class="flex flex-col items-center sm:items-start">
             <p class="text-lg font-bold">{{ reviewOverview.reviewer.name }}</p>
-            <p class="mb-1">rating</p>
+            <PVStarRating :disabled="true" :rating="+reviewOverview.rating" />
           </div>
         </div>
 

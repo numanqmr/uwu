@@ -47,11 +47,14 @@
 </template>
 
 <script setup>
+import { useAuthStore } from "@/store";
+
 const email = ref("");
 const password = ref("");
 
+const { createUser } = useAuthStore();
+
 function handleSubmit() {
-  console.log(email.value);
-  console.log(password.value);
+  // createUser({ email: email.value, password: password.value });
 }
 </script>
