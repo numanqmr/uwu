@@ -67,6 +67,15 @@
             </div>
           </NuxtLink>
         </li>
+        <li v-if="user?.userProfile?.userType === 'admin'">
+          <NuxtLink :to="authRoutes.adminPage">
+            <div
+              class="flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+            >
+              <span class="ml-3">Admin Panel</span>
+            </div>
+          </NuxtLink>
+        </li>
       </ul>
 
       <ul

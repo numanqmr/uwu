@@ -17,6 +17,9 @@ export const authRoutes = {
     `/anime/${animeId}/reviews/${reviewId}`,
 
   profileReviews: (id: string | number) => `/people/${id}/reviews`,
+
+  // Admin Routes
+  adminPage: "/admin",
 };
 
 export const unauthRoutes = {
