@@ -20,6 +20,8 @@ export const authRoutes = {
 
   // Admin Routes
   adminPage: "/admin",
+  adminPendingUsers: "/admin/users",
+  adminPendingAnime: "/admin/anime",
 };
 
 export const unauthRoutes = {
