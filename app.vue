@@ -6,7 +6,7 @@
     >
       <img
         class="aspect-auto w-full"
-        src="/public/chika-dance-test.gif"
+        src="/chika-dance-test.gif"
         alt="loading"
       />
     </div>
