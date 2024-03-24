@@ -29,6 +29,7 @@
         <div class="mt-2 flex flex-col gap-1">
           <button
             class="rounded-md bg-green-400 p-1 text-sm text-white hover:bg-green-500"
+            @click="() => approveUserFunc(person.id)"
           >
             Approve
           </button>
@@ -45,6 +46,7 @@
 
 <script setup lang="ts">
 import { useGetPendingUsersAdmin } from "@/composables/admin";
+import { apiUrls } from "~/api";
 const mockData = [
   { name: "waleed", email: "waleed@site.com", dateJoined: "12/12/12" },
   { name: "Numan", email: "numan@site.com", dateJoined: "12/12/12" },
@@ -55,4 +57,8 @@ const mockData = [
 
 const { res } = await useGetPendingUsersAdmin();
 const { data: pendingUserData, pending } = res;
+
+const approveUserFunc = async (userId: string) => {
+  await $fetch(apiUrls.approveUser, { method: "POST", body: { userId } });
+};
 </script>

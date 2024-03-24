@@ -16,4 +16,5 @@ export const apiUrls = {
   // ADMIN PAGE
   pendingUsers: "/api/admin/pendingusers",
   pendingAnime: "/api/admin/pendinganime",
+  approveUser: "/api/admin/approve-user",
 };
