@@ -12,4 +12,7 @@ export const apiUrls = {
   animePageReviewsAll: (id: string | number) => `/api/anime/${id}/reviews`,
   animePageReviewSingle: (animeId: string | number, reviewId: string) =>
     `/api/anime/${animeId}/reviews/${reviewId}`,
+
+  // ADMIN PAGE
+  pendingUsers: "/api/admin/pendingusers",
 };

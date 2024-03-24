@@ -12,6 +12,8 @@
       <div class="pt-8" />
       <AdminUsersTanstackTable />
       <div class="pt-8" />
+
+      <AdminUsersCards />
     </NuxtLayout>
   </div>
 </template>
