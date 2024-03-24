@@ -9,6 +9,17 @@
           <div class="mb-2 flex-col">
             <input
               class="focus:shadow-outline w-full appearance-none rounded-xl border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
+              v-model="username"
+              type="name"
+              name="username"
+              placeholder="username"
+              required
+            />
+          </div>
+
+          <div class="mb-2 flex-col">
+            <input
+              class="focus:shadow-outline w-full appearance-none rounded-xl border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none"
               v-model="email"
               type="email"
               name="email"
@@ -51,10 +62,15 @@ import { useAuthStore } from "@/store";
 
 const email = ref("");
 const password = ref("");
+const username = ref("");
 
 const { createUser } = useAuthStore();
 
 function handleSubmit() {
-  // createUser({ email: email.value, password: password.value });
+  // createUser({
+  //   email: email.value,
+  //   password: password.value,
+  //   username: username.value,
+  // });
 }
 </script>

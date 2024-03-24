@@ -4,6 +4,7 @@ import { useUserStore } from "./userStore";
 type LoginPayload = {
   email: string;
   password: string;
+  username?: string;
 };
 
 export const useAuthStore = defineStore("auth-store", () => {
@@ -20,11 +21,11 @@ export const useAuthStore = defineStore("auth-store", () => {
     return { data, error };
   };
 
-  const createUser = async ({ email, password }: LoginPayload) => {
+  const createUser = async ({ email, password, username }: LoginPayload) => {
     const { data, error } = await client.auth.signUp({
       email,
       password,
-      options: { data: { role: "" } },
+      options: { data: { name: username } },
     });
 
     return { data, error };
