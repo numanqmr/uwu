@@ -1,7 +1,7 @@
 <template>
   <div>
     <NuxtLayout :name="`auth-layout`">
-      <div class="pt-8 dark:text-slate-50">
+      <div class="py-8 dark:text-slate-50">
         <p>This is the admin page</p>
 
         <div class="my-1">
@@ -21,25 +21,39 @@
       </div>
 
       <div class="flex w-full flex-col gap-5 sm:flex-row dark:text-slate-50">
-        <div class="w-1/2">
-          <p class="w-full pb-2 text-center font-bold">Approve Users</p>
-
+        <div
+          class="relative w-full hover:scale-105 md:w-1/2 [&_svg]:hover:scale-105"
+        >
           <div
-            class="grid cursor-pointer place-content-center rounded-2xl bg-slate-100 py-4 shadow-lg hover:scale-105 sm:h-64 sm:py-0 dark:bg-slate-700 [&_svg]:hover:scale-105"
+            v-if="count?.pendingUsers && count?.pendingUsers > 0"
+            class="absolute right-0 z-10 grid h-8 w-8 -translate-y-1/2 translate-x-1/2 place-content-center rounded-full bg-red-500 text-white"
+          >
+            <p>{{ count?.pendingUsers }}</p>
+          </div>
+          <div
+            class="flex cursor-pointer items-center rounded-2xl bg-slate-100 px-3 py-4 shadow-lg sm:h-64 md:flex-col md:justify-center dark:bg-slate-700"
             @click="router.push(authRoutes.adminPendingUsers)"
           >
             <UserGroupIcon class="h-24 w-24 fill-black dark:fill-white" />
+            <p class="w-full pb-2 text-center font-bold">Approve Users</p>
           </div>
         </div>
 
-        <div class="w-1/2">
-          <p class="w-full pb-2 text-center font-bold">Approve Anime</p>
-
+        <div
+          class="relative w-full hover:scale-105 md:w-1/2 [&_svg]:hover:scale-105"
+        >
           <div
-            class="grid cursor-pointer place-content-center rounded-2xl bg-slate-100 py-4 shadow-lg hover:scale-105 sm:h-64 sm:py-0 dark:bg-slate-700 [&_svg]:hover:scale-105"
+            v-if="count?.pendingAnime && count?.pendingAnime > 0"
+            class="absolute right-0 z-10 grid h-8 w-8 -translate-y-1/2 translate-x-1/2 place-content-center rounded-full bg-red-500 text-white"
+          >
+            <p>{{ count?.pendingAnime }}</p>
+          </div>
+          <div
+            class="flex cursor-pointer items-center rounded-2xl bg-slate-100 px-3 py-4 shadow-lg sm:h-64 md:flex-col md:justify-center dark:bg-slate-700"
             @click="router.push(authRoutes.adminPendingAnime)"
           >
             <TicketIcon class="h-24 w-24 fill-black dark:fill-white" />
+            <p class="w-full pb-2 text-center font-bold">Approve Anime</p>
           </div>
         </div>
       </div>
@@ -51,4 +65,8 @@
 import { UserGroupIcon, TicketIcon } from "@heroicons/vue/24/solid";
 
 const router = useRouter();
+const { data: count } = await useFetch<{
+  pendingUsers: number;
+  pendingAnime: number;
+}>("/api/admin/count/pending-items", { lazy: true, server: false });
 </script>
