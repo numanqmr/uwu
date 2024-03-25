@@ -2,8 +2,11 @@ import { serverSupabaseUser } from "#supabase/server";
 import { db } from "@/drizzle.config";
 import { profile } from "@/drizzle/schema";
 import { eq } from "drizzle-orm";
+import { H3Event, EventHandlerRequest } from "h3";
 
-export default async function checkUserRole(event) {
+export default async function checkUserRole(
+  event: H3Event<EventHandlerRequest>,
+) {
   // throw new HttpException(401, "Unauthorized");
 
   const client = await serverSupabaseUser(event);
